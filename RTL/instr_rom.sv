@@ -3,7 +3,7 @@ module instr_rom(
     input  logic clk, rst_n,
     naive_bus.slave  bus
 );
-    localparam  INSTR_CNT = 12'd20;
+    localparam  INSTR_CNT = 30'd20;
     
     wire [0:INSTR_CNT-1] [31:0] instr_rom_cell = {
         32'h000062b3,    //0x00000000
@@ -43,7 +43,6 @@ module instr_rom(
             else
                 bus.rd_data <= 0;
         end
-
 
 endmodule
 
