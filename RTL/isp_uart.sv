@@ -20,29 +20,27 @@ module isp_uart #(
     input  logic        clk,
     input  logic        i_uart_rx,
     output logic        o_uart_tx,
-    output logic        o_rst_n, o_stop,
+    output logic        o_rst_n,
     output logic [31:0] o_boot_addr,
     naive_bus.master  bus
 );
 
-logic [ 5:0] rst_chain = 3'b0;
+logic [ 3:0] rst_chain = 4'b0;
 logic rx_ready, rd_ok=1'b0, wr_ok=1'b0, tx_start=1'b0;
 logic [ 7:0] rx_data, rx_binary;
 logic [ 3:0] rx_binary_l;
 logic [31:0] addr=0, wr_data=0;
 logic [ 7:0][ 7:0] rd_data_ascii;
 logic [ 7:0][ 7:0] tx_data = 64'h0;
-enum  {NONE, RST, RUN, STOP} cmd=NONE;
 enum  {NEW, CMD, GETBOOTADDR, SETBOOTADDR, ADDR, EQUAL, DATA, FINAL, TRASH} fsm = NEW;
 
-`define  C  (rx_data=="r"  || rx_data=="w"  || rx_data=="s")
+`define  C  (rx_data=="r")
 `define  S  (rx_data==" "  || rx_data=="\t" ) 
 `define  E  (rx_data=="\n" || rx_data=="\r" ) 
 `define  N  ( (rx_data>="0" && rx_data<="9" ) || (rx_data>="a" && rx_data<="f" ) )
 
-initial o_stop = 1'b0;
 initial o_boot_addr = 0;
-assign  o_rst_n = ~(|rst_chain);
+assign  o_rst_n = &rst_chain;
 
 initial begin bus.rd_req = 1'b0; bus.wr_req = 1'b0; bus.rd_addr = 0; bus.wr_addr = 0; bus.wr_data = 0; end
 assign bus.rd_be = 4'hf;
@@ -101,34 +99,24 @@ always @ (posedge clk)
     end else if(wr_ok) begin
         tx_start<= 1'b1;
         tx_data <= "wr done ";
-    end else if(rx_ready && fsm==CMD && `E) begin
-        tx_start<= 1'b1;
-        if(cmd==RST)
+    end else if(rx_ready && `E) begin
+        if(fsm==CMD) begin
+            tx_start<= 1'b1;
             tx_data <= "rst done";
-        else if(cmd==RUN)
-            tx_data <= "running ";
-        else if(cmd==STOP)
-            tx_data <= "stoped  ";
-        else
-            tx_data <= 64'h0;
+        end else if(fsm==TRASH) begin
+            tx_start<= 1'b1;
+            tx_data <= "invalid ";
+        end
     end else begin
         tx_start<= 1'b0;
         tx_data <= 64'h0;
     end
 
 always @ (posedge clk)
-    if(rx_ready && fsm==CMD && `E && cmd==RST)
-        rst_chain <= 6'h0;
+    if(rx_ready && fsm==CMD && `E)
+        rst_chain <= 4'h0;
     else
-        rst_chain <= {rst_chain[4:0],1'b0};
-
-always @ (posedge clk)
-    if(rx_ready && fsm==CMD && `E) begin
-        if(cmd==RUN)
-            o_stop <= 1'b0;
-        else
-            o_stop <= 1'b1;
-    end
+        rst_chain <= {rst_chain[2:0],1'b1};
 
 always @ (posedge clk)
     if         (bus.rd_req) begin
@@ -141,20 +129,11 @@ always @ (posedge clk)
         case(fsm)
         NEW       : if         (`C) begin
                         fsm <= CMD;
-                        if(rx_data=="r") begin           // check rx_data to see which command it is
-                            cmd <= RST;
-                        end else if(rx_data=="w") begin
-                            cmd <= RUN;
-                        end else if(rx_data=="s") begin
-                            cmd <= STOP;
-                        end else begin
-                            cmd <= NONE;
-                        end
+                        wr_data <= 0;
                     end else if(`S || `E) begin
                         fsm <= NEW;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`N) begin
                         fsm <= ADDR;
                         addr <= {addr[27:0], rx_binary_l};     // get a addr 
@@ -162,15 +141,13 @@ always @ (posedge clk)
                         fsm <= TRASH;
                     end
         CMD       : if         (`E) begin
-                        if(cmd==RST)
-                            o_boot_addr <= {wr_data[31:2],2'b00};   // 设置复位的boot地址，后两位截断(双字对齐)
+                        o_boot_addr <= {wr_data[31:2],2'b00};   // 设置复位的boot地址，后两位截断(双字对齐)
                         fsm <= NEW;  // cmd ok!
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`S) begin
                         fsm <= CMD;
-                    end else if(cmd==RST && `N) begin
+                    end else if(`N) begin
                         fsm <= CMD;        // r字符后出现数字，说明该复位命令要指定boot地址，
                         wr_data <= {wr_data[27:0], rx_binary_l};  // get a data
                     end else        begin
@@ -182,7 +159,6 @@ always @ (posedge clk)
                         bus.rd_addr <= addr;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`N) begin
                         fsm <= ADDR;
                         addr <= {addr[27:0], rx_binary_l};     // get a addr 
@@ -197,7 +173,6 @@ always @ (posedge clk)
                         bus.rd_addr <= addr;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`N) begin
                         fsm <= DATA;  // get a data
                         wr_data <= {wr_data[27:0], rx_binary_l};  // get a data
@@ -213,7 +188,6 @@ always @ (posedge clk)
                         bus.wr_data <= wr_data;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`N) begin
                         fsm <= DATA;  // get a data
                         wr_data <= {wr_data[27:0], rx_binary_l};  // get a data
@@ -229,7 +203,6 @@ always @ (posedge clk)
                         bus.wr_data <= wr_data;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else if(`S) begin
                         fsm <= FINAL;  // get addr down, waiting for \r or \n
                     end else        begin
@@ -240,7 +213,6 @@ always @ (posedge clk)
                         fsm <= NEW;
                         addr <= 0;
                         wr_data <= 0;
-                        cmd <= NONE;
                     end else        begin
                         fsm <= TRASH;
                     end

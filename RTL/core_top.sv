@@ -1,5 +1,5 @@
 module core_top(
-    input  logic clk, rst_n, i_stop,
+    input  logic clk, rst_n,
     input  logic [31:0] i_boot_addr,
     naive_bus.master  instr_master, data_master
 );
@@ -50,7 +50,7 @@ logic id_data_bus_conflict, mem_data_bus_conflict;
 // conflict - comb logic
 // -------------------------------------------------------------------------------
 assign pc_stall = id_stall | id_data_bus_conflict;
-assign id_stall = wreg_conflict | mem_data_bus_conflict | i_stop;
+assign id_stall = wreg_conflict | mem_data_bus_conflict;
 assign ex_stall = mem_data_bus_conflict;
 assign mem_stall = mem_data_bus_conflict;
 assign launch_nop = ex_branch | ex_jalr | wreg_conflict;
