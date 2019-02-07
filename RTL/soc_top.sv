@@ -9,7 +9,7 @@ module soc_top (
     output logic user_uart_tx,
     // VGA显示输出信号
     output logic vga_hsync, vga_vsync,
-	output logic [15:0] vga_pixel,
+	output logic [15:0] vga_pixel
 );
 logic [31:0] boot_addr;
 logic rst_n, core_stop;
