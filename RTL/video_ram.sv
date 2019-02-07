@@ -1,4 +1,3 @@
-
 module video_ram(
     input  logic clk, rst_n,
 	output logic o_hsync, o_vsync,
@@ -82,7 +81,6 @@ vgaChar98x36 vga_char_inst(
     .hsync     ( o_hsync                 ),
     .vsync     ( o_vsync                 ),
     .pixel     ( o_pixel                 ),
-    //.req       ( vga_req                 ),
     .addr      ( {vga_addr_h,vga_addr_l} ),
     .ascii     ( vga_ascii               )
 );
@@ -105,13 +103,20 @@ module vgaChar98x36(
 );
 wire b;
 wire [15:0] req_pixel;
-reg  [15:0] border;
+reg  [15:0] border, border_latch;
 
 wire [2:0] x_l;
 wire [3:0] y_l;
 wire [6:0] x_h;
 wire [5:0] y_h;
 wire [9:0] x, y;
+reg  [9:0] x_latch, y_latch;
+
+always @ (posedge clk) begin
+    x_latch <= x;
+    y_latch <= y;
+    border_latch <= border;
+end
 
 assign {x_h, x_l} = x - 10'd8;
 assign {y_h, y_l} = y - 10'd12;
@@ -129,17 +134,18 @@ vga vga_inst(
     .req_pixel (req_pixel)
 );
 
-assign req_pixel = ( x>=8 && x<(800-8) && y>=12 && y<(600-12) ) ? {16{b}} : border;
+assign req_pixel = ( x_latch>=8 && x_latch<(800-8) && y_latch>=12 && y_latch<(600-12) ) ? {16{b}} : border_latch;
 
 always @ (posedge clk)
     if(req)
         border <= ( x<5 || x>(800-5) || y<5 || y>(600-5) ) ? 16'hff00 : 16'h0000;
 
 char8x16 char_8x16_inst(
-    .ascii      (ascii),
-    .x          (x_l),
-    .y          (y_l),
-    .b          (b)
+    .clk        ( clk    ),
+    .ascii      ( ascii  ),
+    .x          ( x_l    ),
+    .y          ( y_l    ),
+    .b          ( b      )
 );
 
 endmodule
@@ -154,7 +160,7 @@ module vga(
 	input  clk,
     // vga interface
 	output reg hsync, vsync,
-	output reg [15:0] pixel,
+	output reg [15:0]  pixel,
     // user interface
     output req,
     output [ 9:0] x, y,
@@ -194,10 +200,7 @@ assign y = range ? vcnt[9:0] : 10'h0;
 assign req = range;
 
 always @ (posedge clk)
-    if(hcnt>0 && hcnt<=H_END && v_range)
-        pixel <= req_pixel;
-    else
-        pixel <= 16'h0;
+    pixel <= (hcnt>0 && hcnt<=H_END && v_range) ? req_pixel : 16'h0;
 
 endmodule
 
@@ -207,16 +210,21 @@ endmodule
 
 // ASCII when ascii<128, user code when ascii>=128
 module char8x16(
+    input  clk,
     input  [7:0] ascii,
     input  [2:0] x,
     input  [3:0] y,
     output b
 );
-wire [6:0] addr = ~{y,x};
+reg  [  6:0] addr;
+reg  [127:0] char;
+
+always @ (posedge clk)
+    addr <= ~{y,x};
+
 assign b = char[addr];
 
-reg [127:0] char;
-always @ (*)
+always @ (posedge clk)
     case(ascii)
         33:  char <= 128'h00000018181818181808000818000000; //!0
         34:  char <= 128'h00000034242424000000000000000000; //"1
@@ -316,3 +324,4 @@ always @ (*)
     endcase
 
 endmodule
+s

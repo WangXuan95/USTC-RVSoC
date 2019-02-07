@@ -9,9 +9,9 @@ module soc_top (
     output logic user_uart_tx,
     // VGA显示输出信号
     output logic vga_hsync, vga_vsync,
-	output logic [15:0] vga_pixel
+	output logic [15:0] vga_pixel,
 );
-
+logic [31:0] boot_addr;
 logic rst_n, core_stop;
 
 naive_bus  bus_masters[3]();
@@ -25,6 +25,7 @@ isp_uart isp_uart_inst(
     .o_uart_tx         ( isp_uart_tx    ),
     .o_rst_n           ( rst_n          ),
     .o_stop            ( core_stop      ),
+    .o_boot_addr       ( boot_addr      ),
     .bus               ( bus_masters[0] )
 );
 
@@ -33,6 +34,7 @@ core_top core_top_inst(
     .clk               ( clk            ),
     .rst_n             ( rst_n          ),
     .i_stop            ( core_stop      ),
+    .i_boot_addr       ( boot_addr      ),
     .instr_master      ( bus_masters[1] ),
     .data_master       ( bus_masters[2] )
 );
@@ -45,7 +47,6 @@ instr_rom instr_ram_inst(
 );
 
 // 数据RAM
-
 ram_bus_wrapper data_ram_inst(
     .clk               ( clk            ),
     .rst_n             ( rst_n          ),

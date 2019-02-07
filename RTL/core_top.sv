@@ -1,5 +1,6 @@
 module core_top(
     input  logic clk, rst_n, i_stop,
+    input  logic [31:0] i_boot_addr,
     naive_bus.master  instr_master, data_master
 );
 
@@ -97,7 +98,7 @@ core_bus_wrapper inst_bus_wrap_inst(
 );
 always @ (posedge clk or negedge rst_n)
     if(~rst_n)
-        id_pc <= 32'hffff_fffc;
+        id_pc <= {i_boot_addr[31:2],2'b00} - 4;
     else
         id_pc <= if_pc;
 

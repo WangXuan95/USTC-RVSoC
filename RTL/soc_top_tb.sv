@@ -1,4 +1,4 @@
-module soc_tb();
+module soc_top_tb();
 
 logic clk, rst_n;
 initial clk = 1'b1;

@@ -6,6 +6,7 @@
 //        发送: r\n
 //        效果: 将o_rst_n信号拉低若干个时钟周期
 //        返回: rst done\n
+// 2、指定boot地址的复位命令
 // 2. w\n : o_run = 1        ,    return running \n
 // 3. s\n : o_run = 0        ,    return stoped  \n
 // 4. addr=data\n : write [addr] = data ,   example: 00000100 928cd0f1\n , return : 00000100=928cd0f1 , note:automaticly align address to 4byte
@@ -16,10 +17,11 @@ module isp_uart #(
     parameter  UART_RX_CLK_DIV = 108,   // 50MHz/4/115200Hz=108
     parameter  UART_TX_CLK_DIV = 434    // 50MHz/1/115200Hz=434
 )(
-    input  logic      clk,
-    input  logic      i_uart_rx,
-    output logic      o_uart_tx,
-    output logic      o_rst_n, o_stop,
+    input  logic        clk,
+    input  logic        i_uart_rx,
+    output logic        o_uart_tx,
+    output logic        o_rst_n, o_stop,
+    output logic [31:0] o_boot_addr,
     naive_bus.master  bus
 );
 
@@ -31,7 +33,7 @@ logic [31:0] addr=0, wr_data=0;
 logic [ 7:0][ 7:0] rd_data_ascii;
 logic [ 7:0][ 7:0] tx_data = 64'h0;
 enum  {NONE, RST, RUN, STOP} cmd=NONE;
-enum  {NEW, CMD, ADDR, EQUAL, DATA, FINAL, TRASH} fsm = NEW;
+enum  {NEW, CMD, GETBOOTADDR, SETBOOTADDR, ADDR, EQUAL, DATA, FINAL, TRASH} fsm = NEW;
 
 `define  C  (rx_data=="r"  || rx_data=="w"  || rx_data=="s")
 `define  S  (rx_data==" "  || rx_data=="\t" ) 
@@ -39,6 +41,7 @@ enum  {NEW, CMD, ADDR, EQUAL, DATA, FINAL, TRASH} fsm = NEW;
 `define  N  ( (rx_data>="0" && rx_data<="9" ) || (rx_data>="a" && rx_data<="f" ) )
 
 initial o_stop = 1'b0;
+initial o_boot_addr = 0;
 assign  o_rst_n = ~(|rst_chain);
 
 initial begin bus.rd_req = 1'b0; bus.wr_req = 1'b0; bus.rd_addr = 0; bus.wr_addr = 0; bus.wr_data = 0; end
@@ -159,12 +162,17 @@ always @ (posedge clk)
                         fsm <= TRASH;
                     end
         CMD       : if         (`E) begin
+                        if(cmd==RST)
+                            o_boot_addr <= {wr_data[31:2],2'b00};   // 设置复位的boot地址，后两位截断(双字对齐)
                         fsm <= NEW;  // cmd ok!
                         addr <= 0;
                         wr_data <= 0;
                         cmd <= NONE;
                     end else if(`S) begin
                         fsm <= CMD;
+                    end else if(cmd==RST && `N) begin
+                        fsm <= CMD;        // r字符后出现数字，说明该复位命令要指定boot地址，
+                        wr_data <= {wr_data[27:0], rx_binary_l};  // get a data
                     end else        begin
                         fsm <= TRASH;
                     end
