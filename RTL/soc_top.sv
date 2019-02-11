@@ -58,7 +58,7 @@ ram_bus_wrapper data_ram_inst(
     .bus               ( bus_slaves[2]  )
 );
 
-/*
+
 // 显存 
 video_ram video_ram_inst(
     .clk               ( clk            ),
@@ -68,7 +68,7 @@ video_ram video_ram_inst(
     .o_hsync           ( vga_hsync      ),
     .o_pixel           ( vga_pixel      )
 );
-*/
+
 
 // 用户UART
 user_uart_tx user_uart_tx_inst(
