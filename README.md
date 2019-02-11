@@ -4,101 +4,113 @@
 
 # 特点
 
-1、RISC-V核采用5段流水线，能运行RV32I指令集
-
-2、SoC使用简单直观的32bit握手总线(naive_bus.sv)，
-
-3、总线仲裁器(naive_bus_router.sv)预留了宏，可修改主从设备的数量和地址空间，以方便拓展外设、多核、DMA等
-
-4、具有UART调试器(isp_uart.sv)，用户可以使用PC上的串口助手、minicom等软件，实现交互式的系统复位、上传程序、查看内存等功能
-
-5、全部使用SystemVerilog实现，不调用IP核，方便在Altera、Xilinx、Lattice等不同FPGA平台上移植
-
-6、RAM和ROM符合一定的Verilog写法，自动综合成Block RAM
+> * 5段流水线RISC-V，能运行RV32I指令集
+> * 简单直观的32bit握手总线 (naive_bus.sv)，
+> * 总线仲裁器(naive_bus_router.sv)可修改，以方便拓展外设、多核、DMA等
+> * 具有交互式UART调试器(isp_uart.sv)，用户可以使用PC上的串口助手、minicom等软件，实现系统复位、上传程序、查看内存等功能
+> * 全部使用SystemVerilog实现，不调用IP核，方便在Altera、Xilinx、Lattice等不同FPGA平台上移植
+> * RAM符合一定的Verilog写法，自动综合成Block RAM
 
 # SoC 结构
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/SoC.png)
 
+上图展示了SoC的结构，总线仲裁器bus_router为SoC的中心，上面挂载了2个“主设备”和5个“从设备”。实际上，CPU具有两个“主接口”，因此bus_router共有3个“主接口”和5个“从接口”。
+
+这个SoC使用的总线并不来自于任何标准（例如AXI或APB总线），而是笔者自编的，因为简单所以命名为“naive_bus”。
+
+每个“从接口”都占有一段地址空间。当“主接口”访问总线时，bus_router判断该地址属于哪个地址空间，然后将它“路由”到相应的“从接口”。下表展示了5个“从接口”的地址空间。
+
+| 外设类型 | 起始地址   | 结束地址   | 
+| :-----:  | :-----:    | :----:     |
+| 指令ROM  | 0x00000000 | 0x00007fff |
+| 指令RAM  | 0x00008000 | 0x00008fff |
+| 数据RAM  | 0x00010000 | 0x00010fff |
+| 显存RAM  | 0x00020000 | 0x00020fff |
+| 用户UART | 0x00030000 | 0x00030003 |
+
 ### 主要部件
 
-1、多主多从总线仲裁器(naive_bus_router.sv)：负责接受主接口发来的读写请求，根据其地址空间将其路由到相应的从接口，并在不同主接口同时访问一个从接口时，控制其中优先级高的从接口先进行访问，优先级低的主接口等待。
+> * **多主多从总线仲裁器(naive_bus_router.sv)**：为每个从设备划分地址空间，将主设备的总线读写请求路由到从设备。当多个主设备同时访问一个从设备时，还能进行访问冲突控制。
+> * **RV32I Core(core_top.sv)**：包括两个主接口。一个用于取指令，一个用于读写数据
+> * **UART调试器(isp_uart.sv)**：包括一个主接口。它接收用户从UART发来的命令，对总线进行读写。它可以用于在线烧录、在线调试。
+> * **指令ROM(instr_rom.sv)**：CPU默认从这里开始取指令，多用于仿真
+> * **指令RAM(ram_bus_wrapper.sv)**：用户在线烧录程序到这里。
+> * **数据RAM(ram_bus_wrapper.sv)**：存放运行时的数据。
+> * **显存RAM(vedio_ram.sv)**：在屏幕上显示98列*36行=3528个字符，显存RAM的前3528B对应的ASCII码值就决定了每个字符是什么
+> * **用户UART(user_uart_tx)**：暂时只有发送功能，向其中写一个字节相当于把该字节放入发送缓冲区FIFO，缓冲区大小256B，缓冲区的数据会尽快发送。
 
-2、RV32I Core(core_top.sv)：包括两个主接口，一个用于取指令，一个用于读写数据
-
-3、UART调试器(isp_uart.sv)：包括一个主接口。它接收用户从UART发来的命令，操控复位等信号，或对总线进行读写。可以使用UART命令复位整个SoC，上传程序，或者查看运行时的RAM数据。
-
-4、指令ROM(instr_rom.sv)：地址空间00000000~00000fff，CPU复位后从00000000开始取指令，因此若在指令ROM中存放编译好的指令流，复位后就自动运行其中的程序
-
-5、数据RAM(ram_bus_wrapper.sv)：地址空间00010000~00010fff
-
-6、显存RAM(vedio_ram.sv)：地址空间00020000~00020fff，一共4096B，若VGA信号正确连接到VGA接口，则屏幕上能够显示98列*36行=3528个字符，显存RAM的前3528B对应的ASCII码值就决定了每个字符是什么
-
-7、用户UART(user_uart_tx)：暂时只具有发送功能，地址空间00030000~00030003，向00030000写一个字节相当于把该字节放入发送缓冲区FIFO，缓冲区大小256B，缓冲区的数据会尽快发送。
-
-### 地址空间分配
-
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/AddressSpace.png)
-
-
-# CPU 结构
+# RV32I CPU 结构
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/Core-RTL.png)
 
 TODO
 
-# Getting Start
+# 在DE0-Nano 开发板上运行SoC
 
 我们提供了两种方式运行代码：
 
-1、修改指令ROM内的数据。每次修改只能修改Verilog代码，然后重新编译综合，重新烧写FPGA逻辑。虽然麻烦，但这便于进行RTL仿真，你可以将想要运行的程序放入指令ROM，然后仅需在testbench中给予SoC一个时钟，就可以观察整个SoC在运行这段代码时的波形。
+1、**使用指令ROM**：修改instr_rom.sv中的代码，然后重新编译综合，重新烧写FPGA逻辑。虽然麻烦，但这便于进行RTL仿真，你可以将想要运行的程序放入指令ROM，然后仅需在testbench中给予SoC一个时钟，就可以观察整个SoC在运行这段代码时的波形。
 
-2、使用UART调试器在线修改指令RAM内的数据。
+2、**使用指令RAM**：使用UART调试器在线上传程序到指令RAM。
 
-### 部署电路到FPGA
+### 部署电路到DE0-Nano FPGA
 
-你需要一块至少具有一个UART的FPGA开发板。另外，它最好还有另一路UART或一个VGA接口。
+![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/DE0-Nano.png)
 
-在Quartus或Vivado等开发软件中，以soc_top为顶层模块，进行综合。注意到该顶层模块具有两路UART和一路VGA，其中最重要的是ISP-UART，务必将其连接开发板的UART。另外一路UART和VGA视开发板的情况而定。
+1、**硬件连接**：DE0-Nano上的接口的意义如上图。你至少需要一个USB转UART的模块，将ISP-UART的TX和RX引脚连接上去，使之能与电脑通信，如下图：
 
-另外注意，时钟需要是50MHz，如果你的开发板时钟不是50MHz，可以使用PLL IP产生50MHz提供给SoC。
+![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/connection.png)
 
-当你将电路烧写到FPGA后，ISP-UART已经在等待命令，并且Risc-v CPU应该已经开始运行指令ROM中的程序了。
+2、**综合、烧录FPGA**：用Quartus软件打开./Quartus/DE0_Nano/DE0_Nano.qpf，综合并烧写到DE0-Nano。
 
-### 用UART调试器读写RAM
+3、**尝试读取总线**：在电脑上的串口终端软件（超级终端、串口助手、minicom）中，使用格式(115200,n,8,1)，ASCII形式（不要使用二进制）发送00000000\n，如果看到收到一个8位16进制数，那么恭喜你SoC部署成功，该数代表SoC数据总线的地址0x00000000处的读取数据。如果没有收到数据，以下是可能的原因：
 
-TODO
+> * **硬件连接问题**：例如TX/RX接反，杜邦线接触不良等
+> * **共地问题**：要求电脑的地与板子的地连接，如果DE0-Nano上的USB口与电脑连接，则已经共地，否则请额外使用杜邦线将USB转UART的地与DE0-Nano的地连接。
+> * **COM口号选错**：如果不能确定USB转UART是哪个COM口，请将它拔下来，看哪个COM口消失了，再重新插入，就能确定COM号
+> * **串口通信格式错误**：必须是115200波特率、8个数据位、1个停止位、无校验位。
+> * **发送数据不对**：每个命令后必须有一个\n或\r，必须使用ASCII格式（很多串口助手软件提供十六进制发送功能，我们不需要，UART调试接口会自动将收到的ASCII变为十六进制）
 
-### 用UART调试器让VGA显示字符
+4、上一步我们尝试了UART调试器的读总线命令，下表显示了它的所有3种命令。
 
-TODO
+![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/commands.png)
 
-### 汇编文件产生指令流
+> * 注意：无论是发送还是接受，所有命令都以\n或\r结尾
 
-TODO
+根据这些命令，不难猜出，在线上传程序的流程是：
 
-### 用RISC-V CPU调用UART外设，打印Hello
+> 1、使用写命令，将指令流写入指令RAM，（指令RAM的地址是00008000~00008fff）
+> 2、使用复位命令r00008000，将CPU复位并从指令RAM种BOOT
 
-TODO
+### 使用工具：USTCRVSoC-tool
 
-### 用RISC-V CPU在VGA上显示字符
+./USTCRVSoC-tool/USTCRVSoC-tool.exe 是一个能汇编和烧录的小工具，相当于一个汇编语言的IDE。界面如下图。
 
-TODO
+![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/USTCRVSoC-tool-image.png)
 
-### 用RISC-V CPU计算斐波那契数列
+我们提供了几个汇编小程序如下表。
 
-TODO
+| 文件名   | 说明   |
+| :-----  | :-----    |
+| uart_print.S  | 用户UART循环打印hello! |
+| vga_hello.S   | 屏幕上显示hello！    |
+| fibonacci_recursive.S  | 递归法计算斐波那契数列第7个数并，用用户UART打印结果  |
+| load_store.S  | 完成一些内存读写，没有具体表现，为了观察现象，可以使用UART调试器查看内存 |
+
+现在我们尝试让SoC运行一个UART打印的程序。点击“打开...”按钮，浏览到目录./software/asm-code，打开汇编文件uart_print.S。点击右侧的“汇编”按钮，可以看到右下方框里出现了一串16进制数，这就是汇编得到的机器码。然后，选择正确的COM口，点击“烧录”，如果下方状态栏里显示“烧录成功”，则CPU就已经开始运行该机器码了。这是一个使用用户UART循环打印“hello!”的程序，
+
+> 注：用户UART与UART调试器不是同一个调试器。为了观察现象，可以将UART调试器的杜邦线拔下来插在用户UART上。通信格式依然是(115200,n,8,1)。
+
 
 # RTL仿真
 
-### 汇编文件产生Verilog ROM
+### 生成Verilog ROM
 
-进行RTL仿真首先需要修改指令ROM中的程序，方法是：
-
-1、将汇编代码汇编为指令流并存在Verilog ROM中：在./ASM目录中运行python文件：asm2verilogrom.py，具体命令行命令格式见python中的注释。推荐使用windows完成这一步，因为 ./ASM/riscv32-gnu-toolchain-windows 中提供了编译好的riscv-windows工具链，不需要另外配置环境。
-
-2、将生成的.sv文件中的内容复制，替换 ./RTL/instr_rom.sv 中的内容。
+USTCRVSoC-tool.exe 除了进行烧录，也可以生成指令ROM的Verilog代码。当你使用“汇编”按钮产生指令流后，可以点击右侧的“保存指令流(Verilog)”按钮，用生成的ROM代码替换 ./RTL/instr_rom.sv
 
 ### 进行仿真
 
-修改ROM后请直接使用soc_top_tb.sv文件进行仿真，这个仿真是针对整个SoC的，因此你可以修改ROM程序后进行仿真，观察SoC运行该程序的行为
+生成ROM后请直接使用soc_top_tb.sv文件进行仿真，这个仿真是针对整个SoC的，因此你可以修改ROM程序后进行仿真，观察SoC运行该程序的行为。
+
+> 注：这里没有提供仿真工程的示例，你可以新建Modelsim工程或Vivado工程进行仿真。仿真时请将./RTL/目录里的所有.sv文件都加入工程里。
