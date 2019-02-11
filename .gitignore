@@ -1,0 +1,10 @@
+*.bak
+*.qws
+*.rpt
+*.done
+*.smsg
+*.summary
+*.pin
+/db
+/incremental_db
+/simulation
