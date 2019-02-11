@@ -5,6 +5,3 @@
 *.smsg
 *.summary
 *.pin
-/db
-/incremental_db
-/simulation
