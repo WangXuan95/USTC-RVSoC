@@ -26,8 +26,11 @@ module DE0_Nano_USTCRVSoC_top(
     output [1:0]  DRAM_DQM
 );
 
+logic rst_n;
+
 soc_top soc_inst(
     .clk              ( CLOCK_50      ),
+    .rst_n            ( rst_n         ),
     .isp_uart_rx      ( GPIO_1_IN[0]  ),
     .isp_uart_tx      ( GPIO_1[0]     ),
     .user_uart_rx     ( GPIO_1_IN[1]  ),
@@ -42,5 +45,20 @@ assign LED[7:4] = ~{GPIO_1_IN[0],GPIO_1[0],GPIO_1_IN[1],GPIO_1[1]};
 
 // VGA GND
 assign GPIO_0[12] = 1'b0;
+
+// 流水灯，指示SoC在运行
+reg [21:0] cnt = 22'h0;
+reg [ 3:0] flow = 4'h0;
+always @ (posedge CLOCK_50 or negedge rst_n)
+    if(~rst_n) begin
+        cnt <= 22'h0;
+        flow <= 4'h0;
+    end else begin
+        cnt <= cnt + 22'h1;
+        if(cnt==22'h0)
+            flow <= {flow[2:0], ~flow[3]};
+    end
+    
+assign LED[3:0] = flow;
 
 endmodule

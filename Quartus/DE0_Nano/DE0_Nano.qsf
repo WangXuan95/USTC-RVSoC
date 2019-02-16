@@ -238,7 +238,7 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
-set_global_assignment -name TOP_LEVEL_ENTITY instr_rom
+set_global_assignment -name TOP_LEVEL_ENTITY DE0_Nano_USTCRVSoC_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:11:55  FEBRUARY 10, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1

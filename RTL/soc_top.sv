@@ -1,6 +1,8 @@
 module soc_top (
     // 时钟，要求50MHz
     input  logic clk,
+    // 复位信号输出
+    output logic rst_n,
     // 调试器UART信号
     input  logic isp_uart_rx,
     output logic isp_uart_tx,
@@ -11,7 +13,6 @@ module soc_top (
     output logic vga_hsync, vga_vsync,
 	output logic [15:0] vga_pixel
 );
-logic rst_n;
 logic [31:0] boot_addr;
 
 naive_bus  bus_masters[3]();

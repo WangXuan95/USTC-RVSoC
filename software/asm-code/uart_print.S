@@ -17,8 +17,6 @@ print_hello:
     sb    t1, (t0)         # t1写入t0地址
     ori   t1, zero, 0x06f  # t1='o'的ASCII码
     sb    t1, (t0)         # t1写入t0地址
-    ori   t1, zero, 0x021  # t1='!'的ASCII码
-    sb    t1, (t0)         # t1写入t0地址
     ori   t1, zero, 0x00a  # t1='\n'的ASCII码
     sb    t1, (t0)         # t1写入t0地址
     

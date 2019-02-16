@@ -1,5 +1,32 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="DE0_Nano">
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|vgaChar98x36:vga_char_inst|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_kgh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:data_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_2|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|user_uart_tx:user_uart_tx_inst|ram:ram_for_uart_tx_fifo_inst|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|video_ram:video_ram_inst|ram:ram_block_inst_3|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_0|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|ram_bus_wrapper:instr_ram_inst|ram:ram_block_inst_1|altsyncram:data_ram_cell[0][7]__1" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE0_Nano_USTCRVSoC_top|soc_top:soc_inst|user_uart_tx:user_uart_tx_inst|ram:ram_for_uart_tx_fifo_inst|altsyncram:data_ram_cell[0][7]__2" CBX_FILE_NAME="altsyncram_g2h1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
