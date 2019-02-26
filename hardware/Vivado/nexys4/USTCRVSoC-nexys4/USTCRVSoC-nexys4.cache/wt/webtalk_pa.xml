@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Tue Feb 26 19:42:02 2019">
+<application name="pa" timeStamp="Tue Feb 26 19:55:16 2019">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="802f49394334431ea9abba122e836e9e" type="ProjectID"/>
-<property name="ProjectIteration" value="12" type="ProjectIteration"/>
+<property name="ProjectIteration" value="13" type="ProjectIteration"/>
 </section>
 <section name="PlanAhead Usage" visible="true">
 <item name="Project Data">
@@ -29,8 +29,8 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="ProgramDevice" value="3" type="JavaHandler"/>
 <property name="ReportUtilization" value="1" type="JavaHandler"/>
 <property name="RunBitgen" value="8" type="JavaHandler"/>
-<property name="RunImplementation" value="3" type="JavaHandler"/>
-<property name="RunSynthesis" value="6" type="JavaHandler"/>
+<property name="RunImplementation" value="4" type="JavaHandler"/>
+<property name="RunSynthesis" value="7" type="JavaHandler"/>
 <property name="SaveFileProxyHandler" value="1" type="JavaHandler"/>
 <property name="SetTopNode" value="2" type="JavaHandler"/>
 <property name="ShowView" value="7" type="JavaHandler"/>
@@ -40,7 +40,7 @@ This means code written to parse this file will need to be revisited each subseq
 <item name="Gui Handlers">
 <property name="AddSrcWizard_SPECIFY_HDL_NETLIST_BLOCK_DESIGN" value="2" type="GuiHandlerData"/>
 <property name="BaseDialog_CANCEL" value="3" type="GuiHandlerData"/>
-<property name="BaseDialog_OK" value="16" type="GuiHandlerData"/>
+<property name="BaseDialog_OK" value="17" type="GuiHandlerData"/>
 <property name="CommandsInput_TYPE_TCL_COMMAND_HERE" value="2" type="GuiHandlerData"/>
 <property name="ConstraintsChooserPanel_ADD_FILES" value="1" type="GuiHandlerData"/>
 <property name="ConstraintsChooserPanel_CREATE_FILE" value="1" type="GuiHandlerData"/>
@@ -59,7 +59,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="MainMenuMgr_TOOLS" value="1" type="GuiHandlerData"/>
 <property name="MainMenuMgr_VIEW" value="2" type="GuiHandlerData"/>
 <property name="MainMenuMgr_WINDOW" value="2" type="GuiHandlerData"/>
-<property name="MainToolbarMgr_RUN" value="8" type="GuiHandlerData"/>
+<property name="MainToolbarMgr_RUN" value="9" type="GuiHandlerData"/>
 <property name="MainWinMenuMgr_LAYOUT" value="2" type="GuiHandlerData"/>
 <property name="MessageWithOptionDialog_DONT_SHOW_THIS_DIALOG_AGAIN" value="1" type="GuiHandlerData"/>
 <property name="MsgTreePanel_MESSAGE_SEVERITY" value="2" type="GuiHandlerData"/>
@@ -73,7 +73,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PACommandNames_LICENSE_MANAGE" value="1" type="GuiHandlerData"/>
 <property name="PACommandNames_REPORTS_WINDOW" value="1" type="GuiHandlerData"/>
 <property name="PACommandNames_RUN_BITGEN" value="8" type="GuiHandlerData"/>
-<property name="PACommandNames_RUN_SYNTHESIS" value="6" type="GuiHandlerData"/>
+<property name="PACommandNames_RUN_SYNTHESIS" value="7" type="GuiHandlerData"/>
 <property name="PACommandNames_SET_AS_TOP" value="2" type="GuiHandlerData"/>
 <property name="PAViews_CODE" value="8" type="GuiHandlerData"/>
 <property name="PAViews_DEVICE" value="2" type="GuiHandlerData"/>
@@ -100,11 +100,6 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SyntheticaStateMonitor_CANCEL" value="1" type="GuiHandlerData"/>
 <property name="TaskBanner_CLOSE" value="1" type="GuiHandlerData"/>
 <property name="TouchpointSurveyDialog_NO" value="1" type="GuiHandlerData"/>
-</item>
-<item name="Other">
-<property name="GuiMode" value="15" type="GuiMode"/>
-<property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="14" type="TclMode"/>
 </item>
 </section>
 </application>

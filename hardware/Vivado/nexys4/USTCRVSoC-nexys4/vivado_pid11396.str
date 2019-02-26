@@ -1,0 +1,116 @@
+/*
+
+Xilinx Vivado v2017.4 (64-bit) [Major: 2017, Minor: 4]
+SW Build: 2086221 on Fri Dec 15 20:55:39 MST 2017
+IP Build: 2085800 on Fri Dec 15 22:25:07 MST 2017
+
+Process ID: 11396
+License: Customer
+
+Current time: 	Tue Feb 26 19:48:54 CST 2019
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1536x864
+Screen resolution (DPI): 96
+Available screens: 2
+Available disk space: 107 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	C:/Xilinx/Vivado/2017.4/tps/win64/jre
+JVM executable location: 	C:/Xilinx/Vivado/2017.4/tps/win64/jre/bin/java.exe
+
+User name: 	wgg
+User home directory: C:/Users/wgg
+User working directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2017.4
+RDI_DATADIR: C:/Xilinx/Vivado/2017.4/data
+RDI_BINDIR: C:/Xilinx/Vivado/2017.4/bin
+
+Vivado preferences file location: C:/Users/wgg/AppData/Roaming/Xilinx/Vivado/2017.4/vivado.xml
+Vivado preferences directory: C:/Users/wgg/AppData/Roaming/Xilinx/Vivado/2017.4/
+Vivado layouts directory: C:/Users/wgg/AppData/Roaming/Xilinx/Vivado/2017.4/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2017.4/lib/classes/planAhead.jar
+Vivado log file location: 	E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
+Vivado journal file location: 	E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.jou
+Engine tmp dir: 	E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/.Xil/Vivado-11396-DESKTOP-C6I6OAQ
+
+GUI allocated memory:	187 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 584 MB
+
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 63 MB (+64093kb) [00:00:05]
+// [Engine Memory]: 520 MB (+394111kb) [00:00:05]
+// Opening Vivado Project: E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr. Version: Vivado v2017.4 
+// bs (cj):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 73 MB (+6894kb) [00:00:07]
+// [Engine Memory]: 581 MB (+36276kb) [00:00:07]
+// Tcl Message: open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 101 MB (+24904kb) [00:00:08]
+// [Engine Memory]: 631 MB (+22173kb) [00:00:08]
+// [GUI Memory]: 126 MB (+21047kb) [00:00:09]
+// [GUI Memory]: 137 MB (+5136kb) [00:00:09]
+// [Engine Memory]: 679 MB (+17205kb) [00:00:09]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.4/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 680 MB. GUI used memory: 42 MB. Current time: 2/26/19 7:48:56 PM CST
+// Project name: USTCRVSoC-nexys4; location: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bs (cj)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// [Engine Memory]: 747 MB (+34981kb) [00:00:13]
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 191 seconds
+selectButton(PAResourceItoN.MainToolbarMgr_RUN, (String) null); // aw (f, cj)
+selectMenuItem(PAResourceCommand.PACommandNames_RUN_SYNTHESIS, "Run Synthesis"); // ac (cj)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// bs (cj):  Starting Design Runs : addNotify
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs synth_1 -jobs 8 
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Tue Feb 26 19:52:10 2019] Launched synth_1... Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bs (cj)
+// TclEventType: RUN_COMPLETED
+// WARNING: HTimer (ActiveMsgMonitor Process Messages Timer) is taking too long to process. Increasing delay to 2000 ms.
+// ah (cj): Synthesis Completed: addNotify
+// Elapsed time: 185 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (ah)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// bs (cj):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 
+// bs (cj):  Starting Design Runs : addNotify
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 8 
+// Tcl Message: [Tue Feb 26 19:55:16 2019] Launched impl_1... Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // bs (cj)
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
