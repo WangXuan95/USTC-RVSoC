@@ -56,11 +56,9 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.userPortClearBtn = new System.Windows.Forms.Button();
             this.userPortOpenCloseBtn = new System.Windows.Forms.Button();
-            this.userPortSelectionBox = new System.Windows.Forms.ComboBox();
             this.userPortShowHex = new System.Windows.Forms.CheckBox();
             this.UserPortRecvCountLabel = new System.Windows.Forms.Label();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.UserSerialPort = new System.IO.Ports.SerialPort(this.components);
             this.compileGroup.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.HexStreamGroup.SuspendLayout();
@@ -424,7 +422,6 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel8.Controls.Add(this.userPortClearBtn, 1, 1);
             this.tableLayoutPanel8.Controls.Add(this.userPortOpenCloseBtn, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.userPortSelectionBox, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.userPortShowHex, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
@@ -459,18 +456,6 @@
             this.userPortOpenCloseBtn.UseVisualStyleBackColor = true;
             this.userPortOpenCloseBtn.Click += new System.EventHandler(this.userPortOpenCloseBtn_Click);
             // 
-            // userPortSelectionBox
-            // 
-            this.userPortSelectionBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userPortSelectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.userPortSelectionBox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.userPortSelectionBox.FormattingEnabled = true;
-            this.userPortSelectionBox.Location = new System.Drawing.Point(3, 3);
-            this.userPortSelectionBox.Name = "userPortSelectionBox";
-            this.userPortSelectionBox.Size = new System.Drawing.Size(182, 28);
-            this.userPortSelectionBox.TabIndex = 0;
-            this.userPortSelectionBox.DropDown += new System.EventHandler(this.InitializeUserPort);
-            // 
             // userPortShowHex
             // 
             this.userPortShowHex.AutoSize = true;
@@ -498,11 +483,7 @@
             this.serialPort.BaudRate = 115200;
             this.serialPort.ReadTimeout = 50;
             this.serialPort.WriteTimeout = 300;
-            // 
-            // UserSerialPort
-            // 
-            this.UserSerialPort.BaudRate = 115200;
-            this.UserSerialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.UserSerialPort_DataReceived);
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // MainForm
             // 
@@ -562,11 +543,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button userPortOpenCloseBtn;
-        private System.Windows.Forms.ComboBox userPortSelectionBox;
         private System.Windows.Forms.TextBox userPortTextBox;
         private System.Windows.Forms.Button userPortClearBtn;
         private System.Windows.Forms.CheckBox userPortShowHex;
-        private System.IO.Ports.SerialPort UserSerialPort;
         private System.Windows.Forms.Label UserPortRecvCountLabel;
 
     }

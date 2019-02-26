@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Tue Feb 26 19:20:55 2019
+# Process ID: 20504
+# Current directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1
+# Command line: vivado.exe -log Nexys4_USTCRVSoC_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Nexys4_USTCRVSoC_top.tcl -notrace
+# Log file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/Nexys4_USTCRVSoC_top.vdi
+# Journal file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source Nexys4_USTCRVSoC_top.tcl -notrace

@@ -33,12 +33,11 @@
 
 > * **多主多从总线仲裁器(naive_bus_router.sv)**：为每个从设备划分地址空间，将主设备的总线读写请求路由到从设备。当多个主设备同时访问一个从设备时，还能进行访问冲突控制。
 > * **RV32I Core(core_top.sv)**：包括两个主接口。一个用于取指令，一个用于读写数据
-> * **UART调试器(isp_uart.sv)**：包括一个主接口。它接收用户从UART发来的命令，对总线进行读写。它可以用于在线烧写、在线调试。
+> * **UART调试器(isp_uart.sv)**：包括一个主接口和一个从接口。它接收用户从UART发来的命令，对总线进行读写。它可以用于在线烧写、在线调试。也可以接收CPU的命令去发送数据。
 > * **指令ROM(instr_rom.sv)**：CPU默认从这里开始取指令，多用于仿真
 > * **指令RAM(ram_bus_wrapper.sv)**：用户在线烧写程序到这里。
 > * **数据RAM(ram_bus_wrapper.sv)**：存放运行时的数据。
 > * **显存RAM(vedio_ram.sv)**：在屏幕上显示98列*36行=3528个字符，显存RAM的前3528B对应的ASCII码值就决定了每个字符是什么
-> * **用户UART(user_uart_tx)**：暂时只有发送功能，向其中写一个字节相当于把该字节放入发送缓冲区FIFO，缓冲区大小256B，缓冲区的数据会尽快发送。
 
 # RV32I CPU 结构
 
@@ -46,7 +45,7 @@
 
 TODO
 
-# 在DE0-Nano 开发板上运行SoC
+# 在开发板上运行SoC
 
 我们提供了两种方式运行代码：
 
@@ -54,31 +53,31 @@ TODO
 
 2、**使用指令RAM**：使用UART调试器在线上传程序到指令RAM。
 
-### 部署电路到DE0-Nano FPGA
+### 部署电路到FPGA
+
+目前，我们提供了Xilinx的Nexys4板子和Altera的DE0-Nano板子的工程。
+
+1、**Nexys4硬件连接**：Nexys4开发板上有一个USB口既可以用于FPGA烧录，也可以用于UART通信，我们需要连接该USB口到电脑。另外，VGA的连接是可选的，你可以把它连接到屏幕上。
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/DE0-Nano.png)
 
-1、**硬件连接**：DE0-Nano上的接口的意义如上图。你至少需要一个USB转UART的模块，将ISP-UART的TX和RX引脚连接上去，使之能与电脑通信，如下图：
+2、**DE0-Nano硬件连接**：DE0-Nano开发板上既没有串口转USB，也没有VGA接口。因此都需要以来外部模块。我们使用DE0-Nano上的两排GPIO作为外接模块的引脚，接口意义如上图。你至少需要一个USB转UART的模块，将ISP-UART的TX和RX引脚连接上去，使之能与电脑通信，如下图：
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/connection.png)
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/usb_uart.png)
 
-2、**综合、烧写FPGA**：用Quartus软件打开./Quartus/DE0_Nano/DE0_Nano.qpf，综合并烧写到DE0-Nano。
+3、**综合、烧写FPGA**：如果你用的是Nexys4板子，请用Vivado打开./hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr。如果你用的是DE0-Nano板子，请用Quartus打开./hardware/Quartus/DE0_Nano/DE0_Nano.qpf。综合并烧写到开发板。
 
-3、**尝试读取总线**：在电脑上的串口终端软件（超级终端、串口助手、minicom）中，使用格式(115200,n,8,1)发送00000000\n，如果看到收到一个8位16进制数，那么恭喜你SoC部署成功，该数代表SoC数据总线的地址0x00000000处的读取数据。如果没有收到数据，以下是可能的原因：
+4、**HelloWorld**：烧录FPGA后，在电脑上的串口终端软件（超级终端、串口助手、minicom）中，使用格式(115200,n,8,1)打开串口，如果看到不断收到"hello\n"，那么恭喜你SoC部署成功，因为SoC的instr_rom里的程序就是循环打印hello的程序。
 
-> * **硬件连接问题**：例如TX/RX接反，杜邦线接触不良等
-> * **共地问题**：要求电脑的地与板子的地连接，如果DE0-Nano上的USB口与电脑连接，则已经共地，否则请额外使用杜邦线将USB转UART的地与DE0-Nano的地连接。
-> * **COM口号选错**：如果不能确定USB转UART是哪个COM口，请将它拔下来，看哪个COM口消失了，再重新插入，就能确定COM号
-> * **串口通信格式错误**：必须是115200波特率、8个数据位、1个停止位、无校验位。
-> * **发送数据不对**：每个命令后必须有一个\n或\r，必须使用ASCII格式（很多串口助手软件提供十六进制发送功能，我们不需要，UART调试接口会自动将收到的ASCII变为十六进制）
+5、**尝试读取总线**：下面让我们尝试UART的调试功能，首先发送"s\n"进入调试模式，可以看到对方发来"debug\n"，说明进入调试模式成功。然后，发送"00000000\n"，会看到对方发来一个8位16进制数。该数代表SoC数据总线的地址0x00000000处的读取数据。
 
-4、上一步我们尝试了UART调试器的读总线命令，下表显示了它的所有3种命令。
+6、上一步我们尝试了UART调试器的读总线命令，下表显示了它的所有3种命令。
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/commands.png)
 
-> * 注意：无论是发送还是接受，所有命令都以\n或\r结尾
+> * 注意：无论是发送还是接受，所有命令都以\n或\r或\r\n结尾
 
 根据这些命令，不难猜出，在线上传程序的流程是：
 
@@ -86,11 +85,9 @@ TODO
 
 > 2、使用复位命令r00008000，将CPU复位并从指令RAM种BOOT
 
-### 使用工具：USTCRVSoC-tool
+### 使用工具：USTCRVSoC-tool  （该软件有所改动，文档稍后补充）
 
-./USTCRVSoC-tool/USTCRVSoC-tool.exe 是一个能汇编和烧写的小工具，相当于一个汇编语言的IDE。界面如下图。
-
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/USTCRVSoC-tool-image.png)
+./USTCRVSoC-tool/USTCRVSoC-tool.exe 是一个能汇编和烧写的小工具，相当于一个汇编语言的IDE。
 
 我们提供了几个汇编小程序如下表。
 
@@ -101,9 +98,8 @@ TODO
 | fibonacci_recursive.S  | 递归法计算斐波那契数列第7个数并，用用户UART打印结果  |
 | load_store.S  | 完成一些内存读写，没有具体表现，为了观察现象，可以使用UART调试器查看内存 |
 
-现在我们尝试让SoC运行一个UART打印的程序。点击“打开...”按钮，浏览到目录./software/asm-code，打开汇编文件uart_print.S。点击右侧的“汇编”按钮，可以看到右下方框里出现了一串16进制数，这就是汇编得到的机器码。然后，选择正确的COM口，点击“烧写”，如果下方状态栏里显示“烧写成功”，则CPU就已经开始运行该机器码了。这是一个使用用户UART循环打印“hello!”的程序，
+现在我们尝试让SoC运行一个计算斐波那契数列并UART打印的程序。点击“打开...”按钮，浏览到目录./software/asm-code，打开汇编文件uart_print.S。点击右侧的“汇编”按钮，可以看到右方框里出现了一串16进制数，这就是汇编得到的机器码。然后，选择正确的COM口，点击“烧写”，如果下方状态栏里显示“烧写成功”，则CPU就已经开始运行该机器码了。这时，在右侧的“串口查看”框里选中“16进制显示”，可以看到不断显示出15，这说明CPU正确的计算出斐波那契数列的第七个数是15。
 
-> 注：用户UART与UART调试器不是同一个UART。为了观察现象，可以将UART调试器的杜邦线拔下来插在用户UART上，或者使用两个USB转UART模块。通信格式依然是(115200,n,8,1)。
 
 
 # RTL仿真
@@ -116,4 +112,4 @@ USTCRVSoC-tool.exe 除了进行烧写，也可以生成指令ROM的Verilog代码
 
 生成ROM后请直接使用soc_top_tb.sv文件进行仿真，这个仿真是针对整个SoC的，因此你可以修改ROM程序后进行仿真，观察SoC运行该程序的行为。
 
-> 注：这里没有提供仿真工程的示例，你可以新建Modelsim工程或Vivado工程进行仿真。仿真时请将./RTL/目录里的所有.sv文件都加入工程里。
+

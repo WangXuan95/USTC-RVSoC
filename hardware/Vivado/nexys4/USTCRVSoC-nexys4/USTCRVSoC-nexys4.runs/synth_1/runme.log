@@ -1,0 +1,1089 @@
+
+*** Running vivado
+    with args -log Nexys4_USTCRVSoC_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Nexys4_USTCRVSoC_top.tcl
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source Nexys4_USTCRVSoC_top.tcl -notrace
+Command: synth_design -top Nexys4_USTCRVSoC_top -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 9672 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 400.844 ; gain = 99.852
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Nexys4_USTCRVSoC_top' [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/sources_1/Nexys4_USTCRVSoC_top.sv:2]
+INFO: [Synth 8-638] synthesizing module 'soc_top' [E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv:1]
+	Parameter UART_RX_CLK_DIV bound to: 108 - type: integer 
+	Parameter UART_TX_CLK_DIV bound to: 434 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'naive_bus' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-256] done synthesizing module 'naive_bus' (0#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv:4]
+INFO: [Synth 8-638] synthesizing module 'isp_uart' [E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv:3]
+	Parameter UART_RX_CLK_DIV bound to: 108 - type: integer 
+	Parameter UART_TX_CLK_DIV bound to: 434 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'uart_rx' [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:1]
+	Parameter UART_RX_CLK_DIV bound to: 108 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'uart_rx' (1#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:1]
+INFO: [Synth 8-638] synthesizing module 'uart_tx_line' [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv:2]
+	Parameter UART_TX_CLK_DIV bound to: 434 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'uart_tx_line' (2#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv:2]
+INFO: [Synth 8-638] synthesizing module 'user_uart_tx' [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:2]
+	Parameter UART_TX_CLK_DIV bound to: 434 - type: integer 
+	Parameter TX_CNT bound to: 5'b10011 
+INFO: [Synth 8-638] synthesizing module 'ram' [E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'ram' (3#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'user_uart_tx' (4#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:2]
+INFO: [Synth 8-256] done synthesizing module 'isp_uart' (5#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv:3]
+INFO: [Synth 8-638] synthesizing module 'core_top' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv:1]
+INFO: [Synth 8-638] synthesizing module 'core_bus_wrapper' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'core_bus_wrapper' (6#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv:1]
+INFO: [Synth 8-638] synthesizing module 'core_id_stage' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv:1]
+	Parameter OPCODE_JAL bound to: 7'b1101111 
+	Parameter OPCODE_JALR bound to: 7'b1100111 
+	Parameter OPCODE_BXXX bound to: 7'b1100011 
+	Parameter OPCODE_LUI bound to: 7'b0110111 
+	Parameter OPCODE_ALI bound to: 7'b0010011 
+	Parameter OPCODE_ALR bound to: 7'b0110011 
+	Parameter OPCODE_LOAD bound to: 7'b0000011 
+	Parameter OPCODE_STORE bound to: 7'b0100011 
+INFO: [Synth 8-256] done synthesizing module 'core_id_stage' (7#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv:1]
+INFO: [Synth 8-638] synthesizing module 'core_regfile' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv:2]
+INFO: [Synth 8-256] done synthesizing module 'core_regfile' (8#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv:2]
+INFO: [Synth 8-638] synthesizing module 'core_alu' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'core_alu' (9#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv:1]
+INFO: [Synth 8-638] synthesizing module 'core_ex_branch_judge' [E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'core_ex_branch_judge' (10#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv:1]
+WARNING: [Synth 8-5788] Register ex_pc_plus_imm_reg in module core_top is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv:173]
+INFO: [Synth 8-256] done synthesizing module 'core_top' (11#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv:1]
+INFO: [Synth 8-638] synthesizing module 'instr_rom' [E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv:1]
+	Parameter INSTR_CNT bound to: 30'b000000000000000000000000010010 
+INFO: [Synth 8-256] done synthesizing module 'instr_rom' (12#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv:1]
+INFO: [Synth 8-638] synthesizing module 'ram_bus_wrapper' [E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'ram_bus_wrapper' (13#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv:1]
+INFO: [Synth 8-638] synthesizing module 'video_ram' [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:1]
+INFO: [Synth 8-638] synthesizing module 'vgaChar98x36' [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:82]
+INFO: [Synth 8-638] synthesizing module 'vga' [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:147]
+	Parameter H_END bound to: 800 - type: integer 
+	Parameter H_SYNCSTART bound to: 808 - type: integer 
+	Parameter H_SYNCEND bound to: 936 - type: integer 
+	Parameter H_PERIOD bound to: 1008 - type: integer 
+	Parameter V_END bound to: 600 - type: integer 
+	Parameter V_SYNCSTART bound to: 608 - type: integer 
+	Parameter V_SYNCEND bound to: 612 - type: integer 
+	Parameter V_PERIOD bound to: 648 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'vga' (14#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:147]
+INFO: [Synth 8-638] synthesizing module 'char8x16_rom' [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:202]
+INFO: [Synth 8-256] done synthesizing module 'char8x16_rom' (15#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:202]
+INFO: [Synth 8-256] done synthesizing module 'vgaChar98x36' (16#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:82]
+INFO: [Synth 8-256] done synthesizing module 'video_ram' (17#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:1]
+INFO: [Synth 8-638] synthesizing module 'naive_bus_router' [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv:1]
+	Parameter N_MASTER bound to: 8'b00000011 
+	Parameter N_SLAVE bound to: 8'b00000101 
+	Parameter SLAVES_MASK bound to: 160'b0000000000000000000000000000001100000000000000000000111111111111000000000000000000001111111111110000000000000000000011111111111100000000000000000000111111111111 
+	Parameter SLAVES_BASE bound to: 160'b0000000000000011000000000000000000000000000000100000000000000000000000000000000100000000000000000000000000000000100000000000000000000000000000000000000000000000 
+INFO: [Synth 8-256] done synthesizing module 'naive_bus_router' (18#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv:1]
+INFO: [Synth 8-256] done synthesizing module 'soc_top' (19#1) [E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv:1]
+WARNING: [Synth 8-689] width (12) of port connection 'vga_pixel' does not match port width (16) of module 'soc_top' [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/sources_1/Nexys4_USTCRVSoC_top.sv:25]
+INFO: [Synth 8-256] done synthesizing module 'Nexys4_USTCRVSoC_top' (20#1) [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/sources_1/Nexys4_USTCRVSoC_top.sv:2]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_be[3]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_be[2]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_be[1]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_be[0]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[31]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[30]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[29]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[28]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[27]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[26]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[25]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[24]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[23]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[22]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[21]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[20]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[19]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[18]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[17]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[16]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[15]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[14]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[13]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[12]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[11]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[10]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[9]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[8]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[7]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[6]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[5]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[4]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[3]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[2]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[1]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.rd_addr[0]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[31]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[30]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[29]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[28]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[27]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[26]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[25]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[24]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[23]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[22]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[21]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[20]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[19]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[18]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[17]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[16]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[15]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[14]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[13]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[12]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[1]
+WARNING: [Synth 8-3331] design video_ram has unconnected port bus\.wr_addr[0]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_be[3]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_be[2]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_be[1]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_be[0]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[31]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[30]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[29]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[28]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[27]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[26]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[25]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[24]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[23]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[22]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[21]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[20]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[19]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[18]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[17]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[16]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[15]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[14]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[13]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[12]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[1]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.rd_addr[0]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[31]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[30]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[29]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[28]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[27]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[26]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[25]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[24]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[23]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[22]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[21]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[20]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[19]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[18]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[17]
+WARNING: [Synth 8-3331] design ram_bus_wrapper has unconnected port bus\.wr_addr[16]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 471.988 ; gain = 170.996
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 471.988 ; gain = 170.996
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/constrs_1/Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/constrs_1/Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/constrs_1/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Nexys4_USTCRVSoC_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Nexys4_USTCRVSoC_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 839.824 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 839.824 ; gain = 538.832
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 839.824 ; gain = 538.832
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 839.824 ; gain = 538.832
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "status" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "databuf" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "shift" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:28]
+WARNING: [Synth 8-6014] Unused sequential element status_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:18]
+INFO: [Synth 8-5545] ROM "o_tx" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv:37]
+INFO: [Synth 8-5546] ROM "fifo_rd_pointer" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "o_uart_tx" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element fifo_wr_pointer_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:24]
+WARNING: [Synth 8-6014] Unused sequential element fifo_rd_pointer_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:24]
+WARNING: [Synth 8-6014] Unused sequential element tx_cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:71]
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_reg' in module 'isp_uart'
+INFO: [Synth 8-5545] ROM "tx_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "tx_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "byte_enable" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "o_rs1_en" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "instr_type0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "o_rs2_en" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_file_cell_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv:19]
+WARNING: [Synth 8-6014] Unused sequential element hcnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:171]
+WARNING: [Synth 8-6014] Unused sequential element vcnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:177]
+INFO: [Synth 8-5546] ROM "ch" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/sources_1/Nexys4_USTCRVSoC_top.sv:36]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     NEW |                             0000 | 00000000000000000000000000000000
+                     CMD |                             0001 | 00000000000000000000000000000001
+                    OPEN |                             0010 | 00000000000000000000000000000010
+                   CLOSE |                             0011 | 00000000000000000000000000000011
+                    ADDR |                             0100 | 00000000000000000000000000000100
+                   EQUAL |                             0101 | 00000000000000000000000000000101
+                    DATA |                             0110 | 00000000000000000000000000000110
+                   FINAL |                             0111 | 00000000000000000000000000000111
+                  iSTATE |                             1000 | 00000000000000000000000000001000
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_reg' using encoding 'sequential' in module 'isp_uart'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 839.824 ; gain = 538.832
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 4     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 5     
+	   3 Input     10 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 9     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	              128 Bit    Registers := 1     
+	              100 Bit    Registers := 1     
+	               32 Bit    Registers := 52    
+	               16 Bit    Registers := 3     
+	               10 Bit    Registers := 4     
+	                8 Bit    Registers := 20    
+	                7 Bit    Registers := 12    
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 29    
++---RAMs : 
+	               8K Bit         RAMs := 13    
++---Muxes : 
+	   2 Input    108 Bit        Muxes := 1     
+	   2 Input    100 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 146   
+	   5 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 7     
+	   9 Input     32 Bit        Muxes := 2     
+	   3 Input     32 Bit        Muxes := 4     
+	  21 Input     32 Bit        Muxes := 3     
+	  20 Input     32 Bit        Muxes := 1     
+	   3 Input     16 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     10 Bit        Muxes := 2     
+	   2 Input      9 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 3     
+	   2 Input      7 Bit        Muxes := 34    
+	   3 Input      7 Bit        Muxes := 1     
+	   4 Input      7 Bit        Muxes := 7     
+	   2 Input      6 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 38    
+	  33 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 2     
+	   6 Input      4 Bit        Muxes := 2     
+	   9 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 22    
+	   5 Input      3 Bit        Muxes := 12    
+	   4 Input      2 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 249   
+	   4 Input      1 Bit        Muxes := 4     
+	   9 Input      1 Bit        Muxes := 7     
+	   8 Input      1 Bit        Muxes := 2     
+	   5 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module Nexys4_USTCRVSoC_top 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module uart_rx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 2     
+	                6 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      6 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+Module uart_tx_line 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      7 Bit       Adders := 1     
++---Registers : 
+	              100 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input    100 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
+Module user_uart_tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 3     
+	   3 Input     10 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 7     
+Module isp_uart 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      7 Bit       Adders := 8     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                7 Bit    Registers := 8     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+	   5 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 1     
+	   9 Input     32 Bit        Muxes := 2     
+	   4 Input      7 Bit        Muxes := 7     
+	   2 Input      7 Bit        Muxes := 33    
+	   2 Input      4 Bit        Muxes := 2     
+	  33 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 16    
+	   4 Input      1 Bit        Muxes := 4     
+	   9 Input      1 Bit        Muxes := 7     
+Module core_bus_wrapper 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 10    
+	   4 Input     32 Bit        Muxes := 3     
+	   3 Input     32 Bit        Muxes := 2     
+	   3 Input     16 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   6 Input      4 Bit        Muxes := 1     
+Module core_id_stage 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   9 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+	   8 Input      1 Bit        Muxes := 2     
+Module core_regfile 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 33    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 74    
+	   2 Input      1 Bit        Muxes := 155   
+Module core_alu 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Muxes : 
+	  21 Input     32 Bit        Muxes := 3     
+Module core_top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                7 Bit    Registers := 2     
+	                5 Bit    Registers := 3     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module instr_rom 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	  20 Input     32 Bit        Muxes := 1     
+Module vga 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+Module char8x16_rom 
+Detailed RTL Component Info : 
++---Registers : 
+	              128 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    108 Bit        Muxes := 1     
+Module vgaChar98x36 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
++---Registers : 
+	               16 Bit    Registers := 2     
+	               10 Bit    Registers := 2     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module video_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+Module naive_bus_router 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 45    
+	   2 Input      4 Bit        Muxes := 30    
+	   2 Input      3 Bit        Muxes := 21    
+	   5 Input      3 Bit        Muxes := 12    
+	   4 Input      2 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 62    
+	   5 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "p_0_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "uart_rx_inst/shift" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "uart_tx_line_inst/o_tx" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "user_uart_in_isp_inst/o_uart_tx" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element uart_rx_inst/cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:28]
+WARNING: [Synth 8-6014] Unused sequential element uart_rx_inst/status_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv:18]
+WARNING: [Synth 8-6014] Unused sequential element uart_tx_line_inst/cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv:37]
+WARNING: [Synth 8-6014] Unused sequential element user_uart_in_isp_inst/tx_cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:71]
+WARNING: [Synth 8-6014] Unused sequential element user_uart_in_isp_inst/fifo_rd_pointer_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:24]
+WARNING: [Synth 8-6014] Unused sequential element user_uart_in_isp_inst/fifo_wr_pointer_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv:24]
+WARNING: [Synth 8-6014] Unused sequential element vga_char_inst/vga_inst/hcnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:171]
+WARNING: [Synth 8-6014] Unused sequential element vga_char_inst/vga_inst/vcnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv:177]
+INFO: [Synth 8-5546] ROM "flow" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element cnt_reg was removed.  [E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.srcs/sources_1/Nexys4_USTCRVSoC_top.sv:36]
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM user_uart_in_isp_inst/ram_for_uart_tx_fifo_inst/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM instr_ram_inst/ram_block_inst_0/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM instr_ram_inst/ram_block_inst_1/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM instr_ram_inst/ram_block_inst_2/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM instr_ram_inst/ram_block_inst_3/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM data_ram_inst/ram_block_inst_0/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM data_ram_inst/ram_block_inst_1/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM data_ram_inst/ram_block_inst_2/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM data_ram_inst/ram_block_inst_3/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM ram_block_inst_0/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM ram_block_inst_1/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM ram_block_inst_2/data_ram_cell_reg to conserve power
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM ram_block_inst_3/data_ram_cell_reg to conserve power
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[0]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[3]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[18]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[6]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[10]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[10]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[11]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[12]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[13]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[13]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[14]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[15]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[16]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[17]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[18]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[19]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[18]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[19]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[20]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[21]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[22]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[23]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[24]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[25]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[26]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[27]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[28]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[27]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[28]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[29]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[28]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[29]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[30]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[29]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/instr_rom_inst/bus\.rd_data_reg[30]' (FDC) to 'soc_inst/instr_rom_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[30]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/bus\.rd_data_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/isp_uart_inst/\user_uart_in_isp_inst/bus\.rd_data_reg[31] )
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[0]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[1]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[1]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[2]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[2]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[3]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[3]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[4]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[4]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[5]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[5]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[6]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[6]' (FDRE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/video_ram_inst/\vga_char_inst/border_reg[7] )
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[8]' (FDSE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[9]' (FDSE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[10]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_reg[10]' (FDSE) to 'soc_inst/video_ram_inst/vga_char_inst/border_reg[11]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/send_type_reg[2]' (FDRE) to 'soc_inst/isp_uart_inst/send_type_reg[3]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[0]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[1]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[2]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[3]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[4]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[5]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[6]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[7]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[8]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[10]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[9]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[10]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[10]' (FD) to 'soc_inst/video_ram_inst/vga_char_inst/border_latch_reg[11]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[127]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[126]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[126]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[125]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[125]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[124]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[124]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[123]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[123]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[122]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[122]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[121]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[121]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[120]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[120]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[119]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[119]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[118]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[118]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[117]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[117]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[116]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[116]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[115]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[115]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[114]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[114]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[113]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[113]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[112]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[112]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[111]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[111]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[110]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[110]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[109]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[109]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[108]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[108]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[106]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[106]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[105]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[105]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[104]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[104]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[103]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[103]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[21]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[21]' (FDC) to 'soc_inst/video_ram_inst/vga_char_inst/char_8x16_rom_inst/ch_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/video_ram_inst/\vga_char_inst/char_8x16_rom_inst/ch_reg[15] )
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[30]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[31]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[29]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[28]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[27]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[26]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[25]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[24]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[23]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[22]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[21]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[20]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[19]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[18]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[17]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[16]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[15]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[14]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[13]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[12]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[11]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[10]' (FDC) to 'soc_inst/isp_uart_inst/user_uart_in_isp_inst/cnt_reg[9]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/isp_uart_inst/\user_uart_in_isp_inst/cnt_reg[9] )
+INFO: [Synth 8-3886] merging instance 'soc_inst/isp_uart_inst/send_type_reg[3]' (FDRE) to 'soc_inst/isp_uart_inst/send_type_reg[4]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/isp_uart_inst/\send_type_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/video_ram_inst/\vga_char_inst/border_latch_reg[7] )
+WARNING: [Synth 8-3332] Sequential element (user_uart_in_isp_inst/cnt_reg[9]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (user_uart_in_isp_inst/bus\.rd_data_reg[31]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (bus\.rd_addr_reg[1]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (bus\.rd_addr_reg[0]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (bus\.wr_addr_reg[1]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (bus\.wr_addr_reg[0]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (send_type_reg[31]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (o_boot_addr_reg[1]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (o_boot_addr_reg[0]) is unused and will be removed from module isp_uart.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/char_8x16_rom_inst/ch_reg[15]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/vga_inst/pixel_reg[15]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/vga_inst/pixel_reg[14]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/vga_inst/pixel_reg[13]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/vga_inst/pixel_reg[12]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/x_latch_reg[2]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/x_latch_reg[1]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/x_latch_reg[0]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/y_latch_reg[1]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/y_latch_reg[0]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_reg[15]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_reg[14]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_reg[13]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_reg[12]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_reg[7]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_latch_reg[15]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_latch_reg[14]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_latch_reg[13]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_latch_reg[12]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (vga_char_inst/border_latch_reg[7]) is unused and will be removed from module video_ram.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[2][7]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[2][6]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[2][5]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[2][4]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[2][3]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[1][7]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[1][6]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[1][5]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[1][4]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[1][3]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[0][7]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[0][6]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[0][5]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[0][4]) is unused and will be removed from module naive_bus_router.
+WARNING: [Synth 8-3332] Sequential element (master_rd_slv_index_latch_reg[0][3]) is unused and will be removed from module naive_bus_router.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (soc_inst/core_top_inst/inst_bus_wrap_inst/\rd_funct3_reg[2] )
+WARNING: [Synth 8-3332] Sequential element (rd_funct3_reg[2]) is unused and will be removed from module core_bus_wrapper__1.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:10 . Memory (MB): peak = 916.609 ; gain = 615.617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping  Report (see note below)
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The tale above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:16 ; elapsed = 00:01:18 . Memory (MB): peak = 916.609 ; gain = 615.617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:19 ; elapsed = 00:01:22 . Memory (MB): peak = 937.059 ; gain = 636.066
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|ram:        | data_ram_cell_reg | 1 K x 8(READ_FIRST)    | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance soc_inst/isp_uart_inst/user_uart_in_isp_inst/ram_for_uart_tx_fifo_inst/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/instr_ram_inst/ram_block_inst_0/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/instr_ram_inst/ram_block_inst_1/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/instr_ram_inst/ram_block_inst_2/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/instr_ram_inst/ram_block_inst_3/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/data_ram_inst/ram_block_inst_0/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/data_ram_inst/ram_block_inst_1/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/data_ram_inst/ram_block_inst_2/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/data_ram_inst/ram_block_inst_3/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/video_ram_inst/ram_block_inst_0/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/video_ram_inst/ram_block_inst_1/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/video_ram_inst/ram_block_inst_2/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance soc_inst/video_ram_inst/ram_block_inst_3/data_ram_cell_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:25 ; elapsed = 00:01:27 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:26 ; elapsed = 00:01:29 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:26 ; elapsed = 00:01:29 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:27 ; elapsed = 00:01:29 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:27 ; elapsed = 00:01:29 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:27 ; elapsed = 00:01:29 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:27 ; elapsed = 00:01:30 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++---------------------+-----------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name          | RTL Name                                                  | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++---------------------+-----------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Nexys4_USTCRVSoC_top | soc_inst/isp_uart_inst/uart_tx_line_inst/tx_shift_reg[94] | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++---------------------+-----------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     3|
+|2     |CARRY4   |   128|
+|3     |LUT1     |    45|
+|4     |LUT2     |   296|
+|5     |LUT3     |   211|
+|6     |LUT4     |   768|
+|7     |LUT5     |  1121|
+|8     |LUT6     |  2937|
+|9     |MUXF7    |   170|
+|10    |MUXF8    |     6|
+|11    |RAMB18E1 |    13|
+|12    |SRL16E   |     1|
+|13    |FDCE     |  1563|
+|14    |FDPE     |     7|
+|15    |FDRE     |   581|
+|16    |FDSE     |    26|
+|17    |IBUF     |     2|
+|18    |OBUF     |    25|
+|19    |OBUFT    |     6|
++------+---------+------+
+
+Report Instance Areas: 
++------+----------------------------------+--------------------+------+
+|      |Instance                          |Module              |Cells |
++------+----------------------------------+--------------------+------+
+|1     |top                               |                    |  7909|
+|2     |  soc_inst                        |soc_top             |  7827|
+|3     |    core_top_inst                 |core_top            |  5792|
+|4     |      core_bus_wrapper_inst       |core_bus_wrapper    |  1674|
+|5     |      core_regfile_inst           |core_regfile        |  3003|
+|6     |      inst_bus_wrap_inst          |core_bus_wrapper_13 |   611|
+|7     |    data_ram_inst                 |ram_bus_wrapper     |     4|
+|8     |      ram_block_inst_0            |ram_9               |     1|
+|9     |      ram_block_inst_1            |ram_10              |     1|
+|10    |      ram_block_inst_2            |ram_11              |     1|
+|11    |      ram_block_inst_3            |ram_12              |     1|
+|12    |    instr_ram_inst                |ram_bus_wrapper_0   |     4|
+|13    |      ram_block_inst_0            |ram_5               |     1|
+|14    |      ram_block_inst_1            |ram_6               |     1|
+|15    |      ram_block_inst_2            |ram_7               |     1|
+|16    |      ram_block_inst_3            |ram_8               |     1|
+|17    |    instr_rom_inst                |instr_rom           |    28|
+|18    |    isp_uart_inst                 |isp_uart            |  1086|
+|19    |      uart_rx_inst                |uart_rx             |   252|
+|20    |      uart_tx_line_inst           |uart_tx_line        |   239|
+|21    |      user_uart_in_isp_inst       |user_uart_tx        |   169|
+|22    |        ram_for_uart_tx_fifo_inst |ram_4               |    19|
+|23    |    soc_bus_router_inst           |naive_bus_router    |   193|
+|24    |    video_ram_inst                |video_ram           |   720|
+|25    |      ram_block_inst_0            |ram                 |     1|
+|26    |      ram_block_inst_1            |ram_1               |   354|
+|27    |      ram_block_inst_2            |ram_2               |     1|
+|28    |      ram_block_inst_3            |ram_3               |     1|
+|29    |      vga_char_inst               |vgaChar98x36        |   361|
+|30    |        char_8x16_rom_inst        |char8x16_rom        |   158|
+|31    |        vga_inst                  |vga                 |   180|
++------+----------------------------------+--------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:27 ; elapsed = 00:01:30 . Memory (MB): peak = 1165.590 ; gain = 864.598
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 248 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1165.590 ; gain = 496.762
+Synthesis Optimization Complete : Time (s): cpu = 00:01:27 ; elapsed = 00:01:30 . Memory (MB): peak = 1165.590 ; gain = 864.598
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 319 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+296 Infos, 165 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:31 ; elapsed = 00:01:34 . Memory (MB): peak = 1165.590 ; gain = 876.852
+INFO: [Common 17-1381] The checkpoint 'E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/Nexys4_USTCRVSoC_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Nexys4_USTCRVSoC_top_utilization_synth.rpt -pb Nexys4_USTCRVSoC_top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 1165.590 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 26 19:20:48 2019...

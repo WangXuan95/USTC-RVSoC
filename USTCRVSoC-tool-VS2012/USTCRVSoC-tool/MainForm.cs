@@ -29,7 +29,7 @@ namespace USTCRVSoC_tool
             set
             {
                 _userPortCount = value;
-                changeCountText( String.Format("接收: {0:D} B", _userPortCount) );
+                changeCountText(String.Format("接收: {0:D} B", _userPortCount));
             }
         }
 
@@ -37,7 +37,6 @@ namespace USTCRVSoC_tool
         {
             InitializeComponent();
             InitializeCurrentPort(null, null);
-            InitializeUserPort(null, null);
         }
 
         private void InitializeCurrentPort(object sender, EventArgs e)
@@ -48,21 +47,6 @@ namespace USTCRVSoC_tool
             if (portSelectionBox.Items.Count > 0)
             {
                 portSelectionBox.SelectedIndex = 0;
-            }
-            else
-            {
-                compilePromptText.Text = "未找到串口，请插入设备，或者检查串口驱动是否安装";
-            }
-        }
-
-        private void InitializeUserPort(object sender, EventArgs e)
-        {
-            string[] ports = SerialPort.GetPortNames();
-            userPortSelectionBox.Items.Clear();
-            userPortSelectionBox.Items.AddRange(ports);
-            if (userPortSelectionBox.Items.Count > 0)
-            {
-                userPortSelectionBox.SelectedIndex = 0;
             }
             else
             {
@@ -247,12 +231,17 @@ namespace USTCRVSoC_tool
         {
             StringBuilder strBuilder = new StringBuilder();
             int index = 0;
-            foreach (string line in binText.Text.Split())
+            string[] lines = binText.Text.Trim().Split();
+            for (int idx = 0; idx < lines.Length; idx++)
             {
+                string line = lines[idx];
                 string hex_num = line.Trim();
                 if (hex_num.Length <= 0)
                     continue;
-                strBuilder.Append(String.Format("    32'h{1:S},   // 0x{0:x8}\n", index * 4, hex_num));
+                if (idx < lines.Length - 2)
+                    strBuilder.Append(String.Format("    32'h{1:S},   // 0x{0:x8}\n", index * 4, hex_num));
+                else
+                    strBuilder.Append(String.Format("    32'h{1:S}    // 0x{0:x8}\n", index * 4, hex_num));
                 index += 1;
             }
             strBuilder.Insert(0, VerilogMid);
@@ -297,39 +286,50 @@ namespace USTCRVSoC_tool
         private bool serialSessionTry(string send, ref string response, string respectResponse, int try_time = 3)
         {
             for (int i = 0; i < try_time; i++)
-                if (serialSession(send, ref response, respectResponse))
-                    return true;
+                if (serialSend(send))
+                    if (serialRead(ref response, respectResponse))
+                        return true;
             compilePromptText.AppendText("  *** 串口调试多次尝试失败 ***\r\n");
             return false;
         }
 
-        private bool serialSession(string send, ref string response, string respectResponse)
+        private bool serialSend(string send)
         {
             compilePromptText.AppendText("send: " + send);
             try
             {
                 serialPort.Write(send + "\n");
-                response = serialPort.ReadLine().Trim();
             }
             catch (Exception ex)
             {
                 compilePromptText.AppendText("    " + ex.Message + "\r\n");
                 return false;
             }
-            if (response.Length > 0)
+            return true;
+        }
+
+        private bool serialRead(ref string response, string respectResponse)
+        {
+            try
             {
-                bool is_respect = respectResponse.Equals("") || respectResponse.Equals(response);
-                if (is_respect)
-                    compilePromptText.AppendText("    response: " + response + "\r\n");
-                else
-                    compilePromptText.AppendText("    response: " + response + "   (***不合预期***)\r\n");
-                return is_respect;
+                for (int i = 0; i < 8; i++)
+                {
+                    response = serialPort.ReadLine().Trim();
+                    bool is_respect = respectResponse.Equals("") || respectResponse.Equals(response);
+                    if (is_respect)
+                    {
+                        compilePromptText.AppendText("    response: " + response + "\r\n");
+                        return true;
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                compilePromptText.AppendText("    response: *** 超时 ***\r\n" + response);
+                compilePromptText.AppendText("    " + ex.Message + "\r\n");
                 return false;
             }
+            compilePromptText.AppendText("    response: *** 超时 ***\r\n" + response);
+            return false;
         }
 
         private uint getBootAddr()
@@ -352,17 +352,24 @@ namespace USTCRVSoC_tool
                 return;
             }
 
-            if (serialPort.IsOpen)
-                serialPort.Close();
-            serialPort.PortName = portSelectionBox.Text;
-
-            try
+            if (!serialPort.IsOpen)
             {
-                serialPort.Open();
+                serialPort.PortName = portSelectionBox.Text;
+                try
+                {
+                    serialPort.Open();
+                }
+                catch (Exception ex)
+                {
+                    compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
+                    refreshPortStatus();
+                    return;
+                }
             }
-            catch (Exception ex)
+            refreshPortStatus();
+
+            if (!serialSessionB("s", "debug"))
             {
-                compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
                 return;
             }
 
@@ -377,70 +384,49 @@ namespace USTCRVSoC_tool
 
                 if (!serialSessionB(send_str, "wr done"))
                 {
-                    serialPort.Close();
                     return;
                 }
             }
 
             if (!serialSessionB(string.Format("r{0:x8}", boot_addr), "rst done"))
             {
-                serialPort.Close();
                 return;
             }
 
             compilePromptText.AppendText(" *** 烧录成功 ***\r\n");
-            serialPort.Close();
         }
 
         private void userPortOpenCloseBtn_Click(object sender, EventArgs e)
         {
-            if (UserSerialPort.IsOpen)
-                UserSerialPort.Close();
             if (userPortOpenCloseBtn.Text == "打开")
             {
-                UserSerialPort.PortName = userPortSelectionBox.Text;
+                serialPort.PortName = portSelectionBox.Text;
                 try
                 {
-                    UserSerialPort.Open();
+                    serialPort.Open();
                     userPortCount = 0;
                 }
                 catch (Exception ex)
                 {
                     compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
-                    return;
                 }
             }
-            if (UserSerialPort.IsOpen)
+            else
+            {
+                serialPort.Close();
+            }
+            refreshPortStatus();
+        }
+
+        private void refreshPortStatus()
+        {
+            if (serialPort.IsOpen)
                 userPortOpenCloseBtn.Text = "关闭";
             else
                 userPortOpenCloseBtn.Text = "打开";
         }
 
         public delegate void changeTextHandler(object str);
-
-        private void UserSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            try
-            {
-                string recvdata = sp.ReadExisting();
-                if (userPortShowHex.Checked)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (byte ch in recvdata)
-                    {
-                        sb.Append(String.Format("{0:X2} ", ch));
-                    }
-                    appendUserPortText(sb.ToString());
-                }
-                else
-                {
-                    appendUserPortText(recvdata);
-                }
-                userPortCount += (uint)recvdata.Length;
-            }
-            catch{}
-        }
 
         private void appendUserPortText(object str)
         {
@@ -472,6 +458,30 @@ namespace USTCRVSoC_tool
         private void userPortClearBtn_Click(object sender, EventArgs e)
         {
             userPortTextBox.Clear();
+        }
+
+        private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            try
+            {
+                string recvdata = sp.ReadExisting();
+                if (userPortShowHex.Checked)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte ch in recvdata)
+                    {
+                        sb.Append(String.Format("{0:X2} ", ch));
+                    }
+                    appendUserPortText(sb.ToString());
+                }
+                else
+                {
+                    appendUserPortText(recvdata);
+                }
+                userPortCount += (uint)recvdata.Length;
+            }
+            catch { }
         }
     }
 }
