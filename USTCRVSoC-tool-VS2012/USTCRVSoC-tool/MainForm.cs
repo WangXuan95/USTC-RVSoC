@@ -1,26 +1,20 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
 
 namespace USTCRVSoC_tool
 {
     public partial class MainForm : Form
     {
-        private const string RISCV_TOOLS_PATH = ".\\riscv32-elf-tools-windows\\";
-        private const string VerilogHead = "module instr_rom(\n    input  logic clk, rst_n,\n    naive_bus.slave  bus\n);\nlocalparam  INSTR_CNT = 30'd";
-        private const string VerilogMid = ";\nwire [0:INSTR_CNT-1] [31:0] instr_rom_cell = {\n";
-        private const string VerilogTail = "};\n\nlogic [29:0] cell_rd_addr;\n\nassign bus.rd_gnt = bus.rd_req;\nassign bus.wr_gnt = bus.wr_req;\nassign cell_rd_addr = bus.rd_addr[31:2];\nalways @ (posedge clk or negedge rst_n)\n    if(~rst_n)\n        bus.rd_data <= 0;\n    else begin\n        if(bus.rd_req)\n            bus.rd_data <= (cell_rd_addr>=INSTR_CNT) ? 0 : instr_rom_cell[cell_rd_addr];\n        else\n            bus.rd_data <= 0;\n        end\n\nendmodule\n\n";
-        private uint _userPortCount;
+        private const string RISCV_TOOLS_PATH = ".\\riscv32-elf-tools-windows\\";    // RISC-V工具链的路径
 
-        private uint userPortCount
+        #region 控制接收字节数计数
+        private uint _userPortCount;
+        private uint userPortCount    // 接收字节数计数属性
         {
             get
             {
@@ -32,13 +26,15 @@ namespace USTCRVSoC_tool
                 changeCountText(String.Format("接收: {0:D} B", _userPortCount));
             }
         }
+        #endregion
 
-        public MainForm()
+        public MainForm()    // 窗体构造函数
         {
             InitializeComponent();
             InitializeCurrentPort(null, null);
         }
 
+        #region 自动查照存在的串口
         private void InitializeCurrentPort(object sender, EventArgs e)
         {
             string[] ports = SerialPort.GetPortNames();
@@ -53,7 +49,9 @@ namespace USTCRVSoC_tool
                 compilePromptText.Text = "未找到串口，请插入设备，或者检查串口驱动是否安装";
             }
         }
+        #endregion
 
+        #region 打开、保存、另存 汇编代码文件
         private void fileSelectionBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -111,8 +109,10 @@ namespace USTCRVSoC_tool
                 }
             }
         }
+        #endregion
 
-        public bool RunCmd(string path, string command, ref string msg)
+        #region 汇编
+        public bool RunCmd(string path, string command, ref string msg)     // 调用 CMD 运行一个命令
         {
             try
             {
@@ -143,8 +143,7 @@ namespace USTCRVSoC_tool
                 return false;
             }
         }
-
-        private string dumpBin(string bin_file_path)
+        private string dumpBin(string bin_file_path)   // 读取汇编出的.bin 文件并调整字节序、转换为一行一行的指令
         {
             StringBuilder strbuild = new StringBuilder();
             byte[] bin = System.IO.File.ReadAllBytes(bin_file_path);
@@ -156,8 +155,7 @@ namespace USTCRVSoC_tool
             }
             return strbuild.ToString();
         }
-
-        private void compileBtn_Click(object sender, EventArgs e)
+        private void compileBtn_Click(object sender, EventArgs e)   // 点击“汇编”按钮时，完成一系列CMD命令，并把编译结果读入到 binText 这个控件里
         {
             bool stat;
             string msg = "";
@@ -226,6 +224,12 @@ namespace USTCRVSoC_tool
                 return;
             }
         }
+        #endregion
+
+        #region 生成 Verilog InstrROM 代码
+        private const string VerilogHead = "module instr_rom(\n    input  logic clk, rst_n,\n    naive_bus.slave  bus\n);\nlocalparam  INSTR_CNT = 30'd";
+        private const string VerilogMid = ";\nwire [0:INSTR_CNT-1] [31:0] instr_rom_cell = {\n";
+        private const string VerilogTail = "};\n\nlogic [29:0] cell_rd_addr;\n\nassign bus.rd_gnt = bus.rd_req;\nassign bus.wr_gnt = bus.wr_req;\nassign cell_rd_addr = bus.rd_addr[31:2];\nalways @ (posedge clk or negedge rst_n)\n    if(~rst_n)\n        bus.rd_data <= 0;\n    else begin\n        if(bus.rd_req)\n            bus.rd_data <= (cell_rd_addr>=INSTR_CNT) ? 0 : instr_rom_cell[cell_rd_addr];\n        else\n            bus.rd_data <= 0;\n        end\n\nendmodule\n\n";
 
         private string genVerilogRom()
         {
@@ -271,24 +275,32 @@ namespace USTCRVSoC_tool
                 }
             }
         }
+        #endregion
 
-        private bool serialSessionA(string send, ref string response)
+        #region 串口的命令函数
+        private bool serialSessionA(string send, ref string response)    // 发送一个命令并得到响应字符串
         {
             return serialSessionTry(send, ref response, "");
         }
 
-        private bool serialSessionB(string send, string respectResponse)
+        private bool serialSessionB(string send, string respectResponse)   // 发送一个命令并等待指定的响应字符串到来
         {
             string response = "";
             return serialSessionTry(send, ref response, respectResponse);
         }
 
-        private bool serialSessionTry(string send, ref string response, string respectResponse, int try_time = 3)
+        private bool serialSessionTry(string send, ref string response, string respectResponse, int try_time = 3)    // 多次请求全部失败时，返回失败，否则返回成功
         {
             for (int i = 0; i < try_time; i++)
+            {
+                try { serialPort.ReadExisting(); }// 清空接收缓冲区
+                catch { }   
                 if (serialSend(send))
+                {
                     if (serialRead(ref response, respectResponse))
                         return true;
+                }
+            }
             compilePromptText.AppendText("  *** 串口调试多次尝试失败 ***\r\n");
             return false;
         }
@@ -331,20 +343,61 @@ namespace USTCRVSoC_tool
             compilePromptText.AppendText("    response: *** 超时 ***\r\n" + response);
             return false;
         }
+        #endregion
 
-        private uint getBootAddr()
+        #region 串口打开
+        private bool refreshSerial()
         {
-            return Convert.ToUInt32(bootAddrTextBox.Text, 16);
+            if (serialPort.IsOpen)
+                serialPort.Close();
+            try
+            {
+                serialPort.PortName = portSelectionBox.Text;
+                serialPort.Open();
+            }
+            catch (Exception ex)
+            {
+                compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
+                refreshPortStatus();
+                return false;
+            }
+            return true;
         }
-
-        private void programBtn_Click(object sender, EventArgs e)
+        private void refreshPortStatus()
         {
+            if (serialPort.IsOpen)
+                userPortOpenCloseBtn.Text = "关闭";
+            else
+                userPortOpenCloseBtn.Text = "打开";
+        }
+        private void userPortOpenCloseBtn_Click(object sender, EventArgs e)
+        {
+            if (userPortOpenCloseBtn.Text == "打开")
+            {
+                compilePromptText.Clear();
+                refreshSerial();
+                serialSessionB("s", "debug");
+                serialSessionB("o", "user");
+            }
+            else
+            {
+                serialPort.Close();
+            }
+            refreshPortStatus();
+        }
+        #endregion
+
+        #region 烧录程序
+        private void programBtn_Click(object sender, EventArgs e)    // 烧录程序
+        {
+            enableUartDisplay = false;
+            userPortTextBox.Clear();
             compilePromptText.Clear();
 
             uint boot_addr;
             try
             {
-                boot_addr = getBootAddr();
+                boot_addr = Convert.ToUInt32(bootAddrTextBox.Text, 16);
             }
             catch (Exception ex)
             {
@@ -352,26 +405,11 @@ namespace USTCRVSoC_tool
                 return;
             }
 
-            if (!serialPort.IsOpen)
-            {
-                serialPort.PortName = portSelectionBox.Text;
-                try
-                {
-                    serialPort.Open();
-                }
-                catch (Exception ex)
-                {
-                    compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
-                    refreshPortStatus();
-                    return;
-                }
-            }
-            refreshPortStatus();
+            if (!refreshSerial())
+                return;
 
             if (!serialSessionB("s", "debug"))
-            {
                 return;
-            }
 
             uint index = 0;
             foreach (string line in binText.Text.Split())
@@ -383,49 +421,74 @@ namespace USTCRVSoC_tool
                 index++;
 
                 if (!serialSessionB(send_str, "wr done"))
-                {
                     return;
-                }
             }
 
             if (!serialSessionB(string.Format("r{0:x8}", boot_addr), "rst done"))
+                return;
+
+            compilePromptText.AppendText(" *** 烧录完成 ***\r\n");
+            try { serialPort.ReadExisting(); }// 清空接收缓冲区
+            catch { }   
+            userPortTextBox.Clear();
+            enableUartDisplay = true;
+        }
+        #endregion
+
+        #region DUMP内存
+        private void DUMP内存_Click(object sender, EventArgs e)     // 查看内存
+        {
+            enableUartDisplay = false;
+            userPortTextBox.Clear();
+            compilePromptText.Clear();
+
+            uint start, len;
+            try
             {
+                start = Convert.ToUInt32(起始地址.Text, 16);
+                len = Convert.ToUInt32(长度.Text, 16);
+            }
+            catch (Exception ex)
+            {
+                compilePromptText.AppendText("  *** 起始地址格式有误 ***\r\n  " + ex.Message);
                 return;
             }
-
-            compilePromptText.AppendText(" *** 烧录成功 ***\r\n");
-        }
-
-        private void userPortOpenCloseBtn_Click(object sender, EventArgs e)
-        {
-            if (userPortOpenCloseBtn.Text == "打开")
+            start = 4 * (start / 4);   // 起始地址自动与4对齐
+            if (len > 0x1000)
             {
-                serialPort.PortName = portSelectionBox.Text;
-                try
-                {
-                    serialPort.Open();
-                    userPortCount = 0;
-                }
-                catch (Exception ex)
-                {
-                    compilePromptText.AppendText("  *** 打开串口出错 ***\r\n  " + ex.Message);
-                }
+                compilePromptText.AppendText("  *** 长度不能大于0x1000 ***\r\n  ");
+                return;
             }
-            else
+            len /= 4;
+
+            if (!refreshSerial())
+                return;
+            if (!serialSessionB("s", "debug"))
+                return;
+
+            内存内容.Clear();
+
+            uint index = 0;
+            for (index = 0; index < len; index++)
             {
-                serialPort.Close();
+                string send_str = String.Format("{0:x8}", start + index * 4);
+                string response = "";
+                if (!serialSessionA(send_str, ref response))
+                    return;
+                内存内容.AppendText(String.Format("{0:x8} : {1:S}\r\n", start + index * 4, response.Trim()));
             }
-            refreshPortStatus();
-        }
 
-        private void refreshPortStatus()
-        {
-            if (serialPort.IsOpen)
-                userPortOpenCloseBtn.Text = "关闭";
-            else
-                userPortOpenCloseBtn.Text = "打开";
+            serialSessionB("o", "user");
+            compilePromptText.AppendText(" *** Dump内存完成 ***\r\n");
+            try { serialPort.ReadExisting(); }// 清空接收缓冲区
+            catch { }   
+            userPortTextBox.Clear();
+            enableUartDisplay = true;
         }
+        #endregion
 
+        #region 右侧串口监视窗的实时显示
+        bool enableUartDisplay = true;
         public delegate void changeTextHandler(object str);
 
         private void appendUserPortText(object str)
@@ -454,7 +517,6 @@ namespace USTCRVSoC_tool
             }
         }
 
-
         private void userPortClearBtn_Click(object sender, EventArgs e)
         {
             userPortTextBox.Clear();
@@ -462,26 +524,30 @@ namespace USTCRVSoC_tool
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            SerialPort sp = (SerialPort)sender;
-            try
+            if (enableUartDisplay)
             {
-                string recvdata = sp.ReadExisting();
-                if (userPortShowHex.Checked)
+                SerialPort sp = (SerialPort)sender;
+                try
                 {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (byte ch in recvdata)
+                    string recvdata = sp.ReadExisting();
+                    if (userPortShowHex.Checked)
                     {
-                        sb.Append(String.Format("{0:X2} ", ch));
+                        StringBuilder sb = new StringBuilder();
+                        foreach (byte ch in recvdata)
+                        {
+                            sb.Append(String.Format("{0:X2} ", ch));
+                        }
+                        appendUserPortText(sb.ToString());
                     }
-                    appendUserPortText(sb.ToString());
+                    else
+                    {
+                        appendUserPortText(recvdata);
+                    }
+                    userPortCount += (uint)recvdata.Length;
                 }
-                else
-                {
-                    appendUserPortText(recvdata);
-                }
-                userPortCount += (uint)recvdata.Length;
+                catch { }
             }
-            catch { }
         }
+        #endregion
     }
 }

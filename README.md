@@ -8,8 +8,8 @@
 > * 简单直观的32bit握手总线 (naive_bus.sv)，
 > * 总线仲裁器(naive_bus_router.sv)可修改，以方便拓展外设、多核、DMA等
 > * 具有交互式UART调试器(isp_uart.sv)，用户可以使用PC上的串口助手、minicom等软件，实现系统复位、上传程序、查看内存等功能
-> * 全部使用SystemVerilog实现，不调用IP核，方便在Altera、Xilinx、Lattice等不同FPGA平台上移植
-> * RAM符合一定的Verilog写法，自动综合成Block RAM
+> * 全部使用 SystemVerilog 实现，不调用IP核，方便在 Altera、Xilinx、Lattice 等不同FPGA平台上移植，也方便在各种工具中进行仿真
+> * RAM 符合一定的Verilog写法，自动综合成 Block RAM
 
 # SoC 结构
 

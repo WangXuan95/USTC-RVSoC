@@ -1,9 +1,7 @@
 .org 0x0
  	.global _start
 _start:
-    addi  zero, zero, 0x123
-    addi  zero, zero, 0x456
-    
+
     lui   sp, 0x00010
     ori   sp, sp, 0x400 # stack pointer=0x400, stack size = 256 dwords
     

@@ -1,48 +1,44 @@
 module soc_top  #(
     parameter  UART_RX_CLK_DIV = 108,   // 50MHz/4/115200Hz=108
-    parameter  UART_TX_CLK_DIV = 434    // 50MHz/1/115200Hz=434
+    parameter  UART_TX_CLK_DIV = 434,   // 50MHz/1/115200Hz=434
+    parameter  VGA_CLK_DIV     = 1
 )(
-    // 时钟，要��?50MHz
+    // clock, typically 50MHz, UART_RX_CLK_DIV and UART_TX_CLK_DIV and VGA_CLK_DIV must be modify when clk is not 50MHz
     input  logic clk,
-    // 复位信号输出
-    output logic rst_n,
-    // 调试器UART信号
+    // debug uart and user uart shared signal
     input  logic isp_uart_rx,
     output logic isp_uart_tx,
-    // 用户UART信号
-    // input  logic user_uart_rx,
-    // output logic user_uart_tx,
-    // VGA显示输出信号
+    // VGA signal
     output logic vga_hsync, vga_vsync,
-	output logic [15:0] vga_pixel
+    output logic vga_red, vga_green, vga_blue
 );
+logic rst_n;
 logic [31:0] boot_addr;
 
 naive_bus  bus_masters[3]();
 naive_bus  bus_slaves[5]();
 
-// ��?个能作为naive bus 主设备的调试��?
-// 它接收用户从UART发来的命令，操控复位等信号，或对总线进行读写。用户可以使用UART命令复位整个SoC，上传程序，或�?�查看运行时的RAM数据��?
+// shared debug uart and user uart module
 isp_uart  #(
-   .UART_RX_CLK_DIV   (UART_RX_CLK_DIV),
-   .UART_TX_CLK_DIV   (UART_TX_CLK_DIV)
+   .UART_RX_CLK_DIV    ( UART_RX_CLK_DIV),
+   .UART_TX_CLK_DIV    ( UART_TX_CLK_DIV)
 ) isp_uart_inst(
     .clk               ( clk            ),
     .i_uart_rx         ( isp_uart_rx    ),
     .o_uart_tx         ( isp_uart_tx    ),
     .o_rst_n           ( rst_n          ),
     .o_boot_addr       ( boot_addr      ),
-    .bus               ( bus_masters[0] ),
+    .bus               ( bus_masters[1] ),
     .user_uart_bus     ( bus_slaves[4]  )
 );
 
-// RV32I ��?
+// RV32I Core
 core_top core_top_inst(
     .clk               ( clk            ),
     .rst_n             ( rst_n          ),
     .i_boot_addr       ( boot_addr      ),
-    .instr_master      ( bus_masters[1] ),
-    .data_master       ( bus_masters[2] )
+    .instr_master      ( bus_masters[2] ),
+    .data_master       ( bus_masters[0] )
 );
 
 // 指令ROM
@@ -68,13 +64,17 @@ ram_bus_wrapper data_ram_inst(
 
 
 // 显存 
-video_ram video_ram_inst(
+video_ram  #(
+    .VGA_CLK_DIV       ( VGA_CLK_DIV    )
+)video_ram_inst(
     .clk               ( clk            ),
     .rst_n             ( rst_n          ),
     .bus               ( bus_slaves[3]  ),
     .o_vsync           ( vga_vsync      ),
     .o_hsync           ( vga_hsync      ),
-    .o_pixel           ( vga_pixel      )
+    .o_red             ( vga_red        ),
+    .o_green           ( vga_green      ),
+    .o_blue            ( vga_blue       )
 );
 
 

@@ -48,7 +48,7 @@
             this.portSelectionBox = new System.Windows.Forms.ComboBox();
             this.bootAddrGroup = new System.Windows.Forms.GroupBox();
             this.bootAddrTextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.MainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,6 +58,15 @@
             this.userPortOpenCloseBtn = new System.Windows.Forms.Button();
             this.userPortShowHex = new System.Windows.Forms.CheckBox();
             this.UserPortRecvCountLabel = new System.Windows.Forms.Label();
+            this.内存DumpGroup = new System.Windows.Forms.GroupBox();
+            this.内存DumpLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.内存内容 = new System.Windows.Forms.TextBox();
+            this.地址长度指定Layout = new System.Windows.Forms.TableLayoutPanel();
+            this.起始地址 = new System.Windows.Forms.TextBox();
+            this.长度 = new System.Windows.Forms.TextBox();
+            this.长度Title = new System.Windows.Forms.Label();
+            this.起始地址Title = new System.Windows.Forms.Label();
+            this.DUMP内存 = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.compileGroup.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -66,11 +75,14 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.bootAddrGroup.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.MainLayout.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.内存DumpGroup.SuspendLayout();
+            this.内存DumpLayout.SuspendLayout();
+            this.地址长度指定Layout.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileSelectionText
@@ -83,7 +95,7 @@
             this.fileSelectionText.Margin = new System.Windows.Forms.Padding(5);
             this.fileSelectionText.Name = "fileSelectionText";
             this.fileSelectionText.ReadOnly = true;
-            this.fileSelectionText.Size = new System.Drawing.Size(304, 28);
+            this.fileSelectionText.Size = new System.Drawing.Size(187, 28);
             this.fileSelectionText.TabIndex = 0;
             // 
             // fileSelectionBtn
@@ -92,7 +104,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fileSelectionBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.fileSelectionBtn.Location = new System.Drawing.Point(317, 3);
+            this.fileSelectionBtn.Location = new System.Drawing.Point(200, 3);
             this.fileSelectionBtn.Name = "fileSelectionBtn";
             this.fileSelectionBtn.Size = new System.Drawing.Size(114, 34);
             this.fileSelectionBtn.TabIndex = 1;
@@ -108,7 +120,7 @@
             this.compileGroup.Location = new System.Drawing.Point(7, 7);
             this.compileGroup.Margin = new System.Windows.Forms.Padding(7);
             this.compileGroup.Name = "compileGroup";
-            this.compileGroup.Size = new System.Drawing.Size(680, 64);
+            this.compileGroup.Size = new System.Drawing.Size(563, 64);
             this.compileGroup.TabIndex = 2;
             this.compileGroup.TabStop = false;
             this.compileGroup.Text = "文件";
@@ -129,7 +141,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(674, 40);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(557, 40);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // otherSaveBtn
@@ -138,7 +150,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.otherSaveBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.otherSaveBtn.Location = new System.Drawing.Point(557, 3);
+            this.otherSaveBtn.Location = new System.Drawing.Point(440, 3);
             this.otherSaveBtn.Name = "otherSaveBtn";
             this.otherSaveBtn.Size = new System.Drawing.Size(114, 34);
             this.otherSaveBtn.TabIndex = 5;
@@ -153,7 +165,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Enabled = false;
             this.saveBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.saveBtn.Location = new System.Drawing.Point(437, 3);
+            this.saveBtn.Location = new System.Drawing.Point(320, 3);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(114, 34);
             this.saveBtn.TabIndex = 4;
@@ -172,7 +184,7 @@
             this.codeText.Multiline = true;
             this.codeText.Name = "codeText";
             this.codeText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.codeText.Size = new System.Drawing.Size(688, 444);
+            this.codeText.Size = new System.Drawing.Size(571, 504);
             this.codeText.TabIndex = 4;
             // 
             // compilePromptText
@@ -181,12 +193,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.compilePromptText.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compilePromptText.Location = new System.Drawing.Point(3, 531);
+            this.compilePromptText.Location = new System.Drawing.Point(3, 591);
             this.compilePromptText.Multiline = true;
             this.compilePromptText.Name = "compilePromptText";
             this.compilePromptText.ReadOnly = true;
             this.compilePromptText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.compilePromptText.Size = new System.Drawing.Size(688, 137);
+            this.compilePromptText.Size = new System.Drawing.Size(571, 156);
             this.compilePromptText.TabIndex = 3;
             // 
             // HexStreamGroup
@@ -196,9 +208,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HexStreamGroup.Controls.Add(this.tableLayoutPanel4);
             this.HexStreamGroup.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HexStreamGroup.Location = new System.Drawing.Point(703, 3);
+            this.HexStreamGroup.Location = new System.Drawing.Point(586, 3);
             this.HexStreamGroup.Name = "HexStreamGroup";
-            this.HexStreamGroup.Size = new System.Drawing.Size(294, 671);
+            this.HexStreamGroup.Size = new System.Drawing.Size(244, 750);
             this.HexStreamGroup.TabIndex = 5;
             this.HexStreamGroup.TabStop = false;
             this.HexStreamGroup.Text = "指令流";
@@ -219,7 +231,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(288, 647);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(238, 726);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // binText
@@ -233,7 +245,7 @@
             this.binText.Multiline = true;
             this.binText.Name = "binText";
             this.binText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.binText.Size = new System.Drawing.Size(282, 481);
+            this.binText.Size = new System.Drawing.Size(232, 560);
             this.binText.TabIndex = 5;
             // 
             // tableLayoutPanel5
@@ -248,16 +260,16 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(282, 44);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(232, 44);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // saveVerilog
             // 
             this.saveVerilog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.saveVerilog.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.saveVerilog.Location = new System.Drawing.Point(87, 3);
+            this.saveVerilog.Location = new System.Drawing.Point(72, 3);
             this.saveVerilog.Name = "saveVerilog";
-            this.saveVerilog.Size = new System.Drawing.Size(192, 38);
+            this.saveVerilog.Size = new System.Drawing.Size(157, 38);
             this.saveVerilog.TabIndex = 2;
             this.saveVerilog.Text = "保存指令流 (Verilog)";
             this.saveVerilog.UseVisualStyleBackColor = true;
@@ -269,7 +281,7 @@
             this.compileBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.compileBtn.Location = new System.Drawing.Point(3, 3);
             this.compileBtn.Name = "compileBtn";
-            this.compileBtn.Size = new System.Drawing.Size(78, 38);
+            this.compileBtn.Size = new System.Drawing.Size(63, 38);
             this.compileBtn.TabIndex = 0;
             this.compileBtn.Text = "汇编";
             this.compileBtn.UseVisualStyleBackColor = true;
@@ -287,16 +299,16 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(282, 44);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(232, 44);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // programBtn
             // 
             this.programBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.programBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.programBtn.Location = new System.Drawing.Point(191, 3);
+            this.programBtn.Location = new System.Drawing.Point(157, 3);
             this.programBtn.Name = "programBtn";
-            this.programBtn.Size = new System.Drawing.Size(88, 38);
+            this.programBtn.Size = new System.Drawing.Size(72, 38);
             this.programBtn.TabIndex = 3;
             this.programBtn.Text = "烧写";
             this.programBtn.UseVisualStyleBackColor = true;
@@ -310,7 +322,7 @@
             this.portSelectionBox.FormattingEnabled = true;
             this.portSelectionBox.Location = new System.Drawing.Point(3, 3);
             this.portSelectionBox.Name = "portSelectionBox";
-            this.portSelectionBox.Size = new System.Drawing.Size(182, 28);
+            this.portSelectionBox.Size = new System.Drawing.Size(148, 28);
             this.portSelectionBox.TabIndex = 0;
             this.portSelectionBox.DropDown += new System.EventHandler(this.InitializeCurrentPort);
             // 
@@ -320,10 +332,10 @@
             this.bootAddrGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bootAddrGroup.Location = new System.Drawing.Point(3, 103);
             this.bootAddrGroup.Name = "bootAddrGroup";
-            this.bootAddrGroup.Size = new System.Drawing.Size(282, 54);
+            this.bootAddrGroup.Size = new System.Drawing.Size(232, 54);
             this.bootAddrGroup.TabIndex = 6;
             this.bootAddrGroup.TabStop = false;
-            this.bootAddrGroup.Text = "boot地址";
+            this.bootAddrGroup.Text = "BOOT地址";
             // 
             // bootAddrTextBox
             // 
@@ -332,28 +344,30 @@
             this.bootAddrTextBox.Location = new System.Drawing.Point(3, 21);
             this.bootAddrTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.bootAddrTextBox.Name = "bootAddrTextBox";
-            this.bootAddrTextBox.Size = new System.Drawing.Size(276, 28);
+            this.bootAddrTextBox.Size = new System.Drawing.Size(226, 28);
             this.bootAddrTextBox.TabIndex = 1;
             this.bootAddrTextBox.Text = "00008000";
             this.bootAddrTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tableLayoutPanel1
+            // MainLayout
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.Controls.Add(this.HexStreamGroup, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1300, 677);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.MainLayout.ColumnCount = 4;
+            this.MainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.MainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.MainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 380F));
+            this.MainLayout.Controls.Add(this.HexStreamGroup, 1, 0);
+            this.MainLayout.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.MainLayout.Controls.Add(this.groupBox1, 2, 0);
+            this.MainLayout.Controls.Add(this.内存DumpGroup, 3, 0);
+            this.MainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainLayout.Location = new System.Drawing.Point(0, 0);
+            this.MainLayout.Name = "MainLayout";
+            this.MainLayout.RowCount = 1;
+            this.MainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MainLayout.Size = new System.Drawing.Size(1463, 756);
+            this.MainLayout.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 
@@ -370,16 +384,16 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(694, 671);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(577, 750);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel7);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(1003, 3);
+            this.groupBox1.Location = new System.Drawing.Point(836, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 671);
+            this.groupBox1.Size = new System.Drawing.Size(244, 750);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "串口查看";
@@ -398,7 +412,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(288, 647);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(238, 726);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // userPortTextBox
@@ -412,7 +426,7 @@
             this.userPortTextBox.Multiline = true;
             this.userPortTextBox.Name = "userPortTextBox";
             this.userPortTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.userPortTextBox.Size = new System.Drawing.Size(282, 511);
+            this.userPortTextBox.Size = new System.Drawing.Size(232, 590);
             this.userPortTextBox.TabIndex = 6;
             // 
             // tableLayoutPanel8
@@ -429,16 +443,16 @@
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(282, 84);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(232, 84);
             this.tableLayoutPanel8.TabIndex = 2;
             // 
             // userPortClearBtn
             // 
             this.userPortClearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userPortClearBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.userPortClearBtn.Location = new System.Drawing.Point(191, 45);
+            this.userPortClearBtn.Location = new System.Drawing.Point(157, 45);
             this.userPortClearBtn.Name = "userPortClearBtn";
-            this.userPortClearBtn.Size = new System.Drawing.Size(88, 36);
+            this.userPortClearBtn.Size = new System.Drawing.Size(72, 36);
             this.userPortClearBtn.TabIndex = 4;
             this.userPortClearBtn.Text = "清空";
             this.userPortClearBtn.UseVisualStyleBackColor = true;
@@ -448,9 +462,9 @@
             // 
             this.userPortOpenCloseBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userPortOpenCloseBtn.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.userPortOpenCloseBtn.Location = new System.Drawing.Point(191, 3);
+            this.userPortOpenCloseBtn.Location = new System.Drawing.Point(157, 3);
             this.userPortOpenCloseBtn.Name = "userPortOpenCloseBtn";
-            this.userPortOpenCloseBtn.Size = new System.Drawing.Size(88, 36);
+            this.userPortOpenCloseBtn.Size = new System.Drawing.Size(72, 36);
             this.userPortOpenCloseBtn.TabIndex = 3;
             this.userPortOpenCloseBtn.Text = "打开";
             this.userPortOpenCloseBtn.UseVisualStyleBackColor = true;
@@ -462,7 +476,7 @@
             this.userPortShowHex.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userPortShowHex.Location = new System.Drawing.Point(3, 45);
             this.userPortShowHex.Name = "userPortShowHex";
-            this.userPortShowHex.Size = new System.Drawing.Size(182, 36);
+            this.userPortShowHex.Size = new System.Drawing.Size(148, 36);
             this.userPortShowHex.TabIndex = 5;
             this.userPortShowHex.Text = "十六进制显示";
             this.userPortShowHex.UseVisualStyleBackColor = true;
@@ -471,12 +485,131 @@
             // 
             this.UserPortRecvCountLabel.AutoSize = true;
             this.UserPortRecvCountLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserPortRecvCountLabel.Location = new System.Drawing.Point(3, 610);
+            this.UserPortRecvCountLabel.Location = new System.Drawing.Point(3, 689);
             this.UserPortRecvCountLabel.Margin = new System.Windows.Forms.Padding(3);
             this.UserPortRecvCountLabel.Name = "UserPortRecvCountLabel";
-            this.UserPortRecvCountLabel.Size = new System.Drawing.Size(282, 34);
+            this.UserPortRecvCountLabel.Size = new System.Drawing.Size(232, 34);
             this.UserPortRecvCountLabel.TabIndex = 7;
             this.UserPortRecvCountLabel.Text = "接收: 0 B";
+            // 
+            // 内存DumpGroup
+            // 
+            this.内存DumpGroup.Controls.Add(this.内存DumpLayout);
+            this.内存DumpGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.内存DumpGroup.Location = new System.Drawing.Point(1086, 3);
+            this.内存DumpGroup.Name = "内存DumpGroup";
+            this.内存DumpGroup.Size = new System.Drawing.Size(374, 750);
+            this.内存DumpGroup.TabIndex = 8;
+            this.内存DumpGroup.TabStop = false;
+            this.内存DumpGroup.Text = "内存DUMP";
+            // 
+            // 内存DumpLayout
+            // 
+            this.内存DumpLayout.ColumnCount = 1;
+            this.内存DumpLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.内存DumpLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.内存DumpLayout.Controls.Add(this.内存内容, 0, 2);
+            this.内存DumpLayout.Controls.Add(this.地址长度指定Layout, 0, 0);
+            this.内存DumpLayout.Controls.Add(this.DUMP内存, 0, 1);
+            this.内存DumpLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.内存DumpLayout.Location = new System.Drawing.Point(3, 21);
+            this.内存DumpLayout.Name = "内存DumpLayout";
+            this.内存DumpLayout.RowCount = 3;
+            this.内存DumpLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.内存DumpLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.内存DumpLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.内存DumpLayout.Size = new System.Drawing.Size(368, 726);
+            this.内存DumpLayout.TabIndex = 1;
+            // 
+            // 内存内容
+            // 
+            this.内存内容.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.内存内容.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.内存内容.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.内存内容.Location = new System.Drawing.Point(3, 128);
+            this.内存内容.Multiline = true;
+            this.内存内容.Name = "内存内容";
+            this.内存内容.ReadOnly = true;
+            this.内存内容.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.内存内容.Size = new System.Drawing.Size(362, 595);
+            this.内存内容.TabIndex = 6;
+            // 
+            // 地址长度指定Layout
+            // 
+            this.地址长度指定Layout.ColumnCount = 2;
+            this.地址长度指定Layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.地址长度指定Layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.地址长度指定Layout.Controls.Add(this.起始地址, 1, 0);
+            this.地址长度指定Layout.Controls.Add(this.长度, 1, 1);
+            this.地址长度指定Layout.Controls.Add(this.长度Title, 0, 1);
+            this.地址长度指定Layout.Controls.Add(this.起始地址Title, 0, 0);
+            this.地址长度指定Layout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.地址长度指定Layout.Location = new System.Drawing.Point(3, 3);
+            this.地址长度指定Layout.Name = "地址长度指定Layout";
+            this.地址长度指定Layout.RowCount = 2;
+            this.地址长度指定Layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.地址长度指定Layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.地址长度指定Layout.Size = new System.Drawing.Size(362, 79);
+            this.地址长度指定Layout.TabIndex = 0;
+            // 
+            // 起始地址
+            // 
+            this.起始地址.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.起始地址.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.起始地址.Location = new System.Drawing.Point(186, 5);
+            this.起始地址.Margin = new System.Windows.Forms.Padding(5);
+            this.起始地址.Name = "起始地址";
+            this.起始地址.Size = new System.Drawing.Size(171, 28);
+            this.起始地址.TabIndex = 4;
+            this.起始地址.Text = "00010000";
+            this.起始地址.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // 长度
+            // 
+            this.长度.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.长度.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.长度.Location = new System.Drawing.Point(186, 44);
+            this.长度.Margin = new System.Windows.Forms.Padding(5);
+            this.长度.Name = "长度";
+            this.长度.Size = new System.Drawing.Size(171, 28);
+            this.长度.TabIndex = 3;
+            this.长度.Text = "80";
+            this.长度.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // 长度Title
+            // 
+            this.长度Title.AutoSize = true;
+            this.长度Title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.长度Title.Location = new System.Drawing.Point(3, 39);
+            this.长度Title.Name = "长度Title";
+            this.长度Title.Size = new System.Drawing.Size(175, 40);
+            this.长度Title.TabIndex = 2;
+            this.长度Title.Text = "长度(16进制):";
+            this.长度Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // 起始地址Title
+            // 
+            this.起始地址Title.AutoSize = true;
+            this.起始地址Title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.起始地址Title.Location = new System.Drawing.Point(3, 0);
+            this.起始地址Title.Name = "起始地址Title";
+            this.起始地址Title.Size = new System.Drawing.Size(175, 39);
+            this.起始地址Title.TabIndex = 0;
+            this.起始地址Title.Text = "起始地址(16进制)";
+            this.起始地址Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DUMP内存
+            // 
+            this.DUMP内存.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DUMP内存.Location = new System.Drawing.Point(3, 88);
+            this.DUMP内存.Name = "DUMP内存";
+            this.DUMP内存.Size = new System.Drawing.Size(362, 34);
+            this.DUMP内存.TabIndex = 1;
+            this.DUMP内存.Text = "DUMP内存";
+            this.DUMP内存.UseVisualStyleBackColor = true;
+            this.DUMP内存.Click += new System.EventHandler(this.DUMP内存_Click);
             // 
             // serialPort
             // 
@@ -489,8 +622,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 677);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1463, 756);
+            this.Controls.Add(this.MainLayout);
             this.Name = "MainForm";
             this.Text = "USTCRVSoC 辅助工具";
             this.compileGroup.ResumeLayout(false);
@@ -503,7 +636,7 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.bootAddrGroup.ResumeLayout(false);
             this.bootAddrGroup.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.MainLayout.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -511,6 +644,11 @@
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            this.内存DumpGroup.ResumeLayout(false);
+            this.内存DumpLayout.ResumeLayout(false);
+            this.内存DumpLayout.PerformLayout();
+            this.地址长度指定Layout.ResumeLayout(false);
+            this.地址长度指定Layout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -524,7 +662,7 @@
         private System.Windows.Forms.TextBox codeText;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.GroupBox HexStreamGroup;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel MainLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button otherSaveBtn;
@@ -547,6 +685,15 @@
         private System.Windows.Forms.Button userPortClearBtn;
         private System.Windows.Forms.CheckBox userPortShowHex;
         private System.Windows.Forms.Label UserPortRecvCountLabel;
+        private System.Windows.Forms.GroupBox 内存DumpGroup;
+        private System.Windows.Forms.TableLayoutPanel 内存DumpLayout;
+        private System.Windows.Forms.TextBox 内存内容;
+        private System.Windows.Forms.TableLayoutPanel 地址长度指定Layout;
+        private System.Windows.Forms.TextBox 起始地址;
+        private System.Windows.Forms.TextBox 长度;
+        private System.Windows.Forms.Label 长度Title;
+        private System.Windows.Forms.Label 起始地址Title;
+        private System.Windows.Forms.Button DUMP内存;
 
     }
 }

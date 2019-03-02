@@ -1,0 +1,166 @@
+E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv {1 {vlog -work work -sv {E:\work-Lab\USTCRVSoC\hardware\RTL\soc_top_tb.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module soc_top_tb
+
+Top level modules:
+	soc_top_tb
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling interface naive_bus
+
+Top level modules:
+	--none--
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module uart_rx
+
+Top level modules:
+	uart_rx
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module instr_rom
+
+Top level modules:
+	instr_rom
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module uart_tx_line
+
+Top level modules:
+	uart_tx_line
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_regfile
+
+Top level modules:
+	core_regfile
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv {2 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module isp_uart
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv(92): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv(94): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+
+Top level modules:
+	isp_uart
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ram
+
+Top level modules:
+	ram
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ram_bus_wrapper
+
+Top level modules:
+	ram_bus_wrapper
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv {2 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module naive_bus_router
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(64): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(65): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(66): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(67): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(68): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(69): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(70): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(71): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(72): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(73): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(73): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(75): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(81): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(82): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(83): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(84): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(85): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(96): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(97): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(98): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(99): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(99): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(101): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(102): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+** Warning: E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv(105): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+
+
+Top level modules:
+	naive_bus_router
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_ex_branch_judge
+
+Top level modules:
+	core_ex_branch_judge
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_id_stage
+
+Top level modules:
+	core_id_stage
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_alu
+
+Top level modules:
+	core_alu
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_bus_wrapper
+
+Top level modules:
+	core_bus_wrapper
+
+} {} {}} E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv {1 {vlog -work work -sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module core_top
+
+Top level modules:
+	core_top
+
+} {} {}}

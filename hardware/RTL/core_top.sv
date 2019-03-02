@@ -32,13 +32,13 @@ logic [31:0] ex_s1_plus_imm, ex_next_pc, ex_pc_plus_imm;
 
 // MEM stage
 logic [2:0]  mem_funct3;
-logic mem_memory2reg, mem_alures2reg, mem_memwrite;
-logic [31:0] mem_alu_res, mem_mem_wdata, mem_s1_plus_imm;
+logic mem_memory2reg, mem_alures2reg, mem_alures_or_nextpc2reg, mem_memwrite;
+logic [31:0] mem_alu_res, mem_2regdata, mem_next_pc, mem_mem_wdata, mem_s1_plus_imm;
 logic [4:0]  mem_dst_reg_addr;
 
 // WB stage
-logic wb_memory2reg;
-logic [31:0] wb_reg_wdata;
+logic wb_memory2reg, wb_2reg;
+logic [31:0] wb_reg_wdata, wb_mem_2regdata, wb_memout;
 logic [4:0]  wb_dst_reg_addr;
 
 // write regfile conflict signal
@@ -50,7 +50,7 @@ logic id_data_bus_conflict, mem_data_bus_conflict;
 // conflict - comb logic
 // -------------------------------------------------------------------------------
 assign pc_stall = id_stall | id_data_bus_conflict;
-assign id_stall = wreg_conflict;// | mem_data_bus_conflict;
+assign id_stall = wreg_conflict;
 assign ex_stall = mem_data_bus_conflict;
 assign mem_stall = mem_data_bus_conflict;
 assign launch_nop = ex_branch | ex_jalr | wreg_conflict;
@@ -146,12 +146,12 @@ core_regfile core_regfile_inst(
     .i_we1                   ( ex_nextpc2reg  ),
     .i_waddr1                ( ex_dst_reg_addr),
     .i_wdata1                ( ex_next_pc     ),
-    .i_we2                   ( mem_alures2reg ),
+    .i_we2                   ( mem_alures_or_nextpc2reg ),
     .i_waddr2                (mem_dst_reg_addr),
-    .i_wdata2                ( mem_alu_res    ),
-    .i_we3                   ( wb_memory2reg  ),
-    .i_waddr3                ( wb_dst_reg_addr),
-    .i_wdata3                ( wb_reg_wdata   )
+    .i_wdata2                ( mem_2regdata   ),
+    .i_we                    ( wb_2reg        ),
+    .i_waddr                 ( wb_dst_reg_addr),
+    .i_wdata                 ( wb_reg_wdata   )
 );
 always @ (posedge clk or negedge rst_n)
     if(~rst_n) begin
@@ -212,6 +212,8 @@ always @ (posedge clk or negedge rst_n)
     if(~rst_n) begin
         mem_memory2reg  <= 1'b0;
         mem_alures2reg  <= 1'b0;
+        mem_alures_or_nextpc2reg <= 1'b0;
+        mem_next_pc     <= 0;
         mem_alu_res     <= 0;
         mem_dst_reg_addr<= 5'h0;
         mem_memwrite    <= 1'b0;
@@ -221,6 +223,8 @@ always @ (posedge clk or negedge rst_n)
     end else if(~mem_stall) begin
         mem_memory2reg  <= ex_memory2reg;
         mem_alures2reg  <= ex_alures2reg;
+        mem_alures_or_nextpc2reg <= ex_alures2reg | ex_nextpc2reg;
+        mem_next_pc     <= ex_next_pc;
         mem_alu_res     <= ex_alu_res;
         mem_dst_reg_addr<= ex_dst_reg_addr;
         mem_memwrite    <= ex_memwrite;
@@ -228,6 +232,9 @@ always @ (posedge clk or negedge rst_n)
         mem_s1_plus_imm <= ex_s1_plus_imm;
         mem_funct3      <= ex_funct3;
     end
+    
+    
+assign mem_2regdata = mem_alures2reg ? mem_alu_res : mem_next_pc;
 
 
 // -------------------------------------------------------------------------------
@@ -242,16 +249,22 @@ core_bus_wrapper core_bus_wrapper_inst(
     .i_funct3             ( mem_funct3            ),
     .i_addr               ( mem_s1_plus_imm       ),
     .i_wdata              ( mem_mem_wdata         ),
-    .o_rdata              ( wb_reg_wdata          ),
+    .o_rdata              ( wb_memout             ),
     .bus_master           ( data_master           )
 );
 always @ (posedge clk or negedge rst_n)
     if(~rst_n) begin
+        wb_2reg         <= 1'b0;
         wb_memory2reg   <= 1'b0;
         wb_dst_reg_addr <= 5'h0;
+        wb_mem_2regdata <= 0;
     end else begin
+        wb_2reg         <= mem_alures_or_nextpc2reg | mem_memory2reg;
         wb_memory2reg   <= mem_memory2reg;
         wb_dst_reg_addr <= mem_dst_reg_addr;
+        wb_mem_2regdata <= mem_2regdata;
     end
+    
+assign wb_reg_wdata = wb_memory2reg  ? wb_memout : wb_mem_2regdata;
 
 endmodule

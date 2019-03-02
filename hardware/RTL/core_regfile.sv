@@ -10,18 +10,18 @@ module core_regfile(
     input  logic i_re2,
     input  logic [4:0]  i_raddr2,
     output logic [31:0] o_rdata2,
-    // Write port 1
+    // forward port 1
     input  logic i_we1,
     input  logic [4:0] i_waddr1,
     input  logic [31:0] i_wdata1,
-    // Write port 2
+    // forward port 2
     input  logic i_we2,  
     input  logic [4:0] i_waddr2,
     input  logic [31:0] i_wdata2,
-    // Write port 3
-    input  logic i_we3,
-    input  logic [4:0] i_waddr3,
-    input  logic [31:0] i_wdata3
+    // Write port
+    input  logic i_we,
+    input  logic [4:0] i_waddr,
+    input  logic [31:0] i_wdata
 );
 
 logic [31:1] [31:0] reg_file_cell = 992'h0;
@@ -31,12 +31,8 @@ always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)
         reg_file_cell <= 992'h0;
     else begin
-        if(i_we3 && i_waddr3!=5'h0 && ~(i_we1 && i_waddr1==i_waddr3) && ~(i_we2 && i_waddr2==i_waddr3) )
-            reg_file_cell[i_waddr3] <= i_wdata3;
-        if(i_we2 && i_waddr2!=5'h0 && ~(i_we1 && i_waddr1==i_waddr2) )
-            reg_file_cell[i_waddr2] <= i_wdata2;
-        if(i_we1 && i_waddr1!=5'h0 )
-            reg_file_cell[i_waddr1] <= i_wdata1;
+        if(i_we && i_waddr!=5'h0)
+            reg_file_cell[i_waddr] <= i_wdata;
     end
 end
 
@@ -52,8 +48,8 @@ always @ (posedge clk or negedge rst_n) begin
                 o_rdata1 <= i_wdata1;
             else if(i_we2 && i_raddr1==i_waddr2)
                 o_rdata1 <= i_wdata2;
-            else if(i_we3 && i_raddr1==i_waddr3)
-                o_rdata1 <= i_wdata3;
+            else if(i_we && i_raddr1==i_waddr)
+                o_rdata1 <= i_wdata;
             else
                 o_rdata1 <= reg_file_cell[i_raddr1];
         end else
@@ -72,8 +68,8 @@ always @ (posedge clk or negedge rst_n) begin
                 o_rdata2 <= i_wdata1;
             else if(i_we2 && i_raddr2==i_waddr2)
                 o_rdata2 <= i_wdata2;
-            else if(i_we3 && i_raddr2==i_waddr3)
-                o_rdata2 <= i_wdata3;
+            else if(i_we && i_raddr2==i_waddr)
+                o_rdata2 <= i_wdata;
             else
                 o_rdata2 <= reg_file_cell[i_raddr2];
         end else
