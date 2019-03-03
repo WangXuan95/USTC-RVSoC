@@ -28,7 +28,7 @@ isp_uart  #(
     .o_uart_tx         ( isp_uart_tx    ),
     .o_rst_n           ( rst_n          ),
     .o_boot_addr       ( boot_addr      ),
-    .bus               ( bus_masters[1] ),
+    .bus               ( bus_masters[0] ),
     .user_uart_bus     ( bus_slaves[4]  )
 );
 
@@ -38,7 +38,7 @@ core_top core_top_inst(
     .rst_n             ( rst_n          ),
     .i_boot_addr       ( boot_addr      ),
     .instr_master      ( bus_masters[2] ),
-    .data_master       ( bus_masters[0] )
+    .data_master       ( bus_masters[1] )
 );
 
 // 指令ROM

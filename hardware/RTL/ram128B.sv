@@ -7,7 +7,7 @@ module ram128B(            // 128B
 );
 initial o_rdata = 8'h0;
 
-logic [7:0] data_ram_cell [0:127] ;
+logic [7:0] data_ram_cell [0:127];
     
 always @ (posedge clk)
     o_rdata <= data_ram_cell[i_addr];

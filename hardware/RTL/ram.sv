@@ -7,7 +7,7 @@ module ram(            // 1024B
 );
 initial o_rdata = 8'h0;
 
-logic [7:0] data_ram_cell [0:1023] ;
+logic [7:0] data_ram_cell [0:1023];
     
 always @ (posedge clk)
     o_rdata <= data_ram_cell[i_raddr];

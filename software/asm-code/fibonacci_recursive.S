@@ -2,11 +2,11 @@
  	.global _start
 _start:
 
-    lui   sp, 0x00010
+    lui   sp, 0x00020
     ori   sp, sp, 0x400 # stack pointer=0x400, stack size = 256 dwords
     
-    xori  t0, zero, 7   # t0 = 7
-    jal   ra, fibonacci_recursive   # fib(7) = 21 = 0x15
+    xori  t0, zero, 8   # t0 = 8
+    jal   ra, fibonacci_recursive   # fib(8) = 34 = 0x22
     
     jal   zero, print_result        # 跳到死循环打印程序，循环打印斐波那契计算结果，应该打印的是0x15
 
@@ -31,8 +31,9 @@ tag:
     jal   ra, fibonacci_recursive      # fibonacci_recursive n-1
     
     lw    t0, 0(sp)     # t0=mem[sp]   # pop t0 from stack
-    addi  sp, sp,  4    # sp+=4
     addi  t0, t0, -1    # t0-=1
+    addi  sp, sp,  4    # sp+=4
+    
     
     addi  sp, sp, -4    # sp-=4        # push t1 to stack
     sw    t1, (sp)      # mem[sp] = t1
@@ -54,5 +55,5 @@ print_result:            # 延时循环打印斐波那契计算结果
 big_loop:
     addi  t2, t2, -1           # t2 = t2-1
     bne   t2, zero, big_loop   # if t2!=0, jmp to big_loop
-    jal   zero, print_result   # 大循环结束，跳到print_result，重复打印
+    jal   zero, _start         # 大循环结束，跳到开头t，重复计算
     

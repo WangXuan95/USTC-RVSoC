@@ -4,6 +4,7 @@ entity core_bus_wrapper is
     port(
         clk             : in     vl_logic;
         rst_n           : in     vl_logic;
+        i_en_n          : in     vl_logic;
         i_re            : in     vl_logic;
         i_we            : in     vl_logic;
         o_conflict      : out    vl_logic;

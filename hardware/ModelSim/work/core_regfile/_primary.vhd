@@ -11,14 +11,14 @@ entity core_regfile is
         i_re2           : in     vl_logic;
         i_raddr2        : in     vl_logic_vector(4 downto 0);
         o_rdata2        : out    vl_logic_vector(31 downto 0);
-        i_we1           : in     vl_logic;
-        i_waddr1        : in     vl_logic_vector(4 downto 0);
-        i_wdata1        : in     vl_logic_vector(31 downto 0);
-        i_we2           : in     vl_logic;
-        i_waddr2        : in     vl_logic_vector(4 downto 0);
-        i_wdata2        : in     vl_logic_vector(31 downto 0);
-        i_we3           : in     vl_logic;
-        i_waddr3        : in     vl_logic_vector(4 downto 0);
-        i_wdata3        : in     vl_logic_vector(31 downto 0)
+        i_forward1      : in     vl_logic;
+        i_faddr1        : in     vl_logic_vector(4 downto 0);
+        i_fdata1        : in     vl_logic_vector(31 downto 0);
+        i_forward2      : in     vl_logic;
+        i_faddr2        : in     vl_logic_vector(4 downto 0);
+        i_fdata2        : in     vl_logic_vector(31 downto 0);
+        i_we            : in     vl_logic;
+        i_waddr         : in     vl_logic_vector(4 downto 0);
+        i_wdata         : in     vl_logic_vector(31 downto 0)
     );
 end core_regfile;

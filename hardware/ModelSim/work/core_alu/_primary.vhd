@@ -8,6 +8,7 @@ entity core_alu is
         i_num1u         : in     vl_logic_vector(31 downto 0);
         i_num2u         : in     vl_logic_vector(31 downto 0);
         i_immu          : in     vl_logic_vector(31 downto 0);
+        i_pc_immu       : in     vl_logic_vector(31 downto 0);
         o_res           : out    vl_logic_vector(31 downto 0)
     );
 end core_alu;

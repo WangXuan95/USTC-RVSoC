@@ -1,7 +1,7 @@
 module core_alu(
     input  logic [ 6:0] i_opcode, i_funct7,
     input  logic [ 2:0] i_funct3,
-    input  logic [31:0] i_num1u, i_num2u, i_immu,
+    input  logic [31:0] i_num1u, i_num2u, i_immu, i_pc_immu,
     output logic [31:0] o_res
 );
 
@@ -17,12 +17,14 @@ assign i_imms  = i_immu;
 
 always_comb
     casex({i_funct7,i_funct3,i_opcode})
+        // LUI类
+        17'bxxxxxxx_xxx_0110111 : o_res <=  i_immu;               // LUI
+        // AUIPC类
+        17'bxxxxxxx_xxx_0010111 : o_res <=  i_pc_immu;            // AUIPC
         // 算术类
         17'b0000000_000_0110011 : o_res <=  i_num1u +  i_num2u;   // ADD
         17'bxxxxxxx_000_0010011 : o_res <=  i_num1u +  i_immu ;   // ADDI
         17'b0100000_000_0110011 : o_res <=  i_num1u -  i_num2u;   // SUB
-        // LUI类
-        17'bxxxxxxx_xxx_0110111 : o_res <=  i_immu;               // LUI
         // 逻辑类
         17'b0000000_100_0110011 : o_res <=  i_num1u ^  i_num2u;   // XOR
         17'bxxxxxxx_100_0010011 : o_res <=  i_num1u ^  i_immu ;   // XORI

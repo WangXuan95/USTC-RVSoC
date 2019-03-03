@@ -17,7 +17,7 @@ logic [31:0] instr;
 
 enum {UKNOWN_TYPE, R_TYPE, I_TYPE, IZ_TYPE, S_TYPE, B_TYPE, U_TYPE, J_TYPE} instr_type;
             
-localparam  OPCODE_AUIPC         = 7'b0010111,   // rd=pc+4,            pc= pc+imm
+localparam  OPCODE_AUIPC         = 7'b0010111,   // rd=pc+imm
             OPCODE_JAL           = 7'b1101111,   // rd=pc+4,            pc= pc+imm*2,
             OPCODE_JALR          = 7'b1100111,   // rd=pc+4,            pc= rs1+imm
             OPCODE_BXXX          = 7'b1100011,   // conditional branch, pc= pc+imm*2,
@@ -32,11 +32,11 @@ assign o_next_pc = i_pc + 4;
 assign o_pc_plus_imm = i_pc + o_imm;
 assign {o_funct7, o_rs2_addr, o_rs1_addr, o_funct3, o_dst_reg_addr, o_opcode} = instr;
 
-assign o_jal             = (o_opcode == OPCODE_JAL || o_opcode == OPCODE_AUIPC );
+assign o_jal             = (o_opcode == OPCODE_JAL );
 assign o_jalr            = (o_opcode == OPCODE_JALR );
 assign o_branch_may      = (o_opcode == OPCODE_BXXX );
-assign o_nextpc2reg      = (o_opcode == OPCODE_JAL || o_opcode == OPCODE_AUIPC || o_opcode == OPCODE_JALR );
-assign o_alures2reg      = (o_opcode == OPCODE_LUI || o_opcode == OPCODE_ALI || o_opcode == OPCODE_ALR);
+assign o_nextpc2reg      = (o_opcode == OPCODE_JAL || o_opcode == OPCODE_JALR );
+assign o_alures2reg      = (o_opcode == OPCODE_LUI || o_opcode == OPCODE_AUIPC || o_opcode == OPCODE_ALI || o_opcode == OPCODE_ALR);
 assign o_memory2reg      = (o_opcode == OPCODE_LOAD );
 assign o_mem_write       = (o_opcode == OPCODE_STORE);
 

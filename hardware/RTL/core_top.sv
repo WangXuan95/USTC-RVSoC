@@ -49,7 +49,7 @@ logic id_data_bus_conflict, mem_data_bus_conflict;
 // -------------------------------------------------------------------------------
 // conflict - comb logic
 // -------------------------------------------------------------------------------
-assign pc_stall = id_stall | id_data_bus_conflict;
+assign pc_stall = wreg_conflict |   id_data_bus_conflict;
 assign id_stall = wreg_conflict;
 assign ex_stall = mem_data_bus_conflict;
 assign mem_stall = mem_data_bus_conflict;
@@ -85,21 +85,22 @@ always_comb
 // IF-ID stage - timing logic
 // -------------------------------------------------------------------------------
 core_bus_wrapper inst_bus_wrap_inst(
-    .clk                  ( clk                  ),
-    .rst_n                ( rst_n                ),
-    .i_re                 ( ~id_stall            ),
-    .i_we                 ( 1'b0                 ),
-    .o_conflict_latch     ( id_data_bus_conflict ),
-    .i_funct3             ( 3'b010               ),
-    .i_addr               ( if_pc                ),
-    .i_wdata              ( 0                    ),
-    .o_rdata              ( id_instr             ),
-    .bus_master           ( instr_master         )
+    .clk                  ( clk                   ),
+    .rst_n                ( rst_n                 ),
+    .i_en_n               ( mem_data_bus_conflict ),
+    .i_re                 ( ~id_stall             ),
+    .i_we                 ( 1'b0                  ),
+    .o_conflict_latch     ( id_data_bus_conflict  ),
+    .i_funct3             ( 3'b010                ),
+    .i_addr               ( if_pc                 ),
+    .i_wdata              ( 0                     ),
+    .o_rdata              ( id_instr              ),
+    .bus_master           ( instr_master          )
 );
 always @ (posedge clk)
     if(~rst_n)
         id_pc <= {i_boot_addr[31:2],2'b00} - 4;
-    else
+    else if(~mem_data_bus_conflict)
         id_pc <= if_pc;
 
 
@@ -134,29 +135,30 @@ core_id_stage core_id_stage_inst(
 // ID-EX stage - timing logic
 // -------------------------------------------------------------------------------
 core_regfile core_regfile_inst(
-    .clk                     ( clk            ),
-    .rst_n                   ( rst_n          ),
-    .rd_latch                ( ex_stall       ),
-    .i_re1                   ( id_rs1_en      ),
-    .i_raddr1                ( id_rs1_addr    ),
-    .o_rdata1                ( ex_s1          ),
-    .i_re2                   ( id_rs2_en      ),
-    .i_raddr2                ( id_rs2_addr    ),
-    .o_rdata2                ( ex_s2          ),
-    .i_we1                   ( ex_nextpc2reg  ),
-    .i_waddr1                ( ex_dst_reg_addr),
-    .i_wdata1                ( ex_next_pc     ),
-    .i_we2                   ( mem_alures_or_nextpc2reg ),
-    .i_waddr2                (mem_dst_reg_addr),
-    .i_wdata2                ( mem_2regdata   ),
-    .i_we                    ( wb_2reg        ),
-    .i_waddr                 ( wb_dst_reg_addr),
-    .i_wdata                 ( wb_reg_wdata   )
+    .clk                     ( clk                      ),
+    .rst_n                   ( rst_n                    ),
+    .rd_latch                ( ex_stall                 ),
+    .i_re1                   ( id_rs1_en                ),
+    .i_raddr1                ( id_rs1_addr              ),
+    .o_rdata1                ( ex_s1                    ),
+    .i_re2                   ( id_rs2_en                ),
+    .i_raddr2                ( id_rs2_addr              ),
+    .o_rdata2                ( ex_s2                    ),
+    .i_forward1              ( ex_nextpc2reg            ),
+    .i_faddr1                ( ex_dst_reg_addr          ),
+    .i_fdata1                ( ex_next_pc               ),
+    .i_forward2              ( mem_alures_or_nextpc2reg ),
+    .i_faddr2                ( mem_dst_reg_addr         ),
+    .i_fdata2                ( mem_2regdata             ),
+    .i_we                    ( wb_2reg                  ),
+    .i_waddr                 ( wb_dst_reg_addr          ),
+    .i_wdata                 ( wb_reg_wdata             )
 );
 always @ (posedge clk or negedge rst_n)
     if(~rst_n) begin
         ex_jalr         <= 1'b0;
         ex_branch_may   <= 1'b0;
+        ex_pc_plus_imm  <= 0;
         ex_nextpc2reg   <= 1'b0;
         ex_alures2reg   <= 1'b0;
         ex_memory2reg   <= 1'b0;
@@ -188,13 +190,14 @@ always @ (posedge clk or negedge rst_n)
 // EX stage - comb logic
 // -------------------------------------------------------------------------------
 core_alu core_alu_inst(
-    .i_opcode     ( ex_opcode   ),
-    .i_funct7     ( ex_funct7   ),
-    .i_funct3     ( ex_funct3   ),
-    .i_num1u      ( ex_s1       ),
-    .i_num2u      ( ex_s2       ),
-    .i_immu       ( ex_imm      ),
-    .o_res        ( ex_alu_res  )
+    .i_opcode     ( ex_opcode      ),
+    .i_funct7     ( ex_funct7      ),
+    .i_funct3     ( ex_funct3      ),
+    .i_num1u      ( ex_s1          ),
+    .i_num2u      ( ex_s2          ),
+    .i_immu       ( ex_imm         ),
+    .i_pc_immu    ( ex_pc_plus_imm ),
+    .o_res        ( ex_alu_res     )
 );
 core_ex_branch_judge core_ex_branch_judge_inst(
     .i_branch     ( ex_branch_may   ),
@@ -243,6 +246,7 @@ assign mem_2regdata = mem_alures2reg ? mem_alu_res : mem_next_pc;
 core_bus_wrapper core_bus_wrapper_inst(
     .clk                  ( clk                   ),
     .rst_n                ( rst_n                 ),
+    .i_en_n               ( 1'b0 ),
     .i_re                 ( mem_memory2reg        ),
     .i_we                 ( mem_memwrite          ),
     .o_conflict           ( mem_data_bus_conflict ),

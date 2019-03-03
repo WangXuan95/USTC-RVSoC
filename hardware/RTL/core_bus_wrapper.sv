@@ -1,5 +1,6 @@
 module core_bus_wrapper(
     input  logic clk, rst_n,
+    input  logic i_en_n,
     input  logic i_re, i_we,
     output logic o_conflict, o_conflict_latch,
     input  logic [ 2:0] i_funct3,
@@ -70,10 +71,10 @@ always @ (posedge clk or negedge rst_n)
         o_conflict_latch <= 1'b0;
         rdata_latch <= 0;
     end else begin
-        i_re_latch  <= i_re;
+        i_re_latch  <= i_re & ~i_en_n;
         rd_addr_lsb <= addr_lsb;
         rd_funct3   <= i_funct3;
-        o_conflict_latch <= o_conflict;
+        o_conflict_latch <= o_conflict | i_en_n;
         rdata_latch <= o_rdata;
     end
 
