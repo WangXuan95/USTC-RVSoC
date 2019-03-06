@@ -1,22 +1,34 @@
+# 概述：递归计算斐波那契数列的第n个数
+# Author: WangXuan
+# 
+# 系统要求：1、具有一个大小至少为0x400 Byte的数据RAM （该程序中，其高地址用作栈）
+#           2、请根据实际情况将a0设置为你的DataRam的地址，例如我的SoC DataRam起始地址为0x00010000，则我第一个指令是lui sp, 0x00010
+#
+
+
+
 .org 0x0
  	.global _start
 _start:
-
-    lui   sp, 0x00020
-    ori   sp, sp, 0x400 # stack pointer=0x400, stack size = 256 dwords
+    lui   a0, 0x00010   # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
+    ori   sp, a0, 0x400 # 为栈分配0x400Byte的空间
     
     xori  t0, zero, 8   # t0 = 8
-    jal   ra, fibonacci_recursive   # fib(8) = 34 = 0x22
+    jal   ra, Fibonacci # 计算 fib(8) = 34 = 0x22
+    sw    t1, (a0)      # 计算结果放在DataRam的首地址
     
-    jal   zero, print_result        # 跳到死循环打印程序，循环打印斐波那契计算结果，应该打印的是0x15
+infinity_loop:
+    jal    zero, infinity_loop # 排序结束，死循环
 
-fibonacci_recursive:    # 递归计算斐波那契数列的第n项，
+    
+    
+Fibonacci:              # 递归计算斐波那契数列的第n项，
                         # n放在t0寄存器中
                         # 结果放在t1寄存器中
                         # 使用ra作为返回地址，并使用堆栈，堆栈指针为sp
     
-    ori   a0, zero, 3   # a0 = 3
-    bgeu  t0, a0, tag   # if t0>=a0(3), jmp to tag
+    ori   t4, zero, 3   # t4 = 3
+    bgeu  t0, t4, tag   # if t0>=t4(3), jmp to tag
     ori   t1, t0,   0   # t1 = t0
     jalr  zero, ra, 0   # pc = ra
     
@@ -28,7 +40,7 @@ tag:
     addi  sp, sp, -4    # sp-=4        # push t0 to stack
     sw    t0, (sp)      # mem[sp] = t0
     
-    jal   ra, fibonacci_recursive      # fibonacci_recursive n-1
+    jal   ra, Fibonacci      # 计算 Fib(n-1)
     
     lw    t0, 0(sp)     # t0=mem[sp]   # pop t0 from stack
     addi  t0, t0, -1    # t0-=1
@@ -37,7 +49,7 @@ tag:
     
     addi  sp, sp, -4    # sp-=4        # push t1 to stack
     sw    t1, (sp)      # mem[sp] = t1
-    jal   ra, fibonacci_recursive      # fibonacci_recursive n-2
+    jal   ra, Fibonacci      # 计算 Fib(n-2)
     lw    t2, 0(sp)     # ra=mem[sp]   # pop t2 from stack
     addi  sp, sp,  4    # sp+=4
     add   t1, t1, t2    # t1+=t2
@@ -46,14 +58,5 @@ tag:
     addi  sp, sp,  4    # sp+=4
     
     jalr  zero, ra,0    # pc = ra
-    
-print_result:            # 延时循环打印斐波那契计算结果
-    or    t0, zero,zero # t0 清零
-    lui   t0, 0x00030   # t0 寄存器的高20bit=0x00020
-    sb    t1, (t0)      # 计算完成，结果在t1中，用USER-UART打印出来
-    lui   t2, 0x00c00          # t2 = 0x00800000
-big_loop:
-    addi  t2, t2, -1           # t2 = t2-1
-    bne   t2, zero, big_loop   # if t2!=0, jmp to big_loop
-    jal   zero, _start         # 大循环结束，跳到开头t，重复计算
+
     

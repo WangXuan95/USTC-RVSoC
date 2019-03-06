@@ -2,28 +2,16 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Sun Mar  3 14:15:36 2019
-# Process ID: 16476
+# Start of session at: Tue Mar  5 19:07:42 2019
+# Process ID: 4532
 # Current directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10728 E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12668 E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
 # Log file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
 # Journal file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr
 update_compile_order -fileset sources_1
-add_files -norecurse {E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv E:/work-Lab/USTCRVSoC/hardware/RTL/char8x16_rom.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv}
-update_compile_order -fileset sources_1
-export_ip_user_files -of_objects  [get_files E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv] -no_script -reset -force -quiet
-remove_files  E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv
-reset_run synth_1
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
-open_run synth_1 -name synth_1
-launch_runs impl_1 -jobs 8
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
 open_hw
 connect_hw_server
 open_hw_target

@@ -279,4 +279,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/dual_read_port_ram_32x3
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name FLOW_DISABLE_ASSEMBLER ON
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
