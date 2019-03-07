@@ -11,9 +11,9 @@
  	.global _start
 _start:
     lui   a0, 0x00010   # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
-    ori   sp, a0, 0x400 # 为栈分配0x400Byte的空间
+    addi  sp, a0, 0x400 # 为栈分配0x400Byte的空间
     
-    xori  t0, zero, 8   # t0 = 8
+    or    t0, zero, 8   # t0 = 8
     jal   ra, Fibonacci # 计算 fib(8) = 34 = 0x22
     sw    t1, (a0)      # 计算结果放在DataRam的首地址
     
@@ -33,28 +33,26 @@ Fibonacci:              # 递归计算斐波那契数列的第n项，
     jalr  zero, ra, 0   # pc = ra
     
 tag:
+    addi  t0, t0, -1    # t0--
+
     addi  sp, sp, -4    # sp-=4        # push ra to stack
     sw    ra, (sp)      # mem[sp] = ra
     
-    addi  t0, t0, -1    # t0-=1
     addi  sp, sp, -4    # sp-=4        # push t0 to stack
     sw    t0, (sp)      # mem[sp] = t0
     
     jal   ra, Fibonacci      # 计算 Fib(n-1)
     
-    lw    t0, 0(sp)     # t0=mem[sp]   # pop t0 from stack
-    addi  t0, t0, -1    # t0-=1
-    addi  sp, sp,  4    # sp+=4
-    
-    
-    addi  sp, sp, -4    # sp-=4        # push t1 to stack
+    lw    t0, (sp)      # t0=mem[sp]   # pop t0 from stack
+    addi  t0, t0, -1    # t0--
+
     sw    t1, (sp)      # mem[sp] = t1
     jal   ra, Fibonacci      # 计算 Fib(n-2)
-    lw    t2, 0(sp)     # ra=mem[sp]   # pop t2 from stack
+    lw    t2, (sp)      # ra=mem[sp]   # pop t2 from stack
     addi  sp, sp,  4    # sp+=4
     add   t1, t1, t2    # t1+=t2
     
-    lw    ra, 0(sp)     # ra=mem[sp]   # pop ra from stack
+    lw    ra, (sp)      # ra=mem[sp]   # pop ra from stack
     addi  sp, sp,  4    # sp+=4
     
     jalr  zero, ra,0    # pc = ra

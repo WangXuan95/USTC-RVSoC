@@ -12,43 +12,129 @@
 _start:
 
 main:                        # main函数开始，在DataRam里初始化一段数据，然后调用QuickSort进行排序，排序后进入死循环。请使用仿真或UART调试器查看排序后的数据
-
-    lui    a0, 0x00010       # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
-    
+    lui    a0, 0x00020       # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
     addi   sp, a0  , 0x400   # 设置栈顶指针
+    or     a2, a0, zero
     
-    addi   t0, zero, 0x03    # 用一系列指令向a0里写入被排序的数组，可以是负数
-    sw     t0,  0(a0)
-    addi   t0, zero, 0x01
-    sw     t0,  4(a0)
-    addi   t0, zero, 0x04
-    sw     t0,  8(a0)
-    addi   t0, zero, -0x01
-    sw     t0, 12(a0)
-    addi   t0, zero, 0x05
-    sw     t0, 16(a0)
-    addi   t0, zero, -0x09
-    sw     t0, 20(a0)
-    addi   t0, zero, 0x02
-    sw     t0, 24(a0)
-    addi   t0, zero, 0x06
-    sw     t0, 28(a0)
-    addi   t0, zero, -0x06
-    sw     t0, 32(a0)
-    addi   t0, zero, 0x05
-    sw     t0, 36(a0)
-    addi   t0, zero, 0x06
-    sw     t0, 40(a0)
-    addi   t0, zero, -0x05
-    sw     t0, 44(a0)
-    addi   t0, zero, 0x07
-    sw     t0, 48(a0)
+    addi   t0, zero, -3      # 用一系列指令向a0里写入被排序的数组，可以是负数
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -7
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 6
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 5
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -2
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 2
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -9
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -4
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -6
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 8
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 1
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -5
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 7
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 0
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 3
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -1
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 4
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 9
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -8
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -3
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -7
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 6
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 5
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -2
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 2
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -9
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -4
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -6
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 8
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 1
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -5
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 7
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 0
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 3
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -1
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 4
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, 9
+    sw     t0,  (a2)
+    addi   a2, a2, 4
+    addi   t0, zero, -8
+    sw     t0,  (a2)
 
-    addi   a1, zero, 0         # 准备参数
-    addi   a2, zero, 48      
+    or     a1, zero, zero      # 准备函数参数，a1=0
+    sub    a2, a2, a0          # 准备函数参数，a2=数组最后一个元素的地址偏移
     jal    ra  , QuickSort     # 开始排序
 infinity_loop:
-    jal    zero, infinity_loop # 排序结束，死循环
+    jal   zero, infinity_loop  # 排序结束，死循环
 
 QuickSort:
     # 函数:QuickSort：以a0为基地址的原地升序快速排序，a1是start即开始下标，a2是end即结束下标
@@ -66,32 +152,30 @@ QuickSort:
 
         PartationStart:          
             PartationFirstStart:                      # start of for loop
+                bge    t1, t2, PartationEnd           # if i>=j, branch to next step
                 add    t3, a0, t2                     # 
                 lw     t3, (t3)                       # t3=lst[j]
-                bge    t1, t2, PartationFirstEnd      # if i>=j, branch to next step
                 blt    t3, t0, PartationFirstEnd      # if lst[j]<key, branch to next step
                 addi   t2, t2, -4                     # t2-=4  j--
                 jal    zero, PartationFirstStart      # for loop
             PartationFirstEnd:                        # end of for loop
-
             add    t4  , a0, t1                       # t4=lst+i
             sw     t3  , (t4)                         # lst[i] = t3 = lst[j]
             
             PartationSecondStart:                     # start of for loop
+                bge    t1, t2, PartationEnd           # if i>=j, branch to next step
                 add    t3, a0, t1                     # 
                 lw     t3, (t3)                       # t3=lst[i]
-                bge    t1, t2, PartationSecondEnd     # if i>=j, branch to next step
                 blt    t0, t3, PartationSecondEnd     # if key<lst[i], branch to next step
                 addi   t1, t1, 4                      # t1+=4  i++
                 jal    zero, PartationSecondStart     # for loop
-            PartationSecondEnd:                       # end of for loop
-            
+            PartationSecondEnd:                       # end of for loop 
             add    t4  , a0, t2                       # t4=lst+j
             sw     t3  , (t4)                         # lst[j] = t3 = lst[i]
             
             blt    t1, t2, PartationStart             # if t1<t2, branch to while start
         PartationEnd:
-        
+
         add    t4  , a0, t1                           # t4=lst+i
         sw     t0  , (t4)                             # lst[i] = t0 = key
         
@@ -110,10 +194,7 @@ QuickSort:
         lw     a2, (sp)                                # pop end form stack 
         addi   sp, sp,  4                              # sp+=4
         lw     a1, (sp)                                # pop start form stack 
-        addi   sp, sp,  4                              # sp+=4
 
-        addi   sp, sp, -4                              # sp-=4
-        sw     a1, (sp)                                # mem[sp] = a1 # push a1 to stack, save start
         addi   sp, sp, -4                              # sp-=4        
         sw     a2, (sp)                                # mem[sp] = a2 # push a2 to stack, save end
         addi   sp, sp, -4                              # sp-=4        

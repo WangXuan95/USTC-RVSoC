@@ -1,8 +1,8 @@
 .org 0x0
  	.global _start
 _start:
-    lui   a0, 0x00020
-    ori   a0,   a0, 0x0a0
+    lui   a0, 0x00010
+    ori   a0,   a0, 0x000
     addi  a1, zero,  0xc8
     addi  a2, zero,  0x56
     addi  a3, zero,  0xa4
