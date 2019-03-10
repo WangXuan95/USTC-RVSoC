@@ -159,7 +159,7 @@ namespace USTCRVSoC_tool
         {
             bool stat;
             string msg = "";
-            string asm_command = "riscv32-elf-as " + fileSelectionText.Text + " -o compile_tmp.o -march=rv32i";
+            string asm_command = "riscv32-elf-as " + fileSelectionText.Text + " -o compile_tmp.o -march=rv32im";
             string ld_command = "riscv32-elf-ld compile_tmp.o -o compile_tmp.om";
             compilePromptText.Clear();
 

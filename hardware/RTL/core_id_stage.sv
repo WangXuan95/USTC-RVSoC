@@ -9,8 +9,7 @@ module core_id_stage(
     output logic [31:0]  o_pc_plus_imm, o_imm,
     output logic [4:0]   o_dst_reg_addr,
     output logic [6:0]   o_opcode, o_funct7,
-    output logic [2:0]   o_funct3,
-    output logic [31:0]  o_next_pc
+    output logic [2:0]   o_funct3
 );
 
 logic [31:0] instr;
@@ -28,7 +27,6 @@ localparam  OPCODE_AUIPC         = 7'b0010111,   // rd=pc+imm
             OPCODE_STORE         = 7'b0100011;   // store
 
 assign instr = i_instr;
-assign o_next_pc = i_pc + 4;
 assign o_pc_plus_imm = i_pc + o_imm;
 assign {o_funct7, o_rs2_addr, o_rs1_addr, o_funct3, o_dst_reg_addr, o_opcode} = instr;
 

@@ -41,13 +41,13 @@ tag:
     addi  sp, sp, -4    # sp-=4        # push t0 to stack
     sw    t0, (sp)      # mem[sp] = t0
     
-    jal   ra, Fibonacci      # 计算 Fib(n-1)
+    jal   ra, Fibonacci # 计算 Fib(n-1)
     
     lw    t0, (sp)      # t0=mem[sp]   # pop t0 from stack
     addi  t0, t0, -1    # t0--
 
     sw    t1, (sp)      # mem[sp] = t1
-    jal   ra, Fibonacci      # 计算 Fib(n-2)
+    jal   ra, Fibonacci # 计算 Fib(n-2)
     lw    t2, (sp)      # ra=mem[sp]   # pop t2 from stack
     addi  sp, sp,  4    # sp+=4
     add   t1, t1, t2    # t1+=t2

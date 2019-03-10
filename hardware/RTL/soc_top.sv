@@ -81,16 +81,16 @@ video_ram  #(
 // 3��?5从�?�线仲裁��?
 //
 // 主（越靠前优先级越高）：
-//   0. UART调试��?
-//   1. Core Instr Master
-//   2. Core Data  Master
+//   0. UART Debugger?
+//   1. Core Data Master
+//   2. Core Instruction  Master
 //
 // 从：
 //   1. 指令ROM��? 地址空间 00000000~00000fff
 //   2. 指令RAM��? 地址空间 00008000~00008fff
 //   3. 数据RAM��? 地址空间 00010000~00010fff
 //   4. 显存RAM��? 地址空间 00020000~00020fff
-//   5. 用户UART，地��?空间 00030000~00030003
+//   5. 用户UART，   地址空间 00030000~00030003
 naive_bus_router #(
     .N_MASTER          ( 3 ),
     .N_SLAVE           ( 5 ),

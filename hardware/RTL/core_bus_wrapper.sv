@@ -1,8 +1,7 @@
 module core_bus_wrapper(
     input  logic clk, rst_n,
-    input  logic i_en_n,
     input  logic i_re, i_we,
-    output logic o_conflict, o_conflict_latch,
+    output logic o_conflict,
     input  logic [ 2:0] i_funct3,
     input  logic [31:0] i_addr,
     input  logic [31:0] i_wdata,
@@ -11,10 +10,10 @@ module core_bus_wrapper(
     naive_bus.master  bus_master
 );
 
-logic i_re_latch;
-logic [1:0]  addr_lsb, rd_addr_lsb;
-logic [31:0] addr_bus, wdata, rdata, rdata_latch;
-logic [2:0]  rd_funct3;
+logic i_re_latch=1'b0, o_conflict_latch=1'b0;
+logic [1:0]  addr_lsb, rd_addr_lsb=2'b0;
+logic [31:0] addr_bus, wdata, rdata, rdata_latch=0;
+logic [2:0]  rd_funct3=3'b0;
 logic [3:0]  byte_enable;
 
 assign addr_bus = {i_addr[31:2], 2'b0};
@@ -71,10 +70,10 @@ always @ (posedge clk or negedge rst_n)
         o_conflict_latch <= 1'b0;
         rdata_latch <= 0;
     end else begin
-        i_re_latch  <= i_re & ~i_en_n;
+        i_re_latch  <= i_re;
         rd_addr_lsb <= addr_lsb;
         rd_funct3   <= i_funct3;
-        o_conflict_latch <= o_conflict | i_en_n;
+        o_conflict_latch <= o_conflict;
         rdata_latch <= o_rdata;
     end
 

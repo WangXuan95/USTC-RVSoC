@@ -12,8 +12,9 @@
 _start:
 
 main:                        # main函数开始，在DataRam里初始化一段数据，然后调用QuickSort进行排序，排序后进入死循环。请使用仿真或UART调试器查看排序后的数据
-    lui    a0, 0x00020       # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
+    lui    a0, 0x00010       # 设置DataRam的起始地址为0x00010000，也用作被排序数组的起始地址是，即DataRam的起始地址
     addi   sp, a0  , 0x400   # 设置栈顶指针
+
     or     a2, a0, zero
     
     addi   t0, zero, -3      # 用一系列指令向a0里写入被排序的数组，可以是负数
