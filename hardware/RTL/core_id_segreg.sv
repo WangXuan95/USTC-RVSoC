@@ -4,7 +4,7 @@ module core_id_segreg(
     input  logic [31:0] i_boot_addr,
     input  logic i_en, i_re, i_ex_jmp, i_id_jmp,
     input  logic [31:0] i_ex_jmp_target, i_id_jmp_target, 
-    output logic [31:0] o_pc, o_next_pc, o_instr,
+    output logic [31:0] o_pc, o_instr,
     
     naive_bus.master  bus_master
 );
@@ -22,8 +22,6 @@ assign bus_master.rd_be   = {4{i_re}};
 assign bus_master.rd_addr = i_re ? target_pc : 0;
 assign conflict = (bus_master.rd_req & ~bus_master.rd_gnt);
 
-assign o_next_pc = o_pc + 4;
-
 always_comb
     if(i_ex_jmp)
         target_pc <= i_ex_jmp_target;
@@ -32,7 +30,7 @@ always_comb
     else if( ~(i_re) | conflict_latch)
         target_pc <= o_pc;
     else
-        target_pc <= o_next_pc;
+        target_pc <= o_pc + 4;
 
 always @ (posedge clk or negedge rst_n)
     if(~rst_n) begin

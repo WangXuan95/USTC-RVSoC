@@ -1,29 +1,57 @@
 module core_alu(
     input  logic [ 6:0] i_opcode, i_funct7,
     input  logic [ 2:0] i_funct3,
-    input  logic [31:0] i_num1u, i_num2u, i_immu, i_pc_immu,
-    output logic [31:0] o_res
+    input  logic [31:0] i_num1u, i_num2u, i_pc, i_immu,
+    output logic o_branch_jalr,
+    output logic [31:0] o_res, o_branch_jalr_target
 );
-
-logic [4:0] shamt_rs, shamt_imm;
-logic [31:0] shifted;
+logic [ 4:0] shamt_rs, shamt_imm;
+logic [31:0] num1_plus_imm, pc_plus_imm;
 logic signed [31:0] i_num1s, i_num2s, i_imms;
 
-assign shamt_imm = i_immu[4:0];
-assign shamt_rs  = i_num2u[4:0];
-assign i_num1s = i_num1u;
-assign i_num2s = i_num2u;
-assign i_imms  = i_immu;
+assign shamt_imm     = i_immu[4:0];
+assign shamt_rs      = i_num2u[4:0];
+assign num1_plus_imm = i_num1u + i_immu;
+assign pc_plus_imm   = i_pc    + i_immu;
+assign i_num1s       = i_num1u;
+assign i_num2s       = i_num2u;
+assign i_imms        = i_immu;
+
+always_comb
+    case(i_opcode)
+        7'b1100111 : begin                       // JALR
+                         o_branch_jalr <= 1'b1;
+                         o_branch_jalr_target <= num1_plus_imm;
+                     end
+        7'b1100011 : begin                       // BRANCH类
+                         case(i_funct3)
+                             3'b000 : o_branch_jalr <= (i_num1u == i_num2u);   // BEQ
+                             3'b001 : o_branch_jalr <= (i_num1u != i_num2u);   // BNE
+                             3'b100 : o_branch_jalr <= (i_num1s <  i_num2s);   // BLT
+                             3'b101 : o_branch_jalr <= (i_num1s >= i_num2s);   // BGE
+                             3'b110 : o_branch_jalr <= (i_num1u <  i_num2u);   // BLTU
+                             3'b111 : o_branch_jalr <= (i_num1u >= i_num2u);   // BGEU
+                             default: o_branch_jalr <= 1'b0;
+                         endcase
+                         o_branch_jalr_target <= pc_plus_imm;
+                     end
+        default    : begin                       // 不跳转
+                         o_branch_jalr <= 1'b0;
+                         o_branch_jalr_target <= 0;
+                     end
+    endcase
 
 always_comb
     casex({i_funct7,i_funct3,i_opcode})
+        // JAL类与JALR类
+        17'bxxxxxxx_xxx_110x111 : o_res <=  i_pc + 4;             // JAL, JALR
         // LUI类
         17'bxxxxxxx_xxx_0110111 : o_res <=  i_immu;               // LUI
         // AUIPC类
-        17'bxxxxxxx_xxx_0010111 : o_res <=  i_pc_immu;            // AUIPC
+        17'bxxxxxxx_xxx_0010111 : o_res <=  pc_plus_imm       ;   // AUIPC
         // 算术类
         17'b0000000_000_0110011 : o_res <=  i_num1u +  i_num2u;   // ADD
-        17'bxxxxxxx_000_0010011 : o_res <=  i_num1u +  i_immu ;   // ADDI
+        17'bxxxxxxx_000_0010011 : o_res <=  num1_plus_imm     ;   // ADDI
         17'b0100000_000_0110011 : o_res <=  i_num1u -  i_num2u;   // SUB
         // 逻辑类
         17'b0000000_100_0110011 : o_res <=  i_num1u ^  i_num2u;   // XOR
