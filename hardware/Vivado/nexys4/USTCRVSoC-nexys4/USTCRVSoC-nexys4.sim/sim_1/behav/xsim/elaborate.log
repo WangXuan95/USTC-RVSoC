@@ -1,0 +1,34 @@
+Vivado Simulator 2017.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto ddc8340f1eba4b8bbb076a11b9b82028 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot soc_top_tb_behav xil_defaultlib.soc_top_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.naive_bus
+Compiling module xil_defaultlib.uart_rx
+Compiling module xil_defaultlib.uart_tx_line
+Compiling module xil_defaultlib.ram
+Compiling module xil_defaultlib.user_uart_tx
+Compiling module xil_defaultlib.isp_uart_default
+Compiling module xil_defaultlib.core_id_segreg
+Compiling module xil_defaultlib.core_id_stage
+Compiling module xil_defaultlib.dual_read_port_ram_32x32
+Compiling module xil_defaultlib.core_regfile
+Compiling module xil_defaultlib.core_alu
+Compiling module xil_defaultlib.core_bus_wrapper
+Compiling module xil_defaultlib.core_top
+Compiling module xil_defaultlib.instr_rom
+Compiling module xil_defaultlib.ram_bus_wrapper
+Compiling module xil_defaultlib.ram128B
+Compiling module xil_defaultlib.char8x16_rom
+Compiling module xil_defaultlib.vga_char_86x32_default
+Compiling module xil_defaultlib.video_ram
+Compiling module xil_defaultlib.naive_bus_router(N_MASTER=8'b011...
+Compiling module xil_defaultlib.soc_top_default
+Compiling module xil_defaultlib.soc_top_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot soc_top_tb_behav

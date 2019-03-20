@@ -1,0 +1,30 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "C:/Xilinx/Vivado/2017.4/data/xilinx_vip/include" \
+"../../../../../../../RTL/char8x16_rom.sv" \
+"../../../../../../../RTL/core_alu.sv" \
+"../../../../../../../RTL/core_bus_wrapper.sv" \
+"../../../../../../../RTL/core_id_segreg.sv" \
+"../../../../../../../RTL/core_id_stage.sv" \
+"../../../../../../../RTL/core_regfile.sv" \
+"../../../../../../../RTL/core_top.sv" \
+"../../../../../../../RTL/dual_read_port_ram_32x32.sv" \
+"../../../../../../../RTL/instr_rom.sv" \
+"../../../../../../../RTL/isp_uart.sv" \
+"../../../../../../../RTL/naive_bus.sv" \
+"../../../../../../../RTL/naive_bus_router.sv" \
+"../../../../../../../RTL/ram.sv" \
+"../../../../../../../RTL/ram128B.sv" \
+"../../../../../../../RTL/ram_bus_wrapper.sv" \
+"../../../../../../../RTL/soc_top.sv" \
+"../../../../../../../RTL/uart_rx.sv" \
+"../../../../../../../RTL/uart_tx_line.sv" \
+"../../../../../../../RTL/user_uart_tx.sv" \
+"../../../../../../../RTL/vga_char_86x32.sv" \
+"../../../../../../../RTL/video_ram.sv" \
+"../../../../../../../RTL/soc_top_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

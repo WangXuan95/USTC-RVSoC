@@ -112,7 +112,11 @@ always @ (posedge clk)
         send_type <= NONE;
         tx_data <= "wr done ";
     end else if(rx_ready && `E) begin
-        if(fsm==CMD) begin
+        if(isp_user_sel==1'b0) begin
+            tx_start<= 1'b1;
+            send_type <= SELCLOSE;
+            tx_data <= "\r\ndebug ";
+        end else if(fsm==CMD) begin
             tx_start<= 1'b1;
             send_type <= RST;
             tx_data <= "rst done";
@@ -120,10 +124,6 @@ always @ (posedge clk)
             tx_start<= 1'b1;
             send_type <= SELOPEN;
             tx_data <= "user    ";
-        end else if(fsm==CLOSE) begin
-            tx_start<= 1'b1;
-            send_type <= SELCLOSE;
-            tx_data <= "\r\ndebug ";
         end else if(fsm==TRASH) begin
             tx_start<= 1'b1;
             send_type <= NONE;
@@ -143,7 +143,7 @@ always @ (posedge clk)
 always @ (posedge clk)
     if(uart_tx_line_fin && (send_type == RST || send_type == SELOPEN) )
         isp_user_sel <= 1'b0;     // 切换到USER模式
-    else if(rx_ready && `E && (fsm==CLOSE) )
+    else if(rx_ready && `E )
         isp_user_sel <= 1'b1;     // 切换到DEBUG模式
 
 always @ (posedge clk)
@@ -160,8 +160,6 @@ always @ (posedge clk)
                         wr_data <= 0;
                     end else if(`OP) begin
                         fsm <= OPEN;
-                    end else if(`CL) begin
-                        fsm <= CLOSE;
                     end else if(`S || `E) begin
                         fsm <= NEW;
                         addr <= 0;
@@ -179,13 +177,6 @@ always @ (posedge clk)
                     end else        begin
                         fsm <= TRASH;
                     end
-        CLOSE     : if         (`E) begin
-                        fsm <= NEW;  // cmd close ok!
-                    end else if(`S) begin
-                        fsm <= CLOSE;
-                    end else        begin
-                        fsm <= TRASH;
-                    end
         CMD       : if         (`E) begin
                         o_boot_addr <= {wr_data[31:2],2'b00};   // 设置复位的boot地址，后两位截断(双字对齐)
                         fsm <= NEW;  // cmd ok!
@@ -194,7 +185,7 @@ always @ (posedge clk)
                     end else if(`S) begin
                         fsm <= CMD;
                     end else if(`N) begin
-                        fsm <= CMD;        // r字符后出现数字，说明该复位命令要指定boot地址，
+                        fsm <= CMD;        // r字符后出现数字，说明该复位命令要指定boot地址�?
                         wr_data <= {wr_data[27:0], rx_binary_l};  // get a data
                     end else        begin
                         fsm <= TRASH;

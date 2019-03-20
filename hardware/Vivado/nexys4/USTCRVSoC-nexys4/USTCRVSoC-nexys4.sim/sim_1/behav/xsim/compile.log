@@ -1,0 +1,45 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/char8x16_rom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module char8x16_rom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_alu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_bus_wrapper
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_segreg.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_id_segreg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_id_stage
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_regfile
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dual_read_port_ram_32x32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module instr_rom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module isp_uart
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module naive_bus_router
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ram128B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ram_bus_wrapper
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_rx
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tx_line
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module user_uart_tx
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga_char_86x32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module video_ram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_top_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

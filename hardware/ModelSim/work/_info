@@ -20,20 +20,20 @@ r1
 31
 Z11 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/char8x16_rom.sv|
 Z12 o-work work -sv -O0
-Z13 !s108 1551863115.997000
+Z13 !s108 1553097470.195000
 Z14 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/char8x16_rom.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vcore_alu
 R1
-Z15 !s100 nnc0OZj_1_9^F5XkQaj>j0
-Z16 I_aRibf4^97SVfB1@^O<JH2
-Z17 VMiFG0DJ81d;Sd^00RnlPQ2
+Z15 !s100 Hk4ZKglo9R?FEGTlHS?RS3
+Z16 I;?0dB;^d2>`WcPoRi]9DM2
+Z17 V2=z`kD:UDa0dmK04A[zc03
 Z18 !s105 core_alu_sv_unit
 S1
 R6
-Z19 w1551588536
+Z19 w1552301004
 Z20 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv
 Z21 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv
 L0 1
@@ -42,20 +42,20 @@ r1
 31
 Z22 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv|
 R12
-Z23 !s108 1551863114.690000
+Z23 !s108 1553097470.274000
 Z24 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_alu.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vcore_bus_wrapper
 R1
-Z25 !s100 QYF_K6H6kLmIn?YK<7`@>3
-Z26 IUkTB:Q:AMYWJA7fKHo?_O1
-Z27 VNDHkMe8HeKhI9BUm]55SP0
+Z25 !s100 bLMJ?e2PRUSXIh?omY=o21
+Z26 I8?8blM:QBgboQ>cD^WDQ[2
+Z27 VbfmG<WkNEmK@hoVE9k?R90
 Z28 !s105 core_bus_wrapper_sv_unit
 S1
 R6
-Z29 w1551591033
+Z29 w1552153482
 Z30 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv
 Z31 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv
 L0 1
@@ -64,7 +64,7 @@ r1
 31
 Z32 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv|
 R12
-Z33 !s108 1551863114.765000
+Z33 !s108 1553097470.345000
 Z34 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv|
 !i10b 1
 !s85 0
@@ -91,445 +91,467 @@ Z44 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv|
 !i10b 1
 !s85 0
 !s101 -O0
-vcore_id_stage
+vcore_id_segreg
 R1
-Z45 !s100 @Z4XI5;0Bfzel18A7k<PT0
-Z46 IMTUT@llRSg7kOM`PLzHjX2
-Z47 Vfo`K`XV=DajZ8Eb]j?gV:3
-Z48 !s105 core_id_stage_sv_unit
+Z45 !s100 NmNT@]NH@0I`ElC3^a=Lo0
+Z46 In63?fN7CjS8LQG3S<]G]A3
+Z47 V2S>Ne5nzezO5JlAB96g8>0
+Z48 !s105 core_id_segreg_sv_unit
 S1
 R6
-Z49 w1551588579
-Z50 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv
-Z51 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv
+Z49 w1552291334
+Z50 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_segreg.sv
+Z51 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_id_segreg.sv
+L0 2
+R10
+r1
+31
+Z52 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_segreg.sv|
+R12
+Z53 !s108 1553097470.416000
+Z54 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_segreg.sv|
+!i10b 1
+!s85 0
+!s101 -O0
+vcore_id_stage
+R1
+Z55 !s100 GJfVNLR7z^<kiCg<4L]b^1
+Z56 IW2gE_DGf2`B1c4gHVRl[>1
+Z57 VndjbGAd]39<]>2=o9ZJ:=1
+Z58 !s105 core_id_stage_sv_unit
+S1
+R6
+Z59 w1552301088
+Z60 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv
+Z61 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv
 L0 1
 R10
 r1
 31
-Z52 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv|
+Z62 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv|
 R12
-Z53 !s108 1551863114.900000
-Z54 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv|
+Z63 !s108 1553097470.490000
+Z64 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_id_stage.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vcore_regfile
 R1
-Z55 !s100 I^YE54Zo0N7Mh6`QiI<Oz3
-Z56 IoCmXUMJPHAOdI=TTQ4@AZ1
-Z57 VYWbXWbbKF]m<1R3jXPAMb3
-Z58 !s105 core_regfile_sv_unit
+Z65 !s100 I^YE54Zo0N7Mh6`QiI<Oz3
+Z66 IoCmXUMJPHAOdI=TTQ4@AZ1
+Z67 VYWbXWbbKF]m<1R3jXPAMb3
+Z68 !s105 core_regfile_sv_unit
 S1
 R6
-Z59 w1551587650
-Z60 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv
-Z61 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv
+Z69 w1551587650
+Z70 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv
+Z71 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv
 L0 2
 R10
 r1
 31
-Z62 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv|
+Z72 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv|
 R12
-Z63 !s108 1551863114.978000
-Z64 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv|
+Z73 !s108 1553097470.561000
+Z74 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_regfile.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vcore_top
 R1
-Z65 !s100 HMLmk@@aBh3oW3M2oh>5F0
-Z66 IYX6W^T9h03:[15`LXl06K2
-Z67 Vi7?O@h6m5O3BFF`kIdBUC2
-Z68 !s105 core_top_sv_unit
+Z75 !s100 Zo9bz^7ThnSCB?@jM>2<z2
+Z76 IHiI>OZW_a7lHo3m1FDmQG2
+Z77 Vi7?O@h6m5O3BFF`kIdBUC2
+Z78 !s105 core_top_sv_unit
 S1
 R6
-Z69 w1551597558
-Z70 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv
-Z71 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv
+Z79 w1552364652
+Z80 8E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv
+Z81 FE:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv
 L0 1
 R10
 r1
 31
-Z72 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv|
+Z82 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv|
 R12
-Z73 !s108 1551863115.052000
-Z74 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv|
+Z83 !s108 1553097470.631000
+Z84 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/core_top.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vdual_read_port_ram_32x32
 R1
-!i10b 1
-Z75 !s100 fdb;joBRd?Kbjj708`H@K2
-Z76 IPRWQ3P[Jk_E9z0fS4::gE0
-Z77 Vl@[MQJH:k3R5DJ2AcgRCH1
-Z78 !s105 dual_read_port_ram_32x32_sv_unit
+Z85 !s100 fdb;joBRd?Kbjj708`H@K2
+Z86 IPRWQ3P[Jk_E9z0fS4::gE0
+Z87 Vl@[MQJH:k3R5DJ2AcgRCH1
+Z88 !s105 dual_read_port_ram_32x32_sv_unit
 S1
 R6
-Z79 w1551597268
-Z80 8E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv
-Z81 FE:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv
+Z89 w1551597268
+Z90 8E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv
+Z91 FE:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv
 L0 1
 R10
 r1
-!s85 0
 31
-!s108 1551863116.221000
-!s107 E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv|
-Z82 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv|
-!s101 -O0
+Z92 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv|
 R12
+Z93 !s108 1553097470.710000
+Z94 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv|
+!i10b 1
+!s85 0
+!s101 -O0
 vinstr_rom
 R1
-Z83 I0[kRSH:VXl_HDnGJiGS5]3
-Z84 Vg27TzclZ3S3@lBLMlA`?L1
-Z85 !s105 instr_rom_sv_unit
+Z95 !s100 Bd]Z1a^3]kD30E<26M`Lm1
+Z96 IOc1Uo_kS08]?1_CKOHHU?0
+Z97 Vg27TzclZ3S3@lBLMlA`?L1
+Z98 !s105 instr_rom_sv_unit
 S1
 R6
-Z86 w1551863110
-Z87 8E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv
-Z88 FE:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv
+Z99 w1552416592
+Z100 8E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv
+Z101 FE:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv
 L0 1
 R10
 r1
 31
-Z89 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv|
+Z102 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv|
 R12
-Z90 !s100 m@TEV9E3O2B7:E0R:[VXF3
-Z91 !s108 1551863115.129000
-Z92 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv|
+Z103 !s108 1553097470.788000
+Z104 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/instr_rom.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 visp_uart
 R1
-Z93 !s100 @dmH];GG>K;lS7PljQ:Am1
-Z94 I_4gBZG2Ib<khkdHbSDz?I0
-Z95 V@@jZ3Y6;d=WD@H08`7cWF3
-Z96 !s105 isp_uart_sv_unit
+Z105 !s100 [9[iR_cBcg;?;bX>dKeaB0
+Z106 ICh9mFzgfo8b@4QmO624@U1
+Z107 V@@jZ3Y6;d=WD@H08`7cWF3
+Z108 !s105 isp_uart_sv_unit
 S1
 R6
-Z97 w1551102643
-Z98 8E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv
-Z99 FE:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv
+Z109 w1553085889
+Z110 8E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv
+Z111 FE:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv
 L0 3
 R10
 r1
 31
-Z100 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv|
+Z112 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv|
 R12
-Z101 !s108 1551863115.210000
-Z102 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv|
+Z113 !s108 1553097470.870000
+Z114 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/isp_uart.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 Ynaive_bus
 R1
-Z103 !s100 gFz59kzW]I]nGiaVoSo3O2
-Z104 Idj:03TOO?jDHzf[0c?lJ`2
-Z105 VKXR@0<URHIKN=UGzERidm1
-Z106 !s105 naive_bus_sv_unit
+Z115 !s100 gFz59kzW]I]nGiaVoSo3O2
+Z116 Idj:03TOO?jDHzf[0c?lJ`2
+Z117 VKXR@0<URHIKN=UGzERidm1
+Z118 !s105 naive_bus_sv_unit
 S1
 R6
 R39
-Z107 8E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv
-Z108 FE:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv
+Z119 8E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv
+Z120 FE:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv
 L0 4
 R10
 r1
 31
-Z109 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv|
+Z121 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv|
 R12
-Z110 !s108 1551863115.283000
-Z111 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv|
+Z122 !s108 1553097470.946000
+Z123 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vnaive_bus_router
 R1
-Z112 !s100 nSRUejF=Q5]HdBmmdfzLA1
-Z113 I^NC0W49]?el6;z^6BojXI2
-Z114 VS<O=OM<>7@f0]AeUc<_5c0
-Z115 !s105 naive_bus_router_sv_unit
+Z124 !s100 nSRUejF=Q5]HdBmmdfzLA1
+Z125 I^NC0W49]?el6;z^6BojXI2
+Z126 VS<O=OM<>7@f0]AeUc<_5c0
+Z127 !s105 naive_bus_router_sv_unit
 S1
 R6
 R39
-Z116 8E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv
-Z117 FE:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv
+Z128 8E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv
+Z129 FE:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv
 L0 1
 R10
 r1
 31
-Z118 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv|
+Z130 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv|
 R12
-Z119 !s108 1551863115.349000
-Z120 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv|
+Z131 !s108 1553097471.014000
+Z132 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/naive_bus_router.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vram
 R1
-Z121 !s100 TMn[TG8XXmK^UL@k7`ikC0
-Z122 INIlD0C@nO9Rk96M@_1B?92
-Z123 VjLloJg4mGdQ3i@ojJbWma2
-Z124 !s105 ram_sv_unit
+Z133 !s100 TMn[TG8XXmK^UL@k7`ikC0
+Z134 INIlD0C@nO9Rk96M@_1B?92
+Z135 VjLloJg4mGdQ3i@ojJbWma2
+Z136 !s105 ram_sv_unit
 S1
 R6
-Z125 w1551597245
-Z126 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv
-Z127 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv
+Z137 w1551597245
+Z138 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv
+Z139 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv
 L0 1
 R10
 r1
 31
-Z128 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv|
+Z140 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv|
 R12
-Z129 !s108 1551863115.424000
-Z130 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv|
+Z141 !s108 1553097471.091000
+Z142 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vram128B
 R1
-Z131 !s100 fJC_h9DFSL4_5I>=K<7NW1
-Z132 Il^2=EAV5B4zF?@PSE:S;I3
-Z133 V5VITH=L0J_KXn908[zCL23
-Z134 !s105 ram128B_sv_unit
+Z143 !s100 fJC_h9DFSL4_5I>=K<7NW1
+Z144 Il^2=EAV5B4zF?@PSE:S;I3
+Z145 V5VITH=L0J_KXn908[zCL23
+Z146 !s105 ram128B_sv_unit
 S1
 R6
-Z135 w1551597237
-Z136 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv
-Z137 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv
+Z147 w1551597237
+Z148 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv
+Z149 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv
 L0 1
 R10
 r1
 31
-Z138 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv|
+Z150 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv|
 R12
-Z139 nram128@b
-Z140 !s108 1551863116.071000
-Z141 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv|
+Z151 nram128@b
+Z152 !s108 1553097471.234000
+Z153 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram128B.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vram_bus_wrapper
 R1
-Z142 !s100 U?Io3WFYaekAS0T@dW=V43
-Z143 I?^eTo:Go<IUo<UVJm@aFd0
-Z144 V^7VeTGko3:7B>^H5Y:FP:1
-Z145 !s105 ram_bus_wrapper_sv_unit
+Z154 !s100 U?Io3WFYaekAS0T@dW=V43
+Z155 I?^eTo:Go<IUo<UVJm@aFd0
+Z156 V^7VeTGko3:7B>^H5Y:FP:1
+Z157 !s105 ram_bus_wrapper_sv_unit
 S1
 R6
-Z146 w1550846066
-Z147 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv
-Z148 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv
+Z158 w1550846066
+Z159 8E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv
+Z160 FE:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv
 L0 1
 R10
 r1
 31
-Z149 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv|
+Z161 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv|
 R12
-Z150 !s108 1551863115.494000
-Z151 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv|
+Z162 !s108 1553097471.164000
+Z163 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vsoc_top
 R1
-Z152 !s100 c7@DJ3i4aKznCaD6`OcAf2
-Z153 IY3<DJCiMG<UdHWc8M42J[2
-Z154 VNE4E5g0B?BmQN]T>5NoOT3
-Z155 !s105 soc_top_sv_unit
+Z164 !s100 c7@DJ3i4aKznCaD6`OcAf2
+Z165 IY3<DJCiMG<UdHWc8M42J[2
+Z166 VNE4E5g0B?BmQN]T>5NoOT3
+Z167 !s105 soc_top_sv_unit
 S1
 R6
-Z156 w1551587626
-Z157 8E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv
-Z158 FE:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv
+Z168 w1552152562
+Z169 8E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv
+Z170 FE:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv
 L0 1
 R10
 r1
 31
-Z159 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv|
+Z171 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv|
 R12
-Z160 !s108 1551863115.565000
-Z161 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv|
+Z172 !s108 1553097471.329000
+Z173 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vsoc_top_tb
 R1
-Z162 !s100 >5zad59i52f<6jYFNl[UE2
-Z163 I7hf=@mlD?E>:AKDSDL2O]1
-Z164 VkLTgIQbfzI]@>Jm[T?T@F0
-Z165 !s105 soc_top_tb_sv_unit
+Z174 !s100 >5zad59i52f<6jYFNl[UE2
+Z175 I7hf=@mlD?E>:AKDSDL2O]1
+Z176 VkLTgIQbfzI]@>Jm[T?T@F0
+Z177 !s105 soc_top_tb_sv_unit
 S1
 R6
-Z166 w1551861246
-Z167 8E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv
-Z168 FE:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv
+Z178 w1551980366
+Z179 8E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv
+Z180 FE:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv
 L0 1
 R10
 r1
 31
-Z169 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv|
+Z181 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv|
 R12
-Z170 !s108 1551863115.642000
-Z171 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv|
+Z182 !s108 1553097471.403000
+Z183 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/soc_top_tb.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vuart_rx
 R1
-Z172 !s100 :`YDkKm;LaUQOjOXmaKB:0
-Z173 IL9Ji^>V6GeZ<;c7I`o3LQ1
-Z174 Vh0;PUSD9VYIXe2P@6jV9;0
-Z175 !s105 uart_rx_sv_unit
+Z184 !s100 :`YDkKm;LaUQOjOXmaKB:0
+Z185 IL9Ji^>V6GeZ<;c7I`o3LQ1
+Z186 Vh0;PUSD9VYIXe2P@6jV9;0
+Z187 !s105 uart_rx_sv_unit
 S1
 R6
 R39
-Z176 8E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv
-Z177 FE:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv
+Z188 8E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv
+Z189 FE:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv
 L0 1
 R10
 r1
 31
-Z178 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv|
+Z190 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv|
 R12
-Z179 !s108 1551863115.708000
-Z180 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv|
+Z191 !s108 1553097471.473000
+Z192 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/uart_rx.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vuart_tx_line
 R1
-Z181 !s100 WEQ@68?0=RGj1iFdbOOcP2
-Z182 IK1;[1cPPe^6]7LKQ15Lf21
-Z183 VW`_FG<Oo:1]3K5g>fF=@_3
-Z184 !s105 uart_tx_line_sv_unit
+Z193 !s100 WEQ@68?0=RGj1iFdbOOcP2
+Z194 IK1;[1cPPe^6]7LKQ15Lf21
+Z195 VW`_FG<Oo:1]3K5g>fF=@_3
+Z196 !s105 uart_tx_line_sv_unit
 S1
 R6
-Z185 w1551092170
-Z186 8E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv
-Z187 FE:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv
+Z197 w1551092170
+Z198 8E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv
+Z199 FE:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv
 L0 2
 R10
 r1
 31
-Z188 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv|
+Z200 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv|
 R12
-Z189 !s108 1551863115.776000
-Z190 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv|
+Z201 !s108 1553097471.550000
+Z202 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/uart_tx_line.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vuser_uart_tx
 R1
-Z191 !s100 YA]KWMS3fOD:CQT@0Y9C83
-Z192 I0JOL7FjkENP;iNc25_jl92
-Z193 V<1FQ0oW1UA`j`9IX[bcdE1
-Z194 !s105 user_uart_tx_sv_unit
+Z203 !s100 YA]KWMS3fOD:CQT@0Y9C83
+Z204 I0JOL7FjkENP;iNc25_jl92
+Z205 V<1FQ0oW1UA`j`9IX[bcdE1
+Z206 !s105 user_uart_tx_sv_unit
 S1
 R6
-Z195 w1551512538
-Z196 8E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv
-Z197 FE:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv
+Z207 w1551512538
+Z208 8E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv
+Z209 FE:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv
 L0 2
 R10
 r1
 31
-Z198 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv|
+Z210 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv|
 R12
-Z199 !s108 1551863115.848000
-Z200 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv|
+Z211 !s108 1553097471.620000
+Z212 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/user_uart_tx.sv|
 !i10b 1
 !s85 0
 !s101 -O0
 vvga
 R1
-Z201 !s100 9f0>Y=7iSmCK^QMkzVhdz2
-Z202 IK]n:1gV]8z:A^2D<Og@_H3
-Z203 VR^SlDkaag;z6W]0_6nChW1
-Z204 !s105 video_ram_sv_unit
+Z213 !s100 9f0>Y=7iSmCK^QMkzVhdz2
+Z214 IK]n:1gV]8z:A^2D<Og@_H3
+Z215 VR^SlDkaag;z6W]0_6nChW1
+Z216 !s105 video_ram_sv_unit
 S1
 R6
-Z205 w1551166630
-Z206 8E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv
-Z207 FE:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv
-Z208 L0 147
+Z217 w1551166630
+Z218 8E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv
+Z219 FE:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv
+Z220 L0 147
 R10
 r1
 31
-Z209 !s108 1551505561.076000
-Z210 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv|
-Z211 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv|
+Z221 !s108 1551505561.076000
+Z222 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv|
+Z223 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv|
 R12
 !i10b 1
 !s85 0
 !s101 -O0
 vvga_char_86x32
 R1
-Z212 !s100 c>9AM[`i8>D>79]^5c=iL3
-Z213 IXCM=P_6km0Hk^IPzU0S0N1
-Z214 VE<z=Jzg_7oWJ0YmQX2]MU3
-Z215 !s105 vga_char_86x32_sv_unit
+Z224 !s100 c>9AM[`i8>D>79]^5c=iL3
+Z225 IXCM=P_6km0Hk^IPzU0S0N1
+Z226 VE<z=Jzg_7oWJ0YmQX2]MU3
+Z227 !s105 vga_char_86x32_sv_unit
 S1
 R6
-Z216 w1551536388
-Z217 8E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv
-Z218 FE:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv
+Z228 w1551536388
+Z229 8E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv
+Z230 FE:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv
 L0 1
 R10
 r1
 31
-Z219 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv|
+Z231 !s90 -reportprogress|300|-work|work|-sv|E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv|
 R12
 !i10b 1
 !s85 0
-Z220 !s108 1551863116.142000
-Z221 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv|
+Z232 !s108 1553097471.696000
+Z233 !s107 E:/work-Lab/USTCRVSoC/hardware/RTL/vga_char_86x32.sv|
 !s101 -O0
 vvgaChar98x36
 R1
-Z222 !s100 3ih;Pko8X4XgOhl5e4_Gh0
-Z223 IaM^Q2hPSE=jENCH[nQnb^0
-Z224 VkYR^g;?9@>9aFYMNc5Beh0
-R204
+Z234 !s100 3ih;Pko8X4XgOhl5e4_Gh0
+Z235 IaM^Q2hPSE=jENCH[nQnb^0
+Z236 VkYR^g;?9@>9aFYMNc5Beh0
+R216
 S1
 R6
-R205
-R206
-R207
+R217
+R218
+R219
 L0 82
 R10
 r1
 31
-R209
-R210
-R211
+R221
+R222
+R223
 R12
-Z225 nvga@char98x36
+Z237 nvga@char98x36
 !i10b 1
 !s85 0
 !s101 -O0
 vvideo_ram
 R1
-Z226 !s100 5Km:lJ5=^^Z=H?Vg4dnQM0
-Z227 I8o<maB2Sg[@UYiL96IX_I3
-Z228 V5JnUKWk;WPc^ACUnLK1_E3
-R204
+!i10b 1
+Z238 !s100 5Km:lJ5=^^Z=H?Vg4dnQM0
+Z239 I8o<maB2Sg[@UYiL96IX_I3
+Z240 V5JnUKWk;WPc^ACUnLK1_E3
+R216
 S1
 R6
-Z229 w1551536461
-R206
-R207
+Z241 w1551536461
+R218
+R219
 L0 1
 R10
 r1
-31
-R211
-R12
-Z230 !s108 1551863115.923000
-R210
-!i10b 1
 !s85 0
+31
+!s108 1553097471.776000
+!s107 E:/work-Lab/USTCRVSoC/hardware/RTL/video_ram.sv|
+R223
 !s101 -O0
+R12

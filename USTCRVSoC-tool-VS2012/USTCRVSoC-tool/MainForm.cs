@@ -408,7 +408,7 @@ namespace USTCRVSoC_tool
             if (!refreshSerial())
                 return;
 
-            if (!serialSessionB("s", "debug"))
+            if (!serialSessionB("s", ""))
                 return;
 
             uint index = 0;
@@ -463,7 +463,8 @@ namespace USTCRVSoC_tool
 
             if (!refreshSerial())
                 return;
-            if (!serialSessionB("s", "debug"))
+            string response = "";
+            if (!serialSessionB("s", ""))
                 return;
 
             内存内容.Clear();
@@ -472,7 +473,7 @@ namespace USTCRVSoC_tool
             for (index = 0; index < len; index++)
             {
                 string send_str = String.Format("{0:x8}", start + index * 4);
-                string response = "";
+                response = "";
                 if (!serialSessionA(send_str, ref response))
                     return;
                 内存内容.AppendText(String.Format("{0:x8} : {1:S}\r\n", start + index * 4, response.Trim()));
@@ -549,5 +550,10 @@ namespace USTCRVSoC_tool
             }
         }
         #endregion
+
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
