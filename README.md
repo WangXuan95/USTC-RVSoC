@@ -1,6 +1,24 @@
-# USTCRVSoC
-
+USTCRVSoC
+===========================
 一个用 SystemVerilog 编写的，基于 RISC-V 的，普林斯顿结构的 SoC
+
+****
+## 目录
+* [特点](#特点)
+* [SoC结构](#SoC 结构)
+* [CPU特性](#CPU 特性)
+* [部署到FPGA](#部署 SoC 到 FPGA)
+    * 部署到 Nexys4-DDR
+    * 部署到 DE0-Nano
+    * 部署到其它开发板
+* [测试软件](#测试软件)
+    * Hello World
+	* 使用 UART 调试总线
+    * 使用 VGA 屏幕
+	* 使用工具：USTCRVSoC-tool
+* [RTL仿真](#RTL仿真) 
+    * 进行仿真
+    * 修改指令ROM
 
 # 特点
 
@@ -37,6 +55,24 @@
 * **数据RAM**：对应文件 ram_bus_wrapper.sv。存放运行时的数据。
 * **显存RAM**：对应文件 vedio_ram.sv。在屏幕上显示 86列 * 32行 = 2752 个字符，显存 RAM 的 4096B 被划分为 32 个块，每块对应一行，占 128B，前 86 字节对应 86 个列。屏幕上显示的是每个字节作为 ASCII 码所对应的字符。
 
+# CPU 特性
+
+* 支持： **RV32I** 中的所有Load、Store、算术、逻辑、移位、比较、跳转。
+* 不支持：同步、控制状态、环境调用和断点类指令
+
+所有支持的指令包括：
+
+> LB, LH, LW, LBU, LHU, SB, SH, SW, ADD, ADDI, SUB, LUI, AUIPC, XOR, XORI, OR, ORI, AND, ANDI, SLL, SLLI, SRL, SRLI, SRA, SRAI, SLT, SLTI, SLTU, SLTIU, BEQ, BNE, BLT ,BGE, BLTU, BGEU, JAL, JALR
+
+指令集方面，今后可能先考虑加入 **RV32IM** 中的乘除指令，再补全**RV32I**中未实现的指令
+
+CPU采用5段流水线，目前支持的流水线特性有：
+
+> Forward、Loaduse、总线握手等待
+
+流水线方面，今后考虑添加的特性有：
+
+> 分支预测、中断
 
 # 部署 SoC 到 FPGA
 
@@ -48,13 +84,13 @@
 * **Nexys4-DDR** 开发板或 **DE0-Nano** 开发板或其它 FPGA 开发板
 * 开发板对应的 **RTL 开发环境**，例如 Nexys4-DDR 对应 Vivado（推荐 Vivado 2017.4 或更高版本），DE0-Nano 对应 Quartus （推荐Quartus II 11.1 或更高版本）
 * 如果你的开发板没有自带 **USB转UART** 电路（例如 DE0-Nano 就不自带），则需要一个 **USB转UART模块**。
-* **可选**：* 屏幕、VGA线 *
+* **可选**：*屏幕、VGA线*
 
 ## 部署到 Nexys4-DDR
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/nexys4-connection2.png)
 
-1. **硬件连接**：如上图，Nexys4 开发板上有一个 USB 口既可以用于 FPGA 烧录，也可以用于 UART 通信，我们需要连接该 USB 口到电脑。另外，VGA 的连接是可选的，你可以把它连接到屏幕上。
+1. **硬件连接**：如上图，Nexys4 开发板上有一个 USB 口，既可以用于 FPGA 烧录，也可以用于 UART 通信，我们需要连接该 USB 口到电脑。另外，VGA 的连接是可选的，你可以把它连接到屏幕上。
 2. **综合、烧写**：请用 Vivado 打开 **./hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr**。综合并烧写到开发板。
 
 
@@ -107,9 +143,9 @@ module soc_top  #(
 * 超级终端
 * Putty
 
-这些工具用起来都不够爽快，因此这里使用该仓库中自带的小工具 **UartSession** 做示范。它的路径是 **./tools/UartSession.exe**。使用C#编写。
+这些工具用起来都不够爽快，因此这里使用该仓库中自带的小工具 **UartSession** 做示范。它的路径是 **./tools/UartSession.exe**。
 
-> UartSession.exe使用C#编写，VisualStudio 工程的路径是 **./UartSession-VS2012**。
+> **UartSession** 使用C#编写， **./UartSession-VS2012** 中有 VisualStudio 工程。
 
 首先，我们运行 **UartSession.exe**，可以看到该软件将电脑的所有可用端口都列了出来，并给出了几个选项：
 * **打开端口**：输入数字，按回车可以打开数字对应的端口。
@@ -126,7 +162,7 @@ module soc_top  #(
 
 ### 使用 UART 调试总线
 
-现在 **UartSession.exe** 界面中不断地打印出"hello"，我们打一个回车，可以看到对方不再打出"hello"，并出现了一个"debug"，这样就成功进入了 **DEBUG模式**。
+现在界面中不断地打印出"hello"，我们打一个回车，可以看到对方不再打出"hello"，并出现了一个"debug"，这样就成功进入了 **DEBUG模式**。
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/UartSession1.png)
 
@@ -138,7 +174,7 @@ UART 调试器有两种模式：
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/UartSession3.png)
 
-当然我们也可以用调试器写总线，输入一条写命令： **"10000 abcd1234"** 并按回车，会看到对方发来**"wr done"**，意为写成功，该命令意为向地址 0x10000 中写入 0xabcd1234 (0x10000是数据RAM的首地址）。
+除了读，我们也可以用调试器写总线，输入一条写命令： **"10000 abcd1234"** 并按回车，会看到对方发来 **"wr done"** ，意为写成功，该命令意为向地址 0x10000 中写入 0xabcd1234 (0x10000是数据RAM的首地址）。
 
 为了验证写成功，输入读指令：**"10000"** 并按回车，会看到对方发来**"abcd1234"**。
 
@@ -146,26 +182,26 @@ UART 调试器有两种模式：
 
 下表显示了 **DEBUG模式** 的所有命令格式。
 
-| 命令类型 | 命令格式    | 返回格式    | 命令示例   | 返回示例  | 含义        |
-| :-----:  | :-----:    | :----:     | :-----:   | :-----:  | :----:      |
-| 读总线   | [十六进制地址] | [十六进制数据] | 00020000 | abcd1234 | 地址0x00020000读出的数据是0xabcd1234 |
-| 写总线  | [十六进制地址] [十六进制数据] | wr done | 00020004 1276acd0 | wr done | 向地址0x00020004写数据0x1276acd0 |
-| 切换至调试模式 | o          | user    | o   | user | 切换回USER模式
-| 复位  | r[十六进制boot地址] | rst done | r00008000 | rst done | CPU 复位并从地址 0x00008000 处开始执行，同时切换回 USER 模式 |
-| 非法命令  | [其它格式] | invalid | ^^$aslfdi | invalid | 发送的指令未定义 |
+| 命令类型  | 命令示例   | 返回示例  | 含义        |
+| -----  | :-----    | :----     | :-----   |
+| 读总线  | 00020000 | abcd1234 | 地址0x00020000读出的数据是0xabcd1234 |
+| 写总线  | 00020004 1276acd0 | wr done | 向地址0x00020004写数据0x1276acd0 |
+| 切至USER模式 | o   | user | 切换回USER模式
+| 复位  | r00008000 | rst done | CPU 复位并从地址 0x00008000 处开始执行，同时切换回 USER 模式 |
+| 非法命令  | ^^$aslfdi | invalid | 发送的指令未定义 |
 
 > 注：无论是发送还是接收，所有命令都以\n或\r或\r\n结尾，**UartSession.exe**是自动插入\n的。如果使用串口助手等其它软件，需要注意这个问题。
 
 根据这些命令，不难猜出，在线上传程序的流程是：
 
-1. 使用写命令，将指令流写入指令RAM，（指令RAM的地址是00008000~00008fff）
-2. 使用复位命令r00008000，将CPU复位并从指令RAM中BOOT
+1. 使用写命令，将指令流写入指令 RAM ，（指令 RAM 的地址是 00008000~00008fff）
+2. 使用复位命令 r00008000 ，将 CPU 复位并从指令 RAM 中 BOOT
 
 ### 使用 VGA 屏幕
 
 没有连接屏幕的可以跳过这一步。
 
-如果开发板通过 VGA 连接到了屏幕，我们可以看到屏幕上出现一个红框，里面空空如也。实际上里面隐藏了 86列32行的字符空位。下面用 UART调试器 让屏幕上显示字符。
+如果开发板通过 VGA 连接到了屏幕，可以看到屏幕上出现一个红框，里面空空如也。实际上里面隐藏了 86列32行的字符空位。下面用 **UART调试器** 让屏幕上显示字符。
 
 > 提示：如果屏幕中的红框不在正中间，可以使用屏幕的“自动校正”按钮校正一下
 
@@ -193,11 +229,13 @@ UART 调试器有两种模式：
 
 **USTCRVSoC-tool.exe** 是一个能汇编和烧写的小工具，相当于一个 **汇编语言的IDE**，其路径是 **./tools/USTCRVSoC-tool.exe**，界面如下图。
 
+> **USTCRVSoC-tool** 使用C#编写，VisualStudio 的工程路径是 ./USTCRVSoC-tool-VS2012
+
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/USTCRVSoC-tool-image.png)
 
 现在尝试让SoC运行一个计算快速排序的程序。步骤：
-1. **打开 USTCRVSoC-tool.exe **
-2. **打开**：点击**打开...**按钮，浏览到目录./software/asm-code/calculation-test/，打开汇编文件 **QuickSort.S**。
+1. **打开 USTCRVSoC-tool.exe**
+2. **打开**：点击**打开**按钮，浏览到目录 ./software/asm-code/calculation-test/，打开汇编文件 **QuickSort.S**。
 3. **汇编**：点击**汇编**按钮，可以看到下方框里出现了一串16进制数，这就是汇编得到的机器码。
 4. **烧写**：确保FPGA连接到电脑并烧录了SoC的硬件，然后选择正确的 COM 端口，点击**烧写**，如果下方状态栏里显示“烧写成功”，则CPU就已经开始运行该机器码了。
 5. **查看内存**：这时，在右侧点击**DUMP内存**，可以看到一个有序的数列。QuickSort程序对-9~+9的乱序数组进行了排序，每个数重复了两次。默认的**DUMP内存**不能显示完全，可以将长度设置为100，这样DUMP的字节数量为0x100字节，能看到排序的完整结果。
