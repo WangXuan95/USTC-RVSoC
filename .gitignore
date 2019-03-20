@@ -22,6 +22,7 @@
 **/riscv32-elf-tools-windows/*.bin
 **/USTCRVSoC-nexys4.runs
 **/USTCRVSoC-nexys4/*.log
+**/USTCRVSoC-nexys4.sim
 !Nexys4_USTCRVSoC_top.bit
 **/software/ASM
 **/Quartus/UART_ISP_TEST
