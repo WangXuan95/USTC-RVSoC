@@ -5,22 +5,22 @@ USTCRVSoC
 ****
 ## 目录
 * [特点](#特点)
-* [SoC结构](#SoC 结构)
-* [CPU特性](#CPU 特性)
-* [部署到FPGA](#部署 SoC 到 FPGA)
+* [SoC结构](#SoC结构)
+* [CPU特性](#CPU特性)
+* [部署到FPGA](#部署到FPGA)
     * 部署到 Nexys4-DDR
     * 部署到 DE0-Nano
     * 部署到其它开发板
 * [测试软件](#测试软件)
     * Hello World
-	* 使用 UART 调试总线
+    * 使用 UART 调试总线
     * 使用 VGA 屏幕
-	* 使用工具：USTCRVSoC-tool
-* [RTL仿真](#RTL仿真) 
+    * 使用工具：USTCRVSoC-tool
+* [RTL仿真](#RTL仿真)
     * 进行仿真
     * 修改指令ROM
 
-# 特点
+#特点
 
 * **CPU**：5段流水线 RISC-V ，能运行 **RV32I** 指令集中的大部分指令
 * **总线**：简单直观的，具有**握手机制**的，32-bit地址位宽和32-bit数据位宽的总线
@@ -29,7 +29,7 @@ USTCRVSoC
 * **纯 RTL 实现**：完全使用SystemVerilog，不调用IP核，便于移植和仿真
 * RAM 和 ROM 符合一定的Verilog写法，**自动综合成 Block RAM**
 
-# SoC 结构
+# SoC结构
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/SoC.png)
 
@@ -55,7 +55,7 @@ USTCRVSoC
 * **数据RAM**：对应文件 ram_bus_wrapper.sv。存放运行时的数据。
 * **显存RAM**：对应文件 vedio_ram.sv。在屏幕上显示 86列 * 32行 = 2752 个字符，显存 RAM 的 4096B 被划分为 32 个块，每块对应一行，占 128B，前 86 字节对应 86 个列。屏幕上显示的是每个字节作为 ASCII 码所对应的字符。
 
-# CPU 特性
+# CPU特性
 
 * 支持： **RV32I** 中的所有Load、Store、算术、逻辑、移位、比较、跳转。
 * 不支持：同步、控制状态、环境调用和断点类指令
@@ -74,7 +74,7 @@ CPU采用5段流水线，目前支持的流水线特性有：
 
 > 分支预测、中断
 
-# 部署 SoC 到 FPGA
+# 部署到FPGA
 
 目前，我们提供了 Xilinx 的 **Nexys4-DDR** 开发板和 Altera 的 **DE0-Nano** 开发板的工程。
 
@@ -268,7 +268,3 @@ UART 调试器有两种模式：
 如果你想仿真某个指令流，需要对**指令ROM**进行修改。
 
 **USTCRVSoC-tool** 除了进行烧写，也可以用编译后的指令流生成**指令ROM**的Verilog代码。当你使用**汇编**按钮产生指令流后，可以点击右侧的**保存指令流(Verilog)**按钮，保存时替换 **./RTL/instr_rom.sv**，再重新进行仿真即可。
-
-
-
-
