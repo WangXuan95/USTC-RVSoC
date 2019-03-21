@@ -20,7 +20,7 @@ USTCRVSoC
     * 进行仿真
     * 修改指令ROM
 
-#特点
+# 特点
 
 * **CPU**：5段流水线 RISC-V ，能运行 **RV32I** 指令集中的大部分指令
 * **总线**：简单直观的，具有**握手机制**的，32-bit地址位宽和32-bit数据位宽的总线
@@ -99,7 +99,9 @@ CPU采用5段流水线，目前支持的流水线特性有：
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/DE0-Nano.png)
 
 1、**硬件连接**：DE0-Nano开发板上既没有串口转USB，也没有VGA接口。因此需要外部模块，以及一些动手能力和硬件知识。我们使用DE0-Nano上的两排GPIO作为外接模块的引脚，接口意义如上图。你需要一个USB转UART的模块，将UART的TX和RX引脚连接上去，使之能与电脑通信。VGA的连接是可选的，需要符合上图中VGA的引脚定义。最后连接的效果如下图：
+
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/connection.png)
+
 2、**综合、烧写**：请用 Quartus 打开 **./hardware/Quartus/DE0_Nano/DE0_Nano.qpf**。综合并烧写到开发板。
 
 ## 部署到其它开发板
