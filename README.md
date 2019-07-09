@@ -1,6 +1,6 @@
 ![test](https://img.shields.io/badge/test-passing-green.svg)
 ![docs](https://img.shields.io/badge/docs-passing-green.svg)
-![platform](https://img.shields.io/badge/platform-Quartus | Vivado-blue.svg)
+![platform](https://img.shields.io/badge/platform-Quartus|Vivado-blue.svg)
 
 USTCRVSoC
 ===========================
