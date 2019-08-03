@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Tue Mar 12 00:06:43 2019
+# Process ID: 17980
+# Current directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15368 E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
+# Log file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
+# Journal file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv] -no_script -reset -force -quiet
+remove_files  E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+add_files -norecurse E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v] -no_script -reset -force -quiet
+remove_files  E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1

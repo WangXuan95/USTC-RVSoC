@@ -10,7 +10,7 @@
       <Properties Property="FULL_PROBES.FILE" value=""/>
       <Properties Property="PROBES.FILE" value=""/>
       <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/Nexys4_USTCRVSoC_top.bit"/>
-      <Properties Property="SLR.COUNT" value="C:/Users/wgg/AppData/Roaming/Xilinx/Vivado/1"/>
+      <Properties Property="SLR.COUNT" value="1"/>
     </Object>
   </ObjectList>
   <probeset name="hw project" active="false"/>
