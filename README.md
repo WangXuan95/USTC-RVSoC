@@ -1,3 +1,7 @@
+![test](https://img.shields.io/badge/test-passing-green.svg)
+![docs](https://img.shields.io/badge/docs-passing-green.svg)
+![platform](https://img.shields.io/badge/platform-Quartus|Vivado-blue.svg)
+
 USTCRVSoC
 ===========================
 一个用 SystemVerilog 编写的，基于 RISC-V 的，普林斯顿结构的 SoC
