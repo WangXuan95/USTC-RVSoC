@@ -1,0 +1,65 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Sep  1 20:20:24 2019
+# Process ID: 14792
+# Current directory: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/Nexys4
+# Command line: vivado.exe E:\FPGAcommon\USTCRVSoC\hardware\Vivado\Nexys4\USTCRVSoC-nexys4.xpr
+# Log file: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/Nexys4/vivado.log
+# Journal file: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/Nexys4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/FPGAcommon/USTCRVSoC/hardware/Vivado/Nexys4/USTCRVSoC-nexys4.xpr
+INFO: [Project 1-313] Project file moved from 'E:/FPGAcommon/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/char8x16_rom.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/char8x16_rom.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_alu.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_alu.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_bus_wrapper.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_id_stage.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_id_stage.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_instr_bus_adapter.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_instr_bus_adapter.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_regfile.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_regfile.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_top.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_top.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/dual_read_port_ram_32x32.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/instr_rom.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/instr_rom.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/isp_uart.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/isp_uart.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/naive_bus.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/naive_bus.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/naive_bus_router.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/naive_bus_router.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram128B.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram128B.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram_bus_wrapper.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/soc_top.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/soc_top.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/uart_rx.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/uart_rx.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/uart_tx_line.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/uart_tx_line.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/user_uart_tx.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/user_uart_tx.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/vga_char_86x32.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/vga_char_86x32.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/video_ram.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/video_ram.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/char8x16_rom.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/char8x16_rom.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_alu.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_alu.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_bus_wrapper.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_bus_wrapper.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_id_stage.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_id_stage.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_instr_bus_adapter.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_instr_bus_adapter.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_regfile.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_regfile.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/core_top.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/core_top.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/dual_read_port_ram_32x32.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/dual_read_port_ram_32x32.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/instr_rom.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/instr_rom.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/isp_uart.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/isp_uart.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/naive_bus.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/naive_bus.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/naive_bus_router.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/naive_bus_router.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram128B.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram128B.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/ram_bus_wrapper.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/ram_bus_wrapper.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/soc_top.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/soc_top.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/uart_rx.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/uart_rx.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/uart_tx_line.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/uart_tx_line.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/user_uart_tx.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/user_uart_tx.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/vga_char_86x32.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/vga_char_86x32.sv' instead.
+WARNING: [Project 1-312] File not found as 'E:/FPGAcommon/USTCRVSoC/RTL/video_ram.sv'; using path 'E:/FPGAcommon/USTCRVSoC/hardware/RTL/video_ram.sv' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'H:/Vivado2018/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 779.813 ; gain = 151.820
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun Sep  1 20:21:31 2019...

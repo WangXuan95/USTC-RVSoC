@@ -277,7 +277,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/char8x16_rom.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/ram128B.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_regfile.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_id_segreg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_instr_bus_adapter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_id_stage.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_alu.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../RTL/core_bus_wrapper.sv

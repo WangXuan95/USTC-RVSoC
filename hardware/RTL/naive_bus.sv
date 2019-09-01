@@ -1,5 +1,3 @@
-`ifndef NAIVE_BUS_SV
-`define NAIVE_BUS_SV
 
 interface naive_bus();
     // read interface
@@ -26,5 +24,3 @@ interface naive_bus();
     );
     
 endinterface
-
-`endif

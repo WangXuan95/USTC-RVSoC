@@ -1,12 +1,12 @@
 module DE0Nano_USTCRVSoC_top(
-    //////////// CLOCK //////////
+    //////////// CLOCK            //////////
     input  CLOCK_50,
     //////////// LED, KEY, Switch //////////
-    output [7:0] LED,
-    //////////// GPIO Header 1 //////////
-    input  [1:0]   GPIO_0_IN,
+    output [ 7:0]  LED,
+    //////////// GPIO Header 1    //////////
+    input  [ 1:0]  GPIO_0_IN,
     inout  [33:0]  GPIO_0,
-    input  [1:0]   GPIO_1_IN,
+    input  [ 1:0]  GPIO_1_IN,
     inout  [33:0]  GPIO_1
 );
 

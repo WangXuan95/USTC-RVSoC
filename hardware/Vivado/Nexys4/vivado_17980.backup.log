@@ -1,0 +1,46 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Tue Mar 12 00:06:43 2019
+# Process ID: 17980
+# Current directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15368 E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
+# Log file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
+# Journal file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr
+CRITICAL WARNING: [Project 1-19] Could not find the file 'E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.4/data/ip'.
+open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 862.133 ; gain = 140.059
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Tue Mar 12 00:07:28 2019] Launched synth_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/runme.log
+export_ip_user_files -of_objects  [get_files E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv] -no_script -reset -force -quiet
+remove_files  E:/work-Lab/USTCRVSoC/hardware/RTL/core_ex_branch_judge.sv
+launch_runs impl_1 -jobs 8
+[Tue Mar 12 00:09:58 2019] Launched impl_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log
+add_files -norecurse E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v] -no_script -reset -force -quiet
+remove_files  E:/work-Lab/RISCV-Pipline-CPU/1_VerilogSourceCode/1_CPUCore_src/BRAMModule/FakeCache.v
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Tue Mar 12 00:22:48 2019] Launched synth_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Tue Mar 12 00:31:54 2019] Launched impl_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Mar 12 00:43:16 2019] Launched impl_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 12 13:15:09 2019...

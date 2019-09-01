@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sat Jul 20 15:35:22 2019
+# Process ID: 8068
+# Current directory: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20140 E:\FPGAcommon\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
+# Log file: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
+# Journal file: E:/FPGAcommon/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/FPGAcommon/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr
+INFO: [Project 1-313] Project file moved from 'E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'H:/Xilinx/Vivado/2017.4/data/ip'.
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Jul 20 16:01:36 2019...

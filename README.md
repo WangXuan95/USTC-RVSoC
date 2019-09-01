@@ -12,7 +12,8 @@ USTCRVSoC
 * [SoC结构](#SoC结构)
 * [CPU特性](#CPU特性)
 * [部署到FPGA](#部署到FPGA)
-    * 部署到 Nexys4-DDR
+    * 部署到 Nexys4
+	* 部署到 Arty7
     * 部署到 DE0-Nano
     * 部署到其它开发板
 * [测试软件](#测试软件)
@@ -20,7 +21,9 @@ USTCRVSoC
     * 使用 UART 调试总线
     * 使用 VGA 屏幕
     * 使用工具：USTCRVSoC-tool
-* [RTL仿真](#RTL仿真)
+* [CPU仿真](#CPU仿真)
+    * 进行仿真
+* [SoC仿真](#SoC仿真)
     * 进行仿真
     * 修改指令ROM
 
@@ -68,7 +71,7 @@ USTCRVSoC
 
 > LB, LH, LW, LBU, LHU, SB, SH, SW, ADD, ADDI, SUB, LUI, AUIPC, XOR, XORI, OR, ORI, AND, ANDI, SLL, SLLI, SRL, SRLI, SRA, SRAI, SLT, SLTI, SLTU, SLTIU, BEQ, BNE, BLT ,BGE, BLTU, BGEU, JAL, JALR
 
-指令集方面，今后可能先考虑加入 **RV32IM** 中的乘除指令，再补全**RV32I**中未实现的指令
+指令集方面，今后可能先考虑加入 **RV32IM** 中的乘除指令。
 
 CPU采用5段流水线，目前支持的流水线特性有：
 
@@ -80,23 +83,27 @@ CPU采用5段流水线，目前支持的流水线特性有：
 
 # 部署到FPGA
 
-目前，我们提供了 Xilinx 的 **Nexys4-DDR** 开发板和 Altera 的 **DE0-Nano** 开发板的工程。
+目前，我们提供了 Xilinx 的 **Nexys4 开发板** 、 **Arty7 开发板** 和 Altera 的 **DE0-Nano 开发板** 的工程。
 
 为了进行部署和测试，你需要准备以下的东西：
 
 * 装有 **Windows7 系统** 或更高版本的 PC（如果使用 Linux 则很难用上我提供的几个C#编写的工具）
-* **Nexys4-DDR** 开发板或 **DE0-Nano** 开发板或其它 FPGA 开发板
-* 开发板对应的 **RTL 开发环境**，例如 Nexys4-DDR 对应 Vivado（推荐 Vivado 2017.4 或更高版本），DE0-Nano 对应 Quartus （推荐Quartus II 11.1 或更高版本）
-* 如果你的开发板没有自带 **USB转UART** 电路（例如 DE0-Nano 就不自带），则需要一个 **USB转UART模块**。
+* **Nexys4 开发板** 或 **Arty7 开发板** 或 **DE0-Nano 开发板** 或其它 FPGA 开发板
+* 开发板对应的 **RTL 开发环境**，例如 **Nexys4 开发板** 和 **Arty7 开发板** 对应 Vivado（推荐 Vivado 2018.3 或更高版本），DE0-Nano 对应 Quartus （推荐Quartus II 13.1 或更高版本）
+* 如果你的开发板没有自带 **USB转UART** 电路（例如 DE0-Nano），则需要一个 **USB转UART模块**。
 * **可选**：*屏幕、VGA线*
 
-## 部署到 Nexys4-DDR
+## 部署到 Nexys4
 
 ![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/nexys4-connection2.png)
 
 1. **硬件连接**：如上图，Nexys4 开发板上有一个 USB 口，既可以用于 FPGA 烧录，也可以用于 UART 通信，我们需要连接该 USB 口到电脑。另外，VGA 的连接是可选的，你可以把它连接到屏幕上。
-2. **综合、烧写**：请用 Vivado 打开 **./hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr**。综合并烧写到开发板。
+2. **综合、烧写**：请用 Vivado 打开 **./hardware/Vivado/Nexys4/USTCRVSoC-nexys4.xpr**。综合并烧写到开发板。
 
+## 部署到 Arty7
+
+1. **硬件连接**：Arty7 开发板上有一个 USB 口，既可以用于 FPGA 烧录，也可以用于 UART 通信，我们需要连接该 USB 口到电脑。
+2. **综合、烧写**：请用 Vivado 打开 **./hardware/Vivado/Arty7/USTCRVSoC-Arty7.xpr**。综合并烧写到开发板。
 
 ## 部署到 DE0-Nano
 
@@ -110,7 +117,7 @@ CPU采用5段流水线，目前支持的流水线特性有：
 
 ## 部署到其它开发板
 
-如果很不幸，你手头的 FPGA 开发板既不是 Nexys4，也不是 DE0-Nano，则需要手动建立工程，连接信号到开发板顶层。分为以下步骤：
+如果很不幸，你手头的 FPGA 开发板不是上述开发板，则需要手动建立工程，连接信号到开发板顶层。分为以下步骤：
 
 * **建立工程**：建立工程后，需要将 **./hardware/RTL/** 中的所有 .sv 文件添加进工程。
 * **编写顶层**：SoC 的顶层文件是 **./hardware/RTL/soc_top.sv**，你需要编写一个针对该开发板的顶层文件，调用 **soc_top**，并将 FPGA 的引脚连接到 **soc_top** 中。以下是对 **soc_top** 的信号说明。
@@ -255,19 +262,23 @@ UART 调试器有两种模式：
 > 关于**普林斯顿结构**：我们虽然区分了**指令RAM**、**数据RAM**、**显存RAM**，但这写存储器在普林斯顿结构中都没有区别。你可以把指令烧写到**数据RAM**、**显存RAM**中去运行，也可以把变量放在**指令RAM**中。甚至，指令和数据都可以放在**数据RAM**中，只要地址别冲突，程序也能正常运行。但是这样的运行效率就会降低，因为CPU的**指令接口**和**数据接口**会**争抢总线**。
 
 
+# CPU仿真
 
-# RTL仿真
-
-该仓库提供了 **Vivado** 和 **ModelSim-Altera** 两种仿真环境的仿真工程
+为了验证 CPU 能够正确的支持 RV32I 指令集，改仓库使用RiscV官方的指令集测试，提供针对了 CPU 仿真工程。
 
 ### 进行仿真
 
-* 如果你用 **Vivado** ，请打开工程 **./hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr** ，工程已经选择了 **soc_top_tb.sv** 作为仿真的顶层，可以直接进行**行为仿真**。
-* 如果你用 **Quartus** ，请确认你也有 **ModelSim-Altera** 组件。使用 **ModelSim-Altera** 打开 **./hardware/ModelSim/USTCRVSoC.mpf**，编译之后请对**soc_top_tb**进行仿真。
+* 用 **Vivado** 打开工程 **./hardware/Simulation_RiscvCPU/Vivado_Simulation/Simulation_RiscvCPU.xpr** ，可看见顶层文件为 **tb_core.sv** ，然后按照注释的指示进行仿真即可。
+
+# SoC仿真
+
+该仓库提供了 SoC 的整体仿真。
+
+### 进行仿真
+
+* 用 **Vivado** 打开工程 **./hardware/Simulation_SoC/Vivado_Simulation/Simulation_SoC.xpr** ，工程已经选择了 **tb_soc.sv** 作为仿真的顶层，可以直接进行**行为仿真**。
 
 仿真时运行的指令流来自**指令ROM**，如果你还没修改过**指令ROM**，则仿真时可以看到 **uart_tx** 信号出现 **uart** 发送的波形，这是它在打印 **hello**。
-
-> 提示：通常，安装 **Quartus** 时，如果不是刻意的不勾选，都会自动安装上 **ModelSim-Altera**
 
 ### 修改指令ROM
 

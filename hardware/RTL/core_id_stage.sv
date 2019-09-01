@@ -37,7 +37,7 @@ always_comb         // calculate instruction type
         OPCODE_JALR   : instr_type <= I_TYPE;
         OPCODE_BRANCH : instr_type <= B_TYPE;
         OPCODE_LUI    : instr_type <= U_TYPE;
-        OPCODE_ALI    : instr_type <= (o_funct3==3'b011) ? IZ_TYPE : I_TYPE;
+        OPCODE_ALI    : instr_type <= I_TYPE;
         OPCODE_ALR    : instr_type <= R_TYPE;
         OPCODE_LOAD   : instr_type <= I_TYPE;
         OPCODE_STORE  : instr_type <= S_TYPE;

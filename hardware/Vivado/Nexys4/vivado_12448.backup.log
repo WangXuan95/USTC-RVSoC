@@ -1,0 +1,70 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon Mar 11 16:18:42 2019
+# Process ID: 12448
+# Current directory: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12796 E:\work-Lab\USTCRVSoC\hardware\Vivado\nexys4\USTCRVSoC-nexys4\USTCRVSoC-nexys4.xpr
+# Log file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/vivado.log
+# Journal file: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.4/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 852.980 ; gain = 139.285
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Mon Mar 11 16:19:50 2019] Launched synth_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Mon Mar 11 16:21:52 2019] Launched synth_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Mon Mar 11 16:24:05 2019] Launched impl_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Mon Mar 11 16:26:31 2019] Launched impl_1...
+Run output will be captured here: E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2017.4
+  **** Build date : Dec 15 2017-21:08:27
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292A8B5DFA
+set_property PROGRAM.FILE {E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/Nexys4_USTCRVSoC_top.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {E:/work-Lab/USTCRVSoC/hardware/Vivado/nexys4/USTCRVSoC-nexys4/USTCRVSoC-nexys4.runs/impl_1/Nexys4_USTCRVSoC_top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 11 16:29:40 2019...

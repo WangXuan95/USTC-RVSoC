@@ -51,19 +51,20 @@ assign loaduse  =
             (id_src1_reg_en & mem_memory2reg & (id_src1_reg_addr==mem_dst_reg_addr) ) |
             (id_src2_reg_en & mem_memory2reg & (id_src2_reg_addr==mem_dst_reg_addr) ) ;
 
+
 // -------------------------------------------------------------------------------
-// PC controller - timing logic
+// Instruction Bus Adapter - timing logic
 // -------------------------------------------------------------------------------
-core_id_segreg core_id_segreg_inst(
+core_instr_bus_adapter core_instr_bus_adapter_i(
     .clk                  ( clk                           ),
     .rst_n                ( rst_n                         ),
     .i_boot_addr          ( i_boot_addr                   ),
-    .i_en                 ( ~id_stall                     ),
-    .i_re                 ( ~id_read_disable              ),
+    .i_stall              ( id_read_disable | id_stall    ),
+    .i_bus_disable        ( id_read_disable               ),
     .i_ex_jmp             ( ex_branch_jalr                ),
-    .i_ex_jmp_target      ( ex_branch_jalr_target         ),
+    .i_ex_target          ( ex_branch_jalr_target         ),
     .i_id_jmp             ( id_jal                        ),
-    .i_id_jmp_target      ( id_pc + id_imm                ),
+    .i_id_target          ( id_pc + id_imm                ),
     .o_pc                 ( id_pc                         ),
     .o_instr              ( id_instr                      ),
     .bus_master           ( instr_master                  )
