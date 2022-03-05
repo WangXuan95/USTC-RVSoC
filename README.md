@@ -38,7 +38,7 @@ USTCRVSoC
 
 # SoC结构
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/SoC.png)
+![SoC结构框图](./images/SoC.png)
 
 上图展示了SoC的结构，总线仲裁器**bus_router**为SoC的中心，上面挂载了3个**主接口**和5个**从接口**。这个SoC使用的总线并不来自于任何标准（例如AXI或APB总线），而是笔者自编的，因为简单所以命名为**naive_bus**。
 
@@ -95,7 +95,7 @@ CPU采用5段流水线，目前支持的流水线特性有：
 
 ## 部署到 Nexys4
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/nexys4-connection2.png)
+![Nexys4照片](./images/nexys4-connection2.png)
 
 1. **硬件连接**：如上图，Nexys4 开发板上有一个 USB 口，既可以用于 FPGA 烧录，也可以用于 UART 通信，我们需要连接该 USB 口到电脑。另外，VGA 的连接是可选的，你可以把它连接到屏幕上。
 2. **综合、烧写**：请用 Vivado 打开 **./hardware/Vivado/Nexys4/USTCRVSoC-nexys4.xpr**。综合并烧写到开发板。
@@ -107,11 +107,11 @@ CPU采用5段流水线，目前支持的流水线特性有：
 
 ## 部署到 DE0-Nano
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/DE0-Nano.png)
+![DE0Nano照片](./images/DE0-Nano.png)
 
 1、**硬件连接**：DE0-Nano开发板上既没有串口转USB，也没有VGA接口。因此需要外部模块，以及一些动手能力和硬件知识。我们使用DE0-Nano上的两排GPIO作为外接模块的引脚，接口意义如上图。你需要一个USB转UART的模块，将UART的TX和RX引脚连接上去，使之能与电脑通信。VGA的连接是可选的，需要符合上图中VGA的引脚定义。最后连接的效果如下图：
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/connection.png)
+![DE0Nano照片连接](./images/connection.png)
 
 2、**综合、烧写**：请用 Quartus 打开 **./hardware/Quartus/DE0_Nano/DE0_Nano.qpf**。综合并烧写到开发板。
 
@@ -166,7 +166,7 @@ module soc_top  #(
 * **刷新端口列表**：输入"refresh"，再按回车可以刷新端口列表。
 * **退出**：输入"exit"可以退出
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/UartSession2.png)
+![UartSession](./images/UartSession2.png)
 
 波特率默认是115200，与我们的 SoC 一致，不需要修改。直接从端口列表里找到 FPGA 开发板所对应的端口，打开它。我们就可以看到窗口中不断显示"hello"，根本停不下来，如上图，这说明CPU在正常运行程序。
 
@@ -177,7 +177,7 @@ module soc_top  #(
 
 现在界面中不断地打印出"hello"，我们打一个回车，可以看到对方不再打出"hello"，并出现了一个"debug"，这样就成功进入了 **DEBUG模式**。
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/UartSession1.png)
+![UartSession](./images/UartSession1.png)
 
 UART 调试器有两种模式：
 * **USER 模式**：该模式下可以收到 CPU 通过 isp_uart 发送的用户打印数据。FPGA烧写后默认处于这个模式。hello只有在这个模式下才能被我们看到。通过向 uart **发送一个\n** 可以跳出 **USER模式**，进入DEBUG模式。
@@ -185,7 +185,7 @@ UART 调试器有两种模式：
 
 下面让我们尝试 **UART 的调试功能**，输入 **"0"** 并按回车，会看到对方发来一个8位16进制数。该数就是SoC总线的地址 0x00000000 处读取出的数据，也就是**指令ROM**中的第一个指令，如下图。
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/UartSession3.png)
+![UartSession](./images/UartSession3.png)
 
 除了读，我们也可以用调试器写总线，输入一条写命令： "10000 abcd1234" 并按回车，会看到对方发来 **"wr done"** ，意为写成功，该命令意为向地址 0x10000 中写入 0xabcd1234 (0x10000是数据RAM的首地址）。
 
@@ -220,7 +220,7 @@ UART 调试器有两种模式：
 
 在**DEBUG模式**下，发送一条写命令： **"20000 31323334"** ，可以看到第一行出现了 **4321** 。这是因为显存RAM的起始地址是 0x20000，使用 UART调试器 正好向其中的前4个字节写入了 0x34、0x33、0x32、0x31，也就是**4321**的ASCII码。
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/vga_show.png)
+![VGA](./images/vga_show.png)
 
 显存 RAM 占 4096 字节，分为32个块，对应屏幕中的32个行；每块128B，前 86 字节对应该行中的前 86 个字符的 ASCII 码。后面128-86个字节不会显示在屏幕上。
 
@@ -246,7 +246,7 @@ UART 调试器有两种模式：
 
 > **USTCRVSoC-tool** 使用C#编写，VisualStudio 的工程路径是 ./USTCRVSoC-tool-VS2012
 
-![Image text](https://github.com/WangXuan95/USTCRVSoC/blob/master/images/USTCRVSoC-tool-image.png)
+![USTCRVSoCtool](./images/USTCRVSoC-tool-image.png)
 
 现在尝试让SoC运行一个计算快速排序的程序。步骤：
 1. **打开 USTCRVSoC-tool.exe**
