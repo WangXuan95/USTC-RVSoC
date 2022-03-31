@@ -1,6 +1,5 @@
-![test](https://img.shields.io/badge/test-passing-green.svg)
-![docs](https://img.shields.io/badge/docs-passing-green.svg)
-![platform](https://img.shields.io/badge/platform-Quartus|Vivado-blue.svg)
+![语言](https://img.shields.io/badge/语言-systemverilog_(IEEE1800_2005)-CAD09D.svg) ![仿真](https://img.shields.io/badge/仿真-vivado-FF1010.svg) ![部署](https://img.shields.io/badge/部署-vivado-FF1010.svg) ![部署](https://img.shields.io/badge/部署-quartus-blue.svg)
+
 
 USTCRVSoC
 ===========================
@@ -11,7 +10,7 @@ USTCRVSoC
 * [特点](#特点)
 * [SoC结构](#SoC结构)
 * [CPU特性](#CPU特性)
-* [部署到FPGA](#部署到FPGA)
+* [部署到FPGAf](#部署到FPGA)
     * 部署到 Nexys4
 	* 部署到 Arty7
     * 部署到 DE0-Nano
@@ -30,17 +29,16 @@ USTCRVSoC
 # 特点
 
 * **CPU**：5段流水线 RISC-V ，能运行 **RV32I** 指令集中的大部分指令
-* **总线**：简单直观的，具有**握手机制**的，32-bit地址位宽和32-bit数据位宽的总线
-* **总线仲裁**：可使用宏定义修改，以方便拓展外设、DMA、多核等
+* **总线**：简单的具有**握手机制**的，32-bit地址位宽和32-bit数据位宽的总线
+* **总线交叉开关 (bus router)**：可使用参数修改总线主从接口的数量和从接口占用的地址空间，以方便拓展外设
 * **交互式 UART 调试**：支持使用PC上的Putty、串口助手、minicom等软件，实现**系统复位**、**上传程序**、**查看内存**等功能
-* **纯 RTL 实现**：完全使用SystemVerilog，不调用IP核，便于移植和仿真
-* RAM 和 ROM 符合一定的Verilog写法，**自动综合成 Block RAM**
+* 完全使用 SystemVerilog 实现，不调用IP核，便于移植和仿真
 
 # SoC结构
 
 ![SoC结构框图](./images/SoC.png)
 
-上图展示了SoC的结构，总线仲裁器**bus_router**为SoC的中心，上面挂载了3个**主接口**和5个**从接口**。这个SoC使用的总线并不来自于任何标准（例如AXI或APB总线），而是笔者自编的，因为简单所以命名为**naive_bus**。
+上图展示了SoC的结构，总线仲裁器 **bus_router** （也叫总线交叉开关）为SoC的中心，上面挂载了3个**主接口**和5个**从接口**。这个SoC使用的总线并不来自于任何标准（例如AXI或APB总线），而是笔者自编的，因为简单所以命名为**naive_bus**。
 
 每个**从接口**都占有一段地址空间。当**主接口**访问总线时，**bus_router**判断该地址属于哪个地址空间，然后将它**路由**到相应的**从接口**。下表展示了5个**从接口**的地址空间。
 
@@ -54,7 +52,7 @@ USTCRVSoC
 
 ### 组成部件
 
-* **多主多从总线仲裁器**：对应文件 naive_bus_router.sv。为每个从设备划分地址空间，将主设备的总线读写请求路由到从设备。当多个主设备同时访问一个从设备时，还能根据主设备的优先级进行冲突仲裁。
+* **多主多从总线仲裁器 (bus_router)**：对应文件 naive_bus_router.sv。为每个从设备划分地址空间，将主设备的总线读写请求路由到从设备。当多个主设备同时访问一个从设备时，还能根据主设备的优先级进行冲突仲裁。
 * **RV32I Core**：对应文件 core_top.sv。包括两个主接口。一个用于取指令，一个用于读写数据。
 * **UART调试器**：对应文件 isp_uart.sv。将UART调试功能和用户UART结合为一体。包括一个主接口和一个从接口。它接收上位机从UART发来的命令，对总线进行读写。它可以用于在线烧写、在线调试。也可以接收CPU的命令去发送数据给用户。
 * **指令ROM**：对应文件 instr_rom.sv。CPU默认从这里开始取指令，里面的指令流是在硬件代码编译综合时就固定的，不能在运行时修改。唯一的修改方法是编辑 **instr_rom.sv** 中的代码，然后重新编译综合、烧写FPGA逻辑。因此**instr_rom** 多用于仿真。
@@ -264,19 +262,19 @@ UART 调试器有两种模式：
 
 # CPU仿真
 
-为了验证 CPU 能够正确的支持 RV32I 指令集，改仓库使用RiscV官方的指令集测试，提供针对了 CPU 仿真工程。
+为了验证 CPU 能够正确地运行 RV32I 指令集，我们使用 RISC-V 官方的指令集测试，提供针对了 CPU 仿真工程。
 
-### 进行仿真
+### 运行仿真
 
-* 用 **Vivado** 打开工程 **./hardware/Simulation_RiscvCPU/Vivado_Simulation/Simulation_RiscvCPU.xpr** ，可看见顶层文件为 **tb_core.sv** ，然后按照注释的指示进行仿真即可。
+用 **Vivado** 打开工程 **hardware/Simulation_RiscvCPU/Vivado_Simulation/Simulation_RiscvCPU.xpr** ，可看见顶层文件为 **tb_core.sv** ，然后按照注释的指示进行仿真即可。
 
 # SoC仿真
 
 该仓库提供了 SoC 的整体仿真。
 
-### 进行仿真
+### 运行仿真
 
-* 用 **Vivado** 打开工程 **./hardware/Simulation_SoC/Vivado_Simulation/Simulation_SoC.xpr** ，工程已经选择了 **tb_soc.sv** 作为仿真的顶层，可以直接进行**行为仿真**。
+用 **Vivado** 打开工程 **hardware/Simulation_SoC/Vivado_Simulation/Simulation_SoC.xpr** ，工程已经选择了 **tb_soc.sv** 作为仿真的顶层，可以直接进行**行为仿真**。
 
 仿真时运行的指令流来自**指令ROM**，如果你还没修改过**指令ROM**，则仿真时可以看到 **uart_tx** 信号出现 **uart** 发送的波形，这是它在打印 **hello**。
 
