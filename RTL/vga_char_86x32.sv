@@ -3,10 +3,10 @@ module vga_char_86x32 #(
     parameter VGA_CLK_DIV = 1
 )(
     // clock
-	input  logic clk,
+    input  logic clk,
     // vga interfaces
-	output logic hsync, vsync,
-	output logic red, green, blue,
+    output logic hsync, vsync,
+    output logic red, green, blue,
     // user interface
     output logic req,
     output logic [11:0] addr,

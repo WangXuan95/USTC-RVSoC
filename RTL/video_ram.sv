@@ -3,8 +3,8 @@ module video_ram #(
     parameter VGA_CLK_DIV = 1
 )(
     input  logic clk, rstn,
-	output logic o_hsync, o_vsync,
-	output logic o_red, o_green, o_blue,
+    output logic o_hsync, o_vsync,
+    output logic o_red, o_green, o_blue,
     naive_bus.slave  bus
 );
 

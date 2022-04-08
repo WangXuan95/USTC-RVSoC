@@ -25,7 +25,7 @@ always_comb
                          o_branch_jalr <= 1'b1;
                          o_branch_jalr_target <= num1_plus_imm;
                      end
-        7'b1100011 : begin                       // BRANCH�?
+        7'b1100011 : begin                       // BRANCH绫?
                          case(i_funct3)
                              3'b000 : o_branch_jalr <= (i_num1u == i_num2u);   // BEQ
                              3'b001 : o_branch_jalr <= (i_num1u != i_num2u);   // BNE
@@ -37,7 +37,7 @@ always_comb
                          endcase
                          o_branch_jalr_target <= pc_plus_imm;
                      end
-        default    : begin                       // 不跳�?
+        default    : begin                       // 涓嶈烦杞?
                          o_branch_jalr <= 1'b0;
                          o_branch_jalr_target <= 0;
                      end
@@ -45,24 +45,24 @@ always_comb
 
 always_comb
     casex({i_funct7,i_funct3,i_opcode})
-        // JAL类与JALR�?
+        // JAL, JALR
         17'bxxxxxxx_xxx_110x111 : o_res <=  i_pc + 4;             // JAL, JALR
-        // LUI�?
+        // LUI
         17'bxxxxxxx_xxx_0110111 : o_res <=  i_immu;               // LUI
-        // AUIPC�?
+        // AUIPC
         17'bxxxxxxx_xxx_0010111 : o_res <=  pc_plus_imm       ;   // AUIPC
-        // 算术�?
+        // 算术类
         17'b0000000_000_0110011 : o_res <=  i_num1u +  i_num2u;   // ADD
         17'bxxxxxxx_000_0010011 : o_res <=  num1_plus_imm     ;   // ADDI
         17'b0100000_000_0110011 : o_res <=  i_num1u -  i_num2u;   // SUB
-        // 逻辑�?
+        // 逻辑类
         17'b0000000_100_0110011 : o_res <=  i_num1u ^  i_num2u;   // XOR
         17'bxxxxxxx_100_0010011 : o_res <=  i_num1u ^  i_immu ;   // XORI
         17'b0000000_110_0110011 : o_res <=  i_num1u |  i_num2u;   // OR
         17'bxxxxxxx_110_0010011 : o_res <=  i_num1u |  i_immu ;   // ORI
         17'b0000000_111_0110011 : o_res <=  i_num1u &  i_num2u;   // AND
         17'bxxxxxxx_111_0010011 : o_res <=  i_num1u &  i_immu ;   // ANDI
-        // 位移�?
+        // 移位类
         17'b0000000_001_0110011 : o_res <=  i_num1u << shamt_rs ; // SLL
         17'b0000000_001_0010011 : o_res <=  i_num1u << shamt_imm; // SLLI
         17'b0000000_101_0110011 : o_res <=  i_num1u >> shamt_rs ; // SRL
@@ -75,12 +75,12 @@ always_comb
                                       o_res <= i_num1u >> shamt_imm;
                                       for(int i=0;i<shamt_imm;i++) o_res[31-i] <= i_num1u[31];
                                   end
-        // 比较�?
+        // 条件SET类
         17'b0000000_010_0110011 : o_res <=  (i_num1s < i_num2s) ? 1 : 0;   // SLT
         17'bxxxxxxx_010_0010011 : o_res <=  (i_num1s < i_imms ) ? 1 : 0;   // SLTI
         17'b0000000_011_0110011 : o_res <=  (i_num1u < i_num2u) ? 1 : 0;   // SLTU
         17'bxxxxxxx_011_0010011 : o_res <=  (i_num1u < i_immu ) ? 1 : 0;   // SLTIU
-        // 无操�? 
+        // 未定义
         default   : o_res <= 0;
     endcase
 
