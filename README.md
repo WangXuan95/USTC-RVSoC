@@ -1,8 +1,10 @@
 ![语言](https://img.shields.io/badge/语言-systemverilog_(IEEE1800_2005)-CAD09D.svg) ![仿真](https://img.shields.io/badge/仿真-vivado-FF1010.svg) ![部署](https://img.shields.io/badge/部署-vivado-FF1010.svg) ![部署](https://img.shields.io/badge/部署-quartus-blue.svg)
 
+中文 | [English](#en)
 
 USTCRVSoC
 ===========================
+
 一个 SystemVerilog 编写的，以一个 RISC-V CPU 为核心的，普林斯顿结构的 SoC ，可作为 MCU 使用。
 
 * **CPU**：5段流水线 RISC-V ，支持 **RV32I** 指令集（除了 CSR 指令）。
@@ -14,6 +16,7 @@ USTCRVSoC
 ## 目录
 
 * [简介](#简介)
+* [硬件设计代码](#硬件设计代码)
 * [部署到FPGA](#部署到FPGA)
     * 部署到 Nexys4
     * 部署到 Arty7
@@ -60,7 +63,7 @@ USTCRVSoC
 ## CPU特性
 
 * 支持： **RV32I** 中的所有 Load、Store、算术、逻辑、移位、比较、跳转。
-* 不支持：同步、控制状态（CSR）、环境调用和断点类指令
+* 不支持：控制状态（CSR）、同步、环境调用和断点类指令
 
 所有支持的指令包括：
 
@@ -95,10 +98,11 @@ CPU采用5段流水线，如**图2**，目前支持的流水线特性包括：Fo
 
 为了进行部署和测试，你需要准备以下的东西：
 
-* **Windows7 系统** 或更高版本的 PC（如果使用 Linux 则很难用上我提供的两个C#编写的工具）
+* **Windows7 系统** 或更高版本的 PC（如果使用 Linux 则很难用上我提供的两个C\#编写的工具）
 * **Nexys4 开发板** 或 **Arty7 开发板** 或 **DE0-Nano 开发板** 或其它 FPGA 开发板
+  * 如果你的开发板没有自带 USB 转 UART 电路（例如 DE0-Nano），则需要一个 **USB转UART模块**
+
 * 开发板对应的开发环境，例如 Nexys4 和 Arty7 开发板对应 Vivado，DE0-Nano 对应 Quartus
-* 如果你的开发板没有自带 USB 转 UART 电路（例如 DE0-Nano），则需要一个 **USB转UART模块**
 * 可选：屏幕、VGA线
 
 ## 部署到 Nexys4
@@ -121,9 +125,8 @@ CPU采用5段流水线，如**图2**，目前支持的流水线特性包括：Fo
 | :---------------------------------: |
 |  **图4**：DE0-Nano 的硬件连接方法   |
 
-1、**硬件连接**：DE0-Nano开发板上既没有USB转UART，也没有VGA接口。因此需要外部模块，以及一些动手能力。我们使用DE0-Nano上的两排GPIO作为外接模块的引脚，接口含义如**图4**。你需要一个USB转UART的模块，将UART的TX和RX引脚连接上去，使之能与电脑通信。VGA的连接是可选的，需要符合上图中VGA的引脚定义。最后连接的效果如**图5**：
-
-2、**综合、烧写**：请用 Quartus 打开 **FPGA-DE0Nano/DE0Nano_USTCRVSoC.qpf**。综合并烧写。
+1. **硬件连接**：DE0-Nano开发板上既没有USB转UART，也没有VGA接口。因此需要外部模块，以及一些动手能力。我们使用DE0-Nano上的两排GPIO作为外接模块的引脚，接口含义如**图4**。你需要一个USB转UART的模块，将UART的TX和RX引脚连接上去，使之能与电脑通信。VGA的连接是可选的，需要符合上图中VGA的引脚定义。最后连接的效果如**图5**。
+2. **综合、烧写**：请用 Quartus 打开 **FPGA-DE0Nano/DE0Nano_USTCRVSoC.qpf**。综合并烧写。
 
 | ![de0nano-connection](./figures/de0nano-connection.png) |
 | :-----------------------------------------------------: |
@@ -182,7 +185,7 @@ module soc_top  #(
 
 - **退出**：输入"exit"可以退出
 
-波特率默认是115200，与我们的 SoC 一致，不需要修改。我们直接从端口列表里找到 FPGA 开发板所对应的COM端口，打开它。我们就可以看到窗口中不断显示"hello"，根本停不下来，如图，这说明CPU在正常运行程序。
+波特率默认是115200，与我们的 SoC 一致，不需要修改。我们直接从端口列表里找到 FPGA 开发板所对应的COM端口，打开它。我们就可以看到窗口中不断显示"hello"，根本停不下来，如**图6**，这说明CPU在正常运行程序。
 
 |    ![UartSession2](./figures/UartSession2.png)     |
 | :------------------------------------------------: |
@@ -207,7 +210,7 @@ SoC 内的 UART 调试器（isp_uart.sv）有两种模式：
 
 | ![UartSession3](./figures/UartSession3.png) |
 | :-----------------------------------------: |
-|            **图8**：进入调试模式            |
+|     **图8**：在调试模式下进行总线读操作     |
 
 除了读，我们也可以在总线上进行写操作。我们输入一条写命令 "10000 abcd1234" 并按回车，会看到对方发来 "wr done" ，意为写成功，该命令意为向地址 0x10000 中写入 0xabcd1234（从表1可以看出，0x10000是数据RAM的首地址）。
 
@@ -318,3 +321,328 @@ SoC 内的 UART 调试器（isp_uart.sv）有两种模式：
 仿真时运行的指令流来自**指令ROM**，如果你还没修改过**指令ROM**，则仿真时可以看到 **uart_tx** 信号出现 **uart** 发送的波形，这是它在打印 **hello**。
 
 如果你想在仿真时让 CPU 运行其它的指令流，需要对**指令ROM**进行修改。**USTCRVSoC-tool** 除了进行烧写，也可以用编译后的指令流生成**指令ROM**的Verilog代码。当你使用**汇编**按钮产生指令流后，可以点击右侧的"保存指令流(Verilog)"按钮，保存时替换掉 **./RTL/instr_rom.sv**，再重新进行仿真即可。
+
+
+
+<span id="en">USTCRVSoC</span>
+===========================
+
+A Princeton-structured SoC written in SystemVerilog with a RISC-V CPU as the core, which can be used as an MCU.
+
+* **CPU**: 5-stage pipeline RISC-V, support **RV32I** instruction set (except CSR instruction).
+* **Bus**: with **handshake mechanism**, 32-bit address, 32-bit data.
+* **Bus router**: You can use parameters to modify the number of bus master-slave interfaces and the address space occupied by the slave interfaces to facilitate the expansion of peripherals.
+* **Interactive UART debugging**: You can use Putty, minicom, HyperTerminal and other software on the PC to perform online system reset**, **upload programs**, and **check memory.
+* Completely implemented with SystemVerilog, without calling IP core, which is convenient for porting and simulation.
+
+## Table of Contents
+
+* [Introduction](#Introduction)
+* [Design Code](#Design Code)
+* [Deploy on FPGA](#Deploy on FPGA)
+  * Deploy on Nexys4
+  * Deploy on Arty7
+  * Deploy on DE0-Nano
+  * Deploy on other boards
+* [Run and Test](#Run and Test)
+  * Hello World
+  * Use UART to debug
+  * Use VGA screen
+  * Use USTCRVSoC-tool
+* [CPU Simulation](#CPU Simulation)
+* [SoC Simulation](#SoC Simulation)
+
+# Introduction
+
+**Figure1** shows the structure of the SoC, the bus arbiter **bus_router** (also called bus crossbar) is mounted with 3 **master interfaces** (master port) and 5 **slave interfaces ** (slave port). This bus is not derived from any existing standard (such as AXI or APB), but is a simple synchronous handshake bus named **naive_bus**.
+
+|  ![SoC](./figures/SoC.png)   |
+| :--------------------------: |
+| **Figure1** : SoC structure. |
+
+Each **slave interface** occupies a segment of address space. When the master interface accesses the bus, the bus_router determines which address space the address belongs to, and then routes it to the corresponding slave interface. The following table shows the address space of the 5 **slave interfaces**.
+
+*Table1* : SoC address space allocation.
+
+|      Peripheral      | start address | final address |
+| :------------------: | :-----------: | :-----------: |
+|   Instruction ROM    |  0x00000000   |  0x00007fff   |
+|   Instruction RAM    |  0x00008000   |  0x00008fff   |
+|       Data RAM       |  0x00010000   |  0x00010fff   |
+|      Video RAM       |  0x00020000   |  0x00020fff   |
+| ISP UART's user port |  0x00030000   |  0x00030003   |
+
+## Components
+
+* **Multi-master multi-slave bus arbiter (bus_router)**: Corresponding file naive_bus_router.sv. Divide the address space for each slave device, and route the bus read and write requests of the master device to the slave device. When multiple master devices access a slave device at the same time, conflict arbitration can also be performed according to the priority of the master device.
+* **RV32I Core**: corresponds to the file core_top.sv. Includes two main interfaces. One for fetching instructions and one for reading and writing data.
+* **UART Debugger**: Corresponding file isp_uart.sv. Combines UART debug function and user UART into one. Including a master interface and a slave interface. It receives the command sent by the host computer from the UART, and reads and writes the bus. It can be used for online programming and online debugging. It can also receive commands from the CPU to send data to the user.
+* **Instruction ROM**: Corresponding file instr_rom.sv. The CPU starts fetching instructions from here by default, and the instruction stream inside is fixed when the hardware code is compiled and synthesized, and cannot be modified at runtime. The only way to modify it is to edit the code in **instr_rom.sv** and then recompile the synthesis and program the FPGA logic. So **instr_rom** is mostly used for simulation.
+* **Instruction RAM**: Corresponding file ram_bus_wrapper.sv. Please use the UART debugger to program the instruction stream online, and then point the Boot address here. After resetting the SoC, the CPU starts to run the instruction stream from here.
+* **Data RAM**: Corresponding file ram_bus_wrapper.sv. Store runtime data.
+* **Video RAM**: Corresponding file video_ram.sv. Displaying 86 columns * 32 rows = 2752 characters on the screen, the 4096B of the video memory RAM is divided into 32 blocks, each block corresponds to a row, occupying 128B, and the first 86 bytes corresponds to 86 columns. What is displayed on the screen is the character corresponding to each byte as an ASCII code.
+
+## CPU Features
+
+* Supports: All Load, Store, Arithmetic, Logical, Shift, Compare, Jump in **RV32I**.
+* Not supported: Control State (CSR), Synchronization, Environment Calls, and Breakpoints.
+
+All supported directives include:
+
+> LB, LH, LW, LBU, LHU, SB, SH, SW, ADD, ADDI, SUB, LUI, AUIPC, XOR, XORI, OR, ORI, AND, ANDI, SLL, SLLI, SRL, SRLI, SRA, SRAI , SLT, SLTI, SLTU, SLTIU, BEQ, BNE, BLT ,BGE, BLTU, BGEU, JAL, JALR
+
+The CPU adopts a 5-stage pipeline, as shown in **Figure2**. The currently supported pipeline features include: Forward, Loaduse, and bus handshake waiting.
+
+|  ![CPU](./figures/CPU.png)   |
+| :--------------------------: |
+| **Figure2** : CPU structure. |
+
+
+
+# Design Code
+
+| Folder Name  | Description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| RTL          | All SystemVerilog code, where soc_top.sv is the top level of the entire SoC. |
+| FPGA-Arty7   | Vivado project based on Arty7 development board.             |
+| FPGA-Nexys4  | Vivado project based on Nexys4 development board.            |
+| FPGA-DE0Nano | Vivado project based on DE0Nano development board.           |
+| SIM-CPU      | Simulation: Instruction set test for CPU using RISC-V official test program. |
+| SIM-SoC      | Simulation for the SoC.                                      |
+
+Note that all projects share the same RTL directory, so modifying code in one project will also change the code in other projects.
+
+
+
+# Deploy on FPGA
+
+Currently, I provide projects for Xilinx's **Nexys4 Development Board** , **Arty7 Development Board** and Altera's **DE0-Nano Development Board**.
+
+To deploy, you need to prepare the following things:
+
+* **Windows7 system** or higher PC (if you use Linux, it is difficult to use the two tools written in C\# that I provide).
+* **Nexys4 board** or **Arty7 board** or **DE0-Nano board** or other FPGA board.
+  * If your development board does not have a built-in USB to UART circuit (eg DE0-Nano), you will need a **USB to UART module**
+* The development tool corresponding to the development board, such as Nexys4 and Arty7 corresponding to Vivado, DE0-Nano corresponding to Quartus.
+* Optional: screen, VGA cable.
+
+## Deploy on Nexys4
+
+| ![nexys4-connection](./figures/nexys4-connection.png) |
+| :---------------------------------------------------: |
+|     **Figure3** : hardware connection for Nexys4.     |
+
+1. **Hardware connection**: As shown in **Figure3**, the Nexys4 development board has a USB port, which can be used for FPGA programming or UART communication. We need to connect the USB port to the computer. Also, the VGA connection is optional, you can connect it to the screen.
+2. **Synthesis and programming**: Please use Vivado to open the project **FPGA-Nexys4/USTCRVSoC-nexys4.xpr** . Synthesize and program to FPGA.
+
+## Deploy on Arty7
+
+1. **Hardware connection**: There is a USB port on the Arty7 development board, which can be used for FPGA programming or UART communication. We need to connect the USB port to the computer.
+2. **Synthesis and programming**: Please use Vivado to open the project **FPGA-Arty7/USTCRVSoC-Arty7.xpr** . Synthesize and program to FPGA.
+
+## Deploy on DE0-Nano
+
+|       ![DE0-Nano](./figures/DE0-Nano.png)       |
+| :---------------------------------------------: |
+| **Figure4** : hardware connection for DE0-Nano. |
+
+1. **Hardware connection**: There is neither USB to UART nor VGA port on the DE0-Nano development board. Hence the need for external modules. We use the two rows of GPIO on DE0-Nano as the pins of the external module, and the meaning of the interface is shown in **Figure4**. You need a USB to UART module, connect the TX and RX pins of the UART, so that it can communicate with the computer. The connection of VGA is optional and needs to conform to the pin definition of VGA in the above figure. The effect of the final connection is as shown in **Figure5**.
+
+2. **Synthesis and programming**: Please open **FPGA-DE0Nano/DE0Nano_USTCRVSoC.qpf** with Quartus. Synthesize and program to FPGA.
+
+| ![de0nano-connection](./figures/de0nano-connection.png) |
+| :-----------------------------------------------------: |
+|     **Figure5** : hardware connection for DE0-Nano.     |
+
+## Deploy on other boards
+
+If your FPGA development board is not the above development board, you need to manually build the project and connect the signals to the top layer of the development board. Divided into the following steps:
+
+1. **Build project**: After building the project, you need to add all the .sv files in the RTL directory (and its subdirectories) into the project.
+2. **Write the top-level**: The top-level file of the SoC is **soc_top.sv**, you need to write a top-level file for FPGA, call **soc_top**, and connect the pins of the FPGA to **soc_top**. The following is the signal description for **soc_top**.
+3. **Synthesis and programming to FPGA**
+
+```Verilog
+module soc_top  #(
+  // UART接收分频系数，请根据clk的时钟频率决定，计算公式 UART_RX_CLK_DIV=clk频率(Hz)/460800，四舍五入
+  parameter  UART_RX_CLK_DIV = 108,
+  // UART发送分频系数，请根据clk的时钟频率决定，计算公式 UART_TX_CLK_DIV=clk频率(Hz)/115200，四舍五入
+  parameter  UART_TX_CLK_DIV = 434,
+  // VGA分频系数，请根据clk的时钟频率决定，计算公式 VGA_CLK_DIV=clk频率(Hz)/50000000
+  parameter  VGA_CLK_DIV     = 1
+)(
+  input  logic clk,            // SoC 时钟，推荐使用 50MHz 的倍数
+  input  logic isp_uart_rx,    // 连接到开发板的 UART RX 引脚
+  output logic isp_uart_tx,    // 连接到开发板的 UART TX 引脚
+  output logic vga_hsync, vga_vsync,   // 连接到VGA（可以不连接）
+  output logic vga_red, vga_green, vga_blue   // 连接到VGA（可以不连接）
+);
+```
+
+
+
+# Run and Test
+
+After the FPGA is programmed, start to test it.
+
+### Hello World
+
+After the hardware is programmed, you can already see that the indicator light corresponding to UART\_TX is blinking. Each blink is actually sending a "Hello" through the UART, which means that the CPU is running the default program in the command ROM. Let's take a look at this Hello.
+
+First of all, we need a **serial terminal software**, such as:
+
+* minicom
+* Serial Assistant
+* HyperTerminal
+* Putty
+
+Above softwares are not convenient enough to use, so here I provide a small tool **UartSession** . It's in path **./UartSession/UartSession.exe** .
+
+First, we double-click to run **UartSession.exe**, you can see that the software lists all the available ports of the computer, and gives several options:
+
+- **Open port**: Enter a number and press Enter to open the port corresponding to the number.
+
+- **Modify baud rate**: Enter `baud [number]` and press Enter to modify the baud rate. For example, enter baud 9600 to modify the baud rate to 9600.
+
+- **Refresh Port List**: Enter `refresh` and press Enter to refresh the port list.
+
+- **Exit**: Enter "exit" to exit
+
+The default baud rate is 115200, which is consistent with our SoC and does not need to be modified. We directly find the COM port corresponding to the FPGA development board from the port list and open it. We can see that "hello" is continuously displayed in the window, as shown in **Figure6**, which indicates that the CPU is running the program in the Instruction ROM normally.
+
+|         ![UartSession2](./figures/UartSession2.png)          |
+| :----------------------------------------------------------: |
+| **Figure6** : After opening the COM port, you can see that hello is continuously printed out |
+
+> **Hint** : If you don't know which COM port in the port list corresponds to the FPGA development board, you can unplug the USB of the development board and refresh the port list once, and the port that disappears is the port corresponding to the development board. Then plug in the USB (if the circuit in the FPGA is lost, you need to reprogram the FPGA)
+
+
+### Use UART to debug
+
+Now "hello" is continuously printed out in the interface, we press Enter, we can see that it no longer prints "hello", and a "debug" appears, thus successfully entering **DEBUG mode**, such as **Figure7**.
+
+| ![UartSession1](./figures/UartSession1.png) |
+| :-----------------------------------------: |
+|       **Figure7** : enter DEBUG mode.       |
+
+The UART debugger in SoC (isp_uart.sv) has two modes:
+
+* **USER mode**: In this mode, the user print data sent by the CPU through isp_uart can be received. The FPGA is in this mode by default after programming. hello can only be seen by us in this mode. By sending a **\n** to uart you can jump out of **USER mode** and enter DEBUG mode.
+* **DEBUG mode**: In this mode, any data printed by the CPU will be abandon, and the UART will no longer actively send data, it has become a **question and answer** form, the debugging commands sent by the user and the received All replies **end with \n**, you can return to **USER mode** by sending "o".
+
+Let's try to read and write to the bus in **DEBUG mode**. As shown in **Figure 8**, enter **"0"** and press Enter, you will see an 8-digit hexadecimal number sent by the other party. This number is the data read at address 0x00000000 of the SoC bus. As can be seen from *Table1*, it is the first instruction in the **Instruction ROM**.
+
+|       ![UartSession3](./figures/UartSession3.png)       |
+| :-----------------------------------------------------: |
+| **Figure8** : Start a Bus Read Operation in Debug Mode. |
+
+Besides reading, we can also perform write operations on the bus. We enter a write command "10000 abcd1234" and press Enter, we will see that the other party sends "wr done", which means the writing is successful. (It can be found in *Table1* that 0x10000 is the first address of the data RAM).
+
+In order to verify that the write is successful, enter the read command "10000" and press Enter, you will see that it sends "abcd1234" .
+
+> Note: The UART debugger can only read and write the bus in the form of **4-byte alignment**, and must read and write 4 bytes at a time.
+
+The following table shows all command formats for **DEBUG mode**.
+
+| Command         | Send Example      | Receive Example | Remark                                                       |
+| --------------- | :---------------- | :-------------- | :----------------------------------------------------------- |
+| Read Bus        | 00020000          | abcd1234        | The data read at address 0x00020000 is 0xabcd1234            |
+| Write Bus       | 00020004 1276acd0 | wr done         | Write data 0x1276acd0 to address 0x00020004                  |
+| To USER mode    | o                 | user            | Switch to USER mode                                          |
+| Reset CPU       | r00008000         | rst done        | CPU restarts execution at address 0x8000, switch back to USER mode |
+| Illegel command | ^^$aslfdi         | invalid         |                                                              |
+
+> Note : Whether sending or receiving, all commands end with \n or \r or \r\n, **UartSession.exe** will automatically insert \n. If you use other software such as serial port assistant, you need to pay attention to this problem.
+
+Based on these commands, it is not difficult to guess that the process of uploading the program online is:
+
+1. Use the write command to write the instructions into the instruction RAM one by one, (the address space of the instruction RAM is 00008000~00008fff)
+2. Use the reset command r00008000 to reset the CPU and start from the instruction RAM
+
+### Use VGA screen
+
+If you don't have a screen connected, you can skip this step.
+
+If the development board is connected to the screen via VGA, you can see a red box appear on the screen, which is completely empty. In fact, there are 86 columns and 32 lines of character spaces hidden inside. Let's use the **UART debugger** to display the characters on the screen.
+
+> Tip: If the red frame on the screen is not in the center, you can use the "Auto Correction" button on the screen to correct it
+
+In **DEBUG mode**, send a write command: **"20000 31323334"** , you can see that **4321** appears in the first line. This is because the starting address of the video memory RAM is 0x20000, and the UART debugger writes 0x34, 0x33, 0x32, 0x31 to the first 4 bytes, which is the ASCII code of **4321**.
+
+The video memory RAM occupies 4096 bytes, divided into 32 blocks, corresponding to 32 lines in the screen; each block is 128B, and the first 86 bytes correspond to the ASCII code of the first 86 characters in the line. The next 128-86 bytes are not displayed on the screen.
+
+Video RAM behaves the same as data RAM, both readable and writable, but there is no guarantee that data can be read out in one clock cycle.
+
+|                ![VGA](./figures/vga_show.png)                |
+| :----------------------------------------------------------: |
+| **Figure9** : Write data to Video memory with UART debugger and display it on a screen. |
+
+### Use USTCRVSoC-tool
+
+After playing with UART debugging, it is time to run benchmark with CPU.
+
+The **./asm-code** directory provides several small programs in RISC-V's assembly language as benchmarks, as shown in the following table.
+
+| File Name                             | Description                                                  |
+| :------------------------------------ | :----------------------------------------------------------- |
+| io-test/uart_print.S                  | The user UART prints hello in a loop.                        |
+| io-test/vga_hello.S                   | Show hello on VGA screen.                                    |
+| calculation-test/Fibonacci.S          | Recursive calculation the 8th number of **Fibonacci sequence**. |
+| calculation-test/Number2Ascii.S       | Convert integer to ASCII string, similar to **itoa** or **sprintf %d** in C. |
+| calculation-test/QuickSort.S          | Initialize a piece of data in RAM and do a **quick sort**.   |
+| basic-test/big_endian_little_endian.S | Test whether the system is **big endian** or **little endian** (here is little endian). |
+| basic-test/load_store.S               | Do some memory reads and writes.                             |
+
+It is impossible to manually write the compiled machine code into instruction RAM one by one, it is too cumbersome. To this end, I provide a tool,  **USTCRVSoC-tool.exe** , which can assemble and write instruction streams online (it is an assembly language IDE), the path is **./USTCRVSoC-tool/USTCRVSoC -tool.exe**, double click it to open.
+
+|       ![USTCRVSoCtool](./figures/USTCRVSoC.png)       |
+| :---------------------------------------------------: |
+| **Figure 10** : The user interface of USTCRVSoC-tool. |
+
+Now let's try to get the SoC to run the quicksort program. steps:
+
+1. **Open USTCRVSoC-tool.exe**
+2. **Open**: Click the **Open** button, browse to the directory ./asm-code/calculation-test/, and open the assembly file **QuickSort.S**.
+3. **Assembly**: Click the **Assembly** button, you can see a string of hexadecimal numbers in the box below, which are the assembled machine codes.
+4. **Programming**: Make sure the FPGA is connected to the computer and the is programmed, then select the correct COM port, click **Programming**, if the status bar below shows "Programming successful", then The CPU has already started running the machine code.
+5. **Dump and view memory**: At this time, click **DUMP memory** on the right, and you can see an ordered sequence. The QuickSort program sorts an out-of-order array from -9 to +9, repeating each number twice. The default **DUMP memory** cannot be displayed completely. You can set the length to 100, so that the number of bytes in the DUMP is 0x100 bytes, and you can see the complete result of the sorting.
+
+In addition, **USTCRVSoC-tool** can also view serial data in USER mode. Please open **io-test/uart_print.S**, assemble and program, you can see that hello is continuously printed in the **serial port view** box on the right.
+
+Now, you can try running these assembly benchmarks, or write your own assembly for testing. **Have fun!**
+
+> About **Princeton structure**: Although we distinguish **instruction RAM**, **data RAM**, and **video memory RAM**, there is no difference between the write memory in the Princeton structure. You can program the instructions to **data RAM**, **video memory RAM** to run, or you can put variables in **instruction RAM**. Even, instructions and data can be placed in **data RAM**, as long as the addresses do not conflict, the program can run normally. But this kind of operation efficiency will be reduced, because the CPU's **instruction interface** and **data interface** will compete for the bus.
+
+
+
+# CPU Simulation
+
+To verify that the CPU supports the RV32I instruction set properly, I ran a Verilog simulation in which the CPU ran the RISC-V official instruction set test programs.
+
+The related files of this simulation are in the [SIM-CPU](./SIM-CPU) folder, and each file is described as follows:
+
+| File/Folder Name | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| tb_cpu.sv        | testbench source code, simulation's top-level.               |
+| vivado_sim       | Vivado project, call tb_cpu.sv and the code in [RTL](./RTL) folder to simulate. |
+| rv32i_test       | Assembly code and instruction stream of test programs.       |
+
+To run the CPU simulation, please open the project **SIM-CPU/vivado_sim/sim_cpu.xpr** using Vivado, you can see that the top-level file is **tb_cpu.sv**, then you can modify the parameter `INSTRUCTION_STREAM_FILE` to specify which instruction stream you want the CPU to run (note that it should be changed to an absolute path in your PC). Here you should run the three test programs provided in the [rv32i_test](./SIM-CPU/rv32i_test) directory:
+
+- [a_instr_stream.txt](./SIM-CPU/rv32i_test) : Tests related to arithmetic logic instructions.
+- [b_instr_stream.txt](./SIM-CPU/rv32i_test) : Load/Store instruction related tests.
+- [c_instr_stream.txt](./SIM-CPU/rv32i_test) : Tests related to jump instructions.
+
+Then we can run the Behavior Simulation in Vivado. It will take about 500us for the CPU to run all the instructions in these test programs. The sign of test passed is that the gp register (register No. 3, corresponding to the variable `regfile[3]` in core_regfile.sv) becomes 0x00000001.
+
+
+
+# SoC Simulation
+
+I also provide a simulation of the entire SoC.
+
+Please use Vivado to open the project **SIM-SoC/vivado_sim/sim_soc.xpr** , you can see that the top-level file is **tb_soc.sv** , you can perform behavior simulation directly.
+
+The instruction stream running during simulation comes from **instruction ROM**. If you have not modified **instruction ROM**, you can see the waveform sent by **uart** in the **uart_tx** signal during simulation. is that it is printing **hello**.
+
+If you want the CPU to run other instruction streams during emulation, you need to modify the **Instruction ROM**. **USTCRVSoC-tool** In addition to programming, you can also use the compiled instruction stream to generate Verilog code for **instruction ROM**. When you use the **Assembly** button to generate the instruction stream, you can click the "Save Instruction Stream (Verilog)" button on the right, replace **./RTL/instr_rom.sv** when saving, and then re-simulate.
