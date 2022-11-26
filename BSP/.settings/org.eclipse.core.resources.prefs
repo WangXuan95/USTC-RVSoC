@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//app/main.c=UTF-8
+encoding//example/coremark/core_main.c=UTF-8
+encoding//example/coremark/core_portme.c=UTF-8
+encoding//example/coremark/core_portme.h=UTF-8
+encoding//example/coremark/coremark.h=UTF-8
+encoding//lib/include/uart.h=UTF-8
+encoding//lib/src/uart.c=UTF-8
+encoding//lib/start.S=UTF-8
+encoding//lib/system.h=UTF-8
+encoding//obj/app.map=GBK
+encoding/<project>=UTF-8
